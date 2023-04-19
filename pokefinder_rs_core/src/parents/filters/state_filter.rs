@@ -10,6 +10,31 @@ pub struct StateFilter {
     pub shiny: u8,
 }
 
+impl StateFilter {
+    #[allow(clippy::too_many_arguments)]
+    pub fn new(
+        gender: u8,
+        ability: u8,
+        shiny: u8,
+        skip: bool,
+        min: [u8; 6],
+        max: [u8; 6],
+        natures: [bool; 25],
+        powers: [bool; 16],
+    ) -> Self {
+        Self {
+            natures,
+            powers,
+            max,
+            min,
+            skip,
+            ability,
+            gender,
+            shiny,
+        }
+    }
+}
+
 pub trait Filter {
     fn get_natures(&self) -> [bool; 25];
     fn get_powers(&self) -> [bool; 16];
@@ -95,6 +120,26 @@ impl Filter for StateFilter {
 pub struct WildStateFilter {
     pub base: StateFilter,
     pub encounter_slots: [bool; 12],
+}
+
+impl WildStateFilter {
+    #[allow(clippy::too_many_arguments)]
+    pub fn new(
+        gender: u8,
+        ability: u8,
+        shiny: u8,
+        skip: bool,
+        min: [u8; 6],
+        max: [u8; 6],
+        natures: [bool; 25],
+        powers: [bool; 16],
+        encounter_slots: [bool; 12],
+    ) -> Self {
+        Self {
+            base: StateFilter::new(gender, ability, shiny, skip, min, max, natures, powers),
+            encounter_slots,
+        }
+    }
 }
 
 pub trait WildFilter: Filter {

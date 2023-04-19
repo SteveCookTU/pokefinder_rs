@@ -1,12 +1,12 @@
 use crate::enums::{Encounter, Lead, Method};
 use crate::parents::filters::Filter;
 use crate::parents::searchers::Searcher;
-use crate::parents::{EncounterAreaBase, Profile};
+use crate::parents::{EncounterAreaT, Profile};
 use std::sync::Arc;
 
 #[derive(Clone)]
 pub struct WildSearcher<
-    E: EncounterAreaBase + Send + Sync + Clone,
+    E: EncounterAreaT + Send + Sync + Clone,
     P: Profile + Send + Sync + Clone,
     F: Filter + Send + Sync + Clone,
 > {
@@ -17,7 +17,7 @@ pub struct WildSearcher<
 }
 
 impl<
-        E: EncounterAreaBase + Send + Sync + Clone,
+        E: EncounterAreaT + Send + Sync + Clone,
         P: Profile + Send + Sync + Clone,
         F: Filter + Send + Sync + Clone,
     > WildSearcher<E, P, F>

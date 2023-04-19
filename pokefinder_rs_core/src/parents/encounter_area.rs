@@ -1,7 +1,7 @@
 use crate::enums::{Encounter, Lead};
 use crate::parents::Slot;
 
-pub trait EncounterAreaBase {
+pub trait EncounterAreaT {
     fn calculate_level_with_prng_state(&self, index: u8, prng: u16) -> u8 {
         let pokemon = self.get_specific_pokemon(index as usize);
         let range = pokemon.get_max_level() - pokemon.get_min_level() + 1;
@@ -93,7 +93,7 @@ impl EncounterArea {
     }
 }
 
-impl EncounterAreaBase for EncounterArea {
+impl EncounterAreaT for EncounterArea {
     fn get_rate(&self) -> u8 {
         self.rate
     }

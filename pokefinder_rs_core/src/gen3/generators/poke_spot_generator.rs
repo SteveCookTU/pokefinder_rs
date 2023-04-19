@@ -4,7 +4,7 @@ use crate::gen3::states::PokeSpotState;
 use crate::gen3::Profile3;
 use crate::parents::filters::{Filter, WildFilter};
 use crate::parents::generators::Generator;
-use crate::parents::{EncounterArea, EncounterAreaBase, PersonalInfo};
+use crate::parents::{EncounterArea, EncounterAreaT, PersonalInfo};
 use crate::rng::XDRNG;
 use std::cmp::Ordering;
 

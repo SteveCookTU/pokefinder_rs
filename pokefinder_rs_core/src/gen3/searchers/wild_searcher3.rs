@@ -4,7 +4,7 @@ use crate::gen3::states::WildSearcherState3;
 use crate::gen3::{EncounterArea3, Profile3};
 use crate::parents::filters::{Filter, WildFilter};
 use crate::parents::searchers::WildSearcher;
-use crate::parents::{EncounterAreaBase, PersonalInfo, Profile};
+use crate::parents::{EncounterAreaT, PersonalInfo, Profile};
 use crate::rng::{lcrng_reverse, PokeRNGR};
 use crate::util::encounter_slot;
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};

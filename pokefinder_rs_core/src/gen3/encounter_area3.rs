@@ -1,5 +1,5 @@
 use crate::enums::{Encounter, Game};
-use crate::parents::{EncounterAreaBase, Slot};
+use crate::parents::{EncounterAreaT, Slot};
 use crate::rng::PokeRNG;
 
 #[derive(Clone)]
@@ -74,7 +74,7 @@ impl EncounterArea3 {
     }
 }
 
-impl EncounterAreaBase for EncounterArea3 {
+impl EncounterAreaT for EncounterArea3 {
     fn get_rate(&self) -> u8 {
         self.rate
     }
