@@ -1,9 +1,9 @@
 use crate::enums::Method;
-use crate::parents::filters::StateFilter;
+use crate::parents::filters::{Filter, StateFilter};
 use crate::parents::Profile;
 
 #[derive(Copy, Clone)]
-pub struct Generator<'a, 'b, P: Profile, F: StateFilter> {
+pub struct Generator<'a, 'b, P: Profile, F: Filter> {
     pub profile: &'a P,
     pub initial_advances: u32,
     pub max_advances: u32,
@@ -13,7 +13,7 @@ pub struct Generator<'a, 'b, P: Profile, F: StateFilter> {
     pub method: Method,
 }
 
-impl<'a, 'b, P: Profile, F: StateFilter> Generator<'a, 'b, P, F> {
+impl<'a, 'b, P: Profile, F: Filter> Generator<'a, 'b, P, F> {
     pub fn new(
         initial_advances: u32,
         max_advances: u32,

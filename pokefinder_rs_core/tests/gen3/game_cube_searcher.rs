@@ -22,7 +22,7 @@ struct GameCubeSearchData<'a> {
     #[serde(rename = "searchGalesShadow", borrow)]
     search_gales_shadow: Vec<SearchGalesShadowData<'a>>,
     #[serde(rename = "searchNonLock", borrow)]
-    search_non_lock: Vec<SearchNonLockData<'a>>
+    search_non_lock: Vec<SearchNonLockData<'a>>,
 }
 
 #[derive(Deserialize)]
@@ -172,13 +172,20 @@ fn search_non_lock() {
             name,
             min,
             max,
-            version, pokemon,
+            version,
+            pokemon,
             results,
         } = search_data;
 
         let natures = [true; 25];
         let powers = [true; 16];
-        let profile = Profile3::new("-".to_string(), Game::from_bits_truncate(version), 12345, 54321, false);
+        let profile = Profile3::new(
+            "-".to_string(),
+            Game::from_bits_truncate(version),
+            12345,
+            54321,
+            false,
+        );
 
         let static_template = encounters3::get_static_encounter(7, pokemon);
         let filter = StateFilter3::new(255, 255, 255, false, min, max, natures, powers);
@@ -204,7 +211,8 @@ fn search_gales_shadow() {
             name,
             min,
             max,
-            unset, pokemon,
+            unset,
+            pokemon,
             results,
         } = search_data;
 

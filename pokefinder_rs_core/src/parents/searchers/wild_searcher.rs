@@ -1,5 +1,5 @@
 use crate::enums::{Encounter, Lead, Method};
-use crate::parents::filters::StateFilter;
+use crate::parents::filters::{Filter, StateFilter};
 use crate::parents::searchers::Searcher;
 use crate::parents::{EncounterAreaBase, Profile};
 use std::sync::Arc;
@@ -8,7 +8,7 @@ use std::sync::Arc;
 pub struct WildSearcher<
     E: EncounterAreaBase + Send + Sync + Clone,
     P: Profile + Send + Sync + Clone,
-    F: StateFilter + Send + Sync + Clone,
+    F: Filter + Send + Sync + Clone,
 > {
     pub base: Searcher<P, F>,
     pub encounter_area: Arc<E>,
@@ -19,7 +19,7 @@ pub struct WildSearcher<
 impl<
         E: EncounterAreaBase + Send + Sync + Clone,
         P: Profile + Send + Sync + Clone,
-        F: StateFilter + Send + Sync + Clone,
+        F: Filter + Send + Sync + Clone,
     > WildSearcher<E, P, F>
 {
     pub fn new(

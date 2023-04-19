@@ -1,7 +1,7 @@
 use crate::enums::{Game, Method, ShadowType, Shiny};
 use crate::gen3::filters::StateFilter3;
 use crate::gen3::{Profile3, ShadowTemplate};
-use crate::parents::filters::StateFilter;
+use crate::parents::filters::{Filter, StateFilter};
 use crate::parents::searchers::Searcher;
 use crate::parents::states::SearcherState;
 use crate::parents::{shadow_lock, PersonalInfo, Profile, StaticTemplate, Template};

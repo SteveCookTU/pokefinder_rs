@@ -1,16 +1,16 @@
 use crate::enums::{Encounter, Lead, Method};
-use crate::parents::filters::StateFilter;
+use crate::parents::filters::{Filter, StateFilter};
 use crate::parents::generators::Generator;
 use crate::parents::Profile;
 
 #[derive(Copy, Clone)]
-pub struct WildGenerator<'a, 'b, P: Profile, F: StateFilter> {
+pub struct WildGenerator<'a, 'b, P: Profile, F: Filter> {
     pub base: Generator<'a, 'b, P, F>,
     pub encounter: Encounter,
     pub lead: Lead,
 }
 
-impl<'a, 'b, P: Profile, F: StateFilter> WildGenerator<'a, 'b, P, F> {
+impl<'a, 'b, P: Profile, F: Filter> WildGenerator<'a, 'b, P, F> {
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         initial_advances: u32,
