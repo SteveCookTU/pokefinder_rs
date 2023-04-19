@@ -67,7 +67,7 @@ impl StateT for WildState {
     }
 }
 
-#[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq, Debug)]
+#[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct WildGeneratorState {
     pub base: WildState,
     pub advances: u32,

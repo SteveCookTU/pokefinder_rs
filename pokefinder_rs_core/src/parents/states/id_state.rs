@@ -7,14 +7,23 @@ pub trait IDStateT {
 
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct IDState {
-    advances: u32,
-    sid: u16,
-    tid: u16,
-    tsv: u16,
+    pub advances: u32,
+    pub sid: u16,
+    pub tid: u16,
+    pub tsv: u16,
 }
 
 impl IDState {
-    pub fn new(advances: u32, tid: u16, sid: u16, tsv: u16) -> Self {
+    pub fn new(tid: u16, sid: u16, tsv: u16) -> Self {
+        Self {
+            advances: 0,
+            sid,
+            tid,
+            tsv,
+        }
+    }
+
+    pub fn new_with_advances(advances: u32, tid: u16, sid: u16, tsv: u16) -> Self {
         Self {
             advances,
             sid,

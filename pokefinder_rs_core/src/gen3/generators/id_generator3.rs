@@ -27,7 +27,7 @@ impl<'a> IDGenerator3<'a> {
             let sid = go.next_u16();
             let tsv = (tid ^ sid) >> 3;
 
-            let state = IDState::new(self.base.initial_advances + cnt, tid, sid, tsv);
+            let state = IDState::new_with_advances(self.base.initial_advances + cnt, tid, sid, tsv);
             if self.base.filter.compare(&state) {
                 states.push(state);
             }
@@ -50,7 +50,7 @@ impl<'a> IDGenerator3<'a> {
             let sid = go.next_u16();
             let tsv = (tid ^ sid) >> 3;
 
-            let state = IDState::new(self.base.initial_advances + cnt, tid, sid, tsv);
+            let state = IDState::new_with_advances(self.base.initial_advances + cnt, tid, sid, tsv);
             if self.base.filter.compare(&state) {
                 states.push(state);
             }
@@ -74,7 +74,7 @@ impl<'a> IDGenerator3<'a> {
             let sid = go.next_u16();
             let tsv = (tid ^ sid) >> 3;
 
-            let state = IDState::new(self.base.initial_advances + cnt, tid, sid, tsv);
+            let state = IDState::new_with_advances(self.base.initial_advances + cnt, tid, sid, tsv);
             if self.base.filter.compare(&state) {
                 states.push(state);
             }

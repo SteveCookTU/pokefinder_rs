@@ -1,5 +1,5 @@
 use crate::enums::{Lead, Method};
-use crate::parents::filters::{Filter};
+use crate::parents::filters::Filter;
 use crate::parents::searchers::Searcher;
 use crate::parents::Profile;
 

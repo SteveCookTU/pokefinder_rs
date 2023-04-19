@@ -1,7 +1,7 @@
 use crate::enums::{Lead, Method};
 use crate::gen3::filters::StateFilter3;
 use crate::gen3::Profile3;
-use crate::parents::filters::{Filter};
+use crate::parents::filters::Filter;
 use crate::parents::searchers::StaticSearcher;
 use crate::parents::states::SearcherState;
 use crate::parents::{PersonalInfo, StaticTemplate, Template};

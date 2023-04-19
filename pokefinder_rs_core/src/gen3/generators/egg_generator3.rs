@@ -2,7 +2,7 @@ use crate::enums::{Game, Method};
 use crate::gen3::filters::StateFilter3;
 use crate::gen3::states::EggState3;
 use crate::gen3::Profile3;
-use crate::parents::filters::{Filter};
+use crate::parents::filters::Filter;
 use crate::parents::generators::EggGenerator;
 use crate::parents::personal_loader;
 use crate::parents::{Daycare, PersonalInfo, Profile};
