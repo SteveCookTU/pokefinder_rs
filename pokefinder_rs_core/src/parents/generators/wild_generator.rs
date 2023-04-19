@@ -1,5 +1,5 @@
 use crate::enums::{Encounter, Lead, Method};
-use crate::parents::filters::{Filter, StateFilter};
+use crate::parents::filters::{Filter};
 use crate::parents::generators::Generator;
 use crate::parents::Profile;
 

@@ -1,5 +1,5 @@
 use crate::enums::{Encounter, Lead, Method};
-use crate::parents::filters::{Filter, StateFilter};
+use crate::parents::filters::{Filter};
 use crate::parents::searchers::Searcher;
 use crate::parents::{EncounterAreaBase, Profile};
 use std::sync::Arc;

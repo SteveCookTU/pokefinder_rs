@@ -2,7 +2,7 @@ use crate::enums::{Encounter, Game, Lead, Method};
 use crate::gen3::filters::WildStateFilter3;
 use crate::gen3::states::WildSearcherState3;
 use crate::gen3::{EncounterArea3, Profile3};
-use crate::parents::filters::{Filter, StateFilter, WildFilter, WildStateFilter};
+use crate::parents::filters::{Filter, WildFilter};
 use crate::parents::searchers::WildSearcher;
 use crate::parents::{EncounterAreaBase, PersonalInfo, Profile};
 use crate::rng::{lcrng_reverse, PokeRNGR};

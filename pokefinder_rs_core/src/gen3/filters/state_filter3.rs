@@ -1,5 +1,5 @@
 use crate::gen3::states::EggState3;
-use crate::parents::filters::{Filter, StateFilter, WildFilter, WildStateFilter};
+use crate::parents::filters::{Filter, StateFilter, WildFilter};
 use crate::parents::states::{
     GeneratorState, SearcherState, WildGeneratorState, WildSearcherState,
 };

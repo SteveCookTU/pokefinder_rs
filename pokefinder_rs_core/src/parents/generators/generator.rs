@@ -1,5 +1,5 @@
 use crate::enums::Method;
-use crate::parents::filters::{Filter, StateFilter};
+use crate::parents::filters::{Filter};
 use crate::parents::Profile;
 
 #[derive(Copy, Clone)]

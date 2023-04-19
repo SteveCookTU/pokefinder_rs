@@ -2,7 +2,7 @@ use crate::enums::Method;
 use crate::gen3::filters::WildStateFilter3;
 use crate::gen3::states::PokeSpotState;
 use crate::gen3::Profile3;
-use crate::parents::filters::{Filter, StateFilter, WildFilter, WildStateFilter};
+use crate::parents::filters::{Filter, WildFilter};
 use crate::parents::generators::Generator;
 use crate::parents::{EncounterArea, EncounterAreaBase, PersonalInfo};
 use crate::rng::XDRNG;
