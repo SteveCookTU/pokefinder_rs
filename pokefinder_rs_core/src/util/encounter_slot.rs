@@ -1,4 +1,19 @@
 use crate::enums::Encounter;
+use no_std_io::EndianRead;
+
+#[derive(EndianRead, Copy, Clone, Default)]
+pub(crate) struct DynamicSlot {
+    pub specie: u16,
+    pub max_level: u8,
+    pub min_level: u8,
+}
+
+#[derive(EndianRead, Copy, Clone, Default)]
+pub(crate) struct StaticSlot {
+    pub specie: u16,
+    pub level: u8,
+    pub _padding: u8,
+}
 
 const fn compute_table<const SIZE: usize, const GREATER: bool>(ranges: [u8; SIZE]) -> [u8; 100] {
     let mut table = [0; 100];

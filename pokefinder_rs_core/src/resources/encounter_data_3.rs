@@ -2,7 +2,7 @@ use crate::enums::{Game, ShadowType, Shiny};
 use crate::gen3::{LockInfo, ShadowTemplate};
 use crate::parents::StaticTemplate;
 
-pub const STARTERS: [StaticTemplate; 9] = [
+pub static STARTERS: [StaticTemplate; 9] = [
     StaticTemplate::new(Game::EMERALD, 152, 0, Shiny::Random, 255, 255, 0, 5),
     StaticTemplate::new(Game::EMERALD, 155, 0, Shiny::Random, 255, 255, 0, 5),
     StaticTemplate::new(Game::EMERALD, 158, 0, Shiny::Random, 255, 255, 0, 5),
@@ -14,7 +14,7 @@ pub const STARTERS: [StaticTemplate; 9] = [
     StaticTemplate::new(Game::FRLG, 7, 0, Shiny::Random, 255, 255, 0, 5),
 ];
 
-pub const FOSSILS: [StaticTemplate; 5] = [
+pub static FOSSILS: [StaticTemplate; 5] = [
     StaticTemplate::new(Game::RSE, 345, 0, Shiny::Random, 255, 255, 0, 20),
     StaticTemplate::new(Game::RSE, 347, 0, Shiny::Random, 255, 255, 0, 20),
     StaticTemplate::new(Game::FRLG, 138, 0, Shiny::Random, 255, 255, 0, 5),
@@ -22,7 +22,7 @@ pub const FOSSILS: [StaticTemplate; 5] = [
     StaticTemplate::new(Game::FRLG, 142, 0, Shiny::Random, 255, 255, 0, 5),
 ];
 
-pub const GIFTS: [StaticTemplate; 9] = [
+pub static GIFTS: [StaticTemplate; 9] = [
     StaticTemplate::new(Game::RSE, 351, 0, Shiny::Random, 255, 255, 0, 25),
     StaticTemplate::new(Game::RSE, 374, 0, Shiny::Random, 255, 255, 0, 5),
     StaticTemplate::new(Game::RSE, 360, 0, Shiny::Random, 255, 255, 0, 5),
@@ -34,7 +34,7 @@ pub const GIFTS: [StaticTemplate; 9] = [
     StaticTemplate::new(Game::FRLG, 175, 0, Shiny::Random, 255, 255, 0, 5),
 ];
 
-pub const GAME_CORNER: [StaticTemplate; 10] = [
+pub static GAME_CORNER: [StaticTemplate; 10] = [
     StaticTemplate::new(Game::FIRE_RED, 63, 0, Shiny::Random, 255, 255, 0, 9),
     StaticTemplate::new(Game::FIRE_RED, 35, 0, Shiny::Random, 255, 255, 0, 8),
     StaticTemplate::new(Game::FIRE_RED, 123, 0, Shiny::Random, 255, 255, 0, 25),
@@ -47,7 +47,7 @@ pub const GAME_CORNER: [StaticTemplate; 10] = [
     StaticTemplate::new(Game::LEAF_GREEN, 137, 0, Shiny::Random, 255, 255, 0, 18),
 ];
 
-pub const STATIONARY: [StaticTemplate; 6] = [
+pub static STATIONARY: [StaticTemplate; 6] = [
     StaticTemplate::new(Game::RSE, 352, 0, Shiny::Random, 255, 255, 0, 30),
     StaticTemplate::new(Game::RSE, 101, 0, Shiny::Random, 255, 255, 0, 30),
     StaticTemplate::new(Game::EMERALD, 185, 0, Shiny::Random, 255, 255, 0, 40),
@@ -56,7 +56,7 @@ pub const STATIONARY: [StaticTemplate; 6] = [
     StaticTemplate::new(Game::FRLG, 97, 0, Shiny::Random, 255, 255, 0, 30),
 ];
 
-pub const LEGENDS: [StaticTemplate; 14] = [
+pub static LEGENDS: [StaticTemplate; 14] = [
     StaticTemplate::new(Game::RSE, 377, 0, Shiny::Random, 255, 255, 0, 40),
     StaticTemplate::new(Game::RSE, 378, 0, Shiny::Random, 255, 255, 0, 40),
     StaticTemplate::new(Game::RSE, 379, 0, Shiny::Random, 255, 255, 0, 40),
@@ -91,7 +91,7 @@ pub const LEGENDS: [StaticTemplate; 14] = [
     StaticTemplate::new(Game::FRLG, 150, 0, Shiny::Random, 255, 255, 0, 70),
 ];
 
-pub const EVENTS: [StaticTemplate; 6] = [
+pub static EVENTS: [StaticTemplate; 6] = [
     StaticTemplate::new(Game::EMERALD, 151, 0, Shiny::Random, 255, 255, 0, 30),
     StaticTemplate::new(Game::EMERALD, 386, 3, Shiny::Random, 255, 255, 0, 30),
     StaticTemplate::new(Game::FIRE_RED, 386, 1, Shiny::Random, 255, 255, 0, 30),
@@ -118,7 +118,7 @@ pub const EVENTS: [StaticTemplate; 6] = [
     ),
 ];
 
-pub const GALES_COLO: [StaticTemplate; 69] = [
+pub static GALES_COLO: [StaticTemplate; 69] = [
     StaticTemplate::new(Game::COLOSSEUM, 197, 0, Shiny::Never, 255, 255, 0, 26),
     StaticTemplate::new(Game::COLOSSEUM, 196, 0, Shiny::Never, 255, 255, 0, 25),
     StaticTemplate::new(Game::COLOSSEUM, 250, 0, Shiny::Never, 255, 255, 0, 70),
@@ -190,7 +190,7 @@ pub const GALES_COLO: [StaticTemplate; 69] = [
     StaticTemplate::new(Game::GALES, 145, 0, Shiny::Never, 255, 255, 0, 50),
 ];
 
-pub const GALES_COLO_SHADOW: [ShadowTemplate; 77] = [
+pub static GALES_COLO_SHADOW: [ShadowTemplate; 77] = [
     ShadowTemplate::new(
         Game::COLOSSEUM,
         296,
@@ -1348,7 +1348,7 @@ pub const GALES_COLO_SHADOW: [ShadowTemplate; 77] = [
     ),
 ];
 
-pub const CHANNEL: [StaticTemplate; 1] = [StaticTemplate::new(
+pub static CHANNEL: [StaticTemplate; 1] = [StaticTemplate::new(
     Game::GC,
     385,
     0,
@@ -1359,7 +1359,7 @@ pub const CHANNEL: [StaticTemplate; 1] = [StaticTemplate::new(
     5,
 )];
 
-pub const EMERALD: [u8; 2269] = [
+pub static EMERALD: [u8; 2269] = [
     38, 59, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 176, 242, 72, 95, 0, 1, 242, 255, 223, 255,
     255, 255, 255, 255, 255, 255, 255, 254, 255, 255, 255, 255, 255, 253, 200, 180, 0, 10, 144, 56,
     129, 152, 28, 163, 81, 204, 152, 32, 0, 96, 9, 255, 54, 178, 10, 147, 102, 4, 128, 32, 26, 30,
@@ -1470,7 +1470,7 @@ pub const EMERALD: [u8; 2269] = [
     41, 194, 132, 133, 135, 146, 66, 248,
 ];
 
-pub const FIRERED: [u8; 2722] = [
+pub static FIRERED: [u8; 2722] = [
     232, 64, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 137, 22, 68, 29, 0, 1, 192, 255, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 250, 124, 64, 76, 64, 98,
     192, 96, 72, 113, 113, 73, 92, 40, 128, 1, 0, 96, 10, 123, 238, 187, 156, 119, 109, 50, 52, 91,
@@ -1603,7 +1603,7 @@ pub const FIRERED: [u8; 2722] = [
     132, 132, 72, 178, 32, 232,
 ];
 
-pub const LEAFGREEN: [u8; 2733] = [
+pub static LEAFGREEN: [u8; 2733] = [
     232, 64, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 101, 106, 155, 0, 0, 1, 192, 255, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 249, 252, 64, 76, 64, 98,
     192, 96, 200, 96, 113, 65, 220, 144, 128, 1, 0, 96, 10, 123, 62, 204, 55, 97, 59, 115, 102,
@@ -1736,7 +1736,7 @@ pub const LEAFGREEN: [u8; 2733] = [
     119, 36, 83, 133, 9, 6, 86, 169, 176, 0,
 ];
 
-pub const RUBY: [u8; 1951] = [
+pub static RUBY: [u8; 1951] = [
     198, 50, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 144, 244, 237, 200, 0, 0, 187, 127, 223, 127,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 239, 235, 189, 192, 176, 0, 0, 16, 48,
     128, 0, 24, 1, 17, 8, 128, 96, 8, 223, 107, 98, 169, 164, 180, 144, 1, 70, 104, 160, 0, 0, 212,
@@ -1831,7 +1831,7 @@ pub const RUBY: [u8; 1951] = [
     224, 76, 149, 104, 39, 66, 144, 193, 255, 139, 185, 34, 156, 40, 72, 72, 122, 118, 228, 0,
 ];
 
-pub const SAPPHIRE: [u8; 1978] = [
+pub static SAPPHIRE: [u8; 1978] = [
     198, 50, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 59, 180, 42, 2, 0, 0, 187, 127, 223, 127,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 235, 189, 192, 176, 0, 0, 16, 48,
     128, 0, 24, 1, 17, 8, 128, 96, 8, 223, 62, 221, 211, 57, 205, 182, 119, 179, 184, 233, 220, 29,
@@ -1928,7 +1928,7 @@ pub const SAPPHIRE: [u8; 1978] = [
     128,
 ];
 
-pub const XD: [u8; 76] = [
+pub static XD: [u8; 76] = [
     42, 0, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 86, 129, 93, 150, 0, 0, 0, 124, 13, 112, 16, 6,
     136, 0, 32, 64, 0, 0, 64, 0, 8, 16, 0, 128, 128, 32, 0, 34, 30, 168, 6, 140, 212, 41, 128, 0,
     186, 84, 166, 119, 17, 11, 42, 245, 78, 2, 182, 218, 29, 129, 178, 12, 15, 241, 119, 36, 83,

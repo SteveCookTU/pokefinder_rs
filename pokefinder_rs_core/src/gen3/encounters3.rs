@@ -7,21 +7,8 @@ use crate::resources::encounter_data_3::{
     LEAFGREEN, LEGENDS, RUBY, SAPPHIRE, STARTERS, STATIONARY, XD,
 };
 use crate::util;
+use crate::util::encounter_slot::{DynamicSlot, StaticSlot};
 use no_std_io::{Cursor, EndianRead, Error, ReadOutput, StreamContainer, StreamReader};
-
-#[derive(EndianRead, Copy, Clone, Default)]
-struct DynamicSlot {
-    specie: u16,
-    max_level: u8,
-    min_level: u8,
-}
-
-#[derive(EndianRead, Copy, Clone, Default)]
-struct StaticSlot {
-    specie: u16,
-    level: u8,
-    _padding: u8,
-}
 
 struct WildEncounter3 {
     location: u8,

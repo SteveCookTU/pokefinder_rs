@@ -1,5 +1,6 @@
 mod chained_sid_calc;
 mod encounter_area4;
+pub mod encounters4;
 pub mod filters;
 mod hgss_roamer;
 mod profile4;
