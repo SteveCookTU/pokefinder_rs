@@ -16,7 +16,7 @@ fn get_gender(pid: u32, info: &PersonalInfo) -> u8 {
 }
 
 fn get_shiny(pid: u32, tsv: u16) -> u8 {
-    let psv = ((pid >> 16) as u16) ^ (pid & 0xFFFF) as u16;
+    let psv = ((pid >> 16) ^ (pid & 0xFFFF)) as u16;
     if tsv == psv {
         2
     } else if (tsv ^ psv) < 8 {

@@ -37,7 +37,7 @@ impl EggGeneratorState4 {
         info: &PersonalInfo,
     ) {
         self.call = (prng % 3) as u8;
-        self.chatot = ((prng % 8192).wrapping_mul(100) >> 13) as u8;
+        self.chatot = (((prng as u32) % 8192).wrapping_mul(100) >> 13) as u8;
         self.pickup_advances = advances;
         self.base.base.base.ivs = ivs;
         self.base.base.inheritance = inheritance;

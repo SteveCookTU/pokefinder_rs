@@ -2,6 +2,7 @@ use serde::Deserialize;
 use std::fmt::Debug;
 
 mod gen3;
+mod gen4;
 mod rng;
 mod util;
 
