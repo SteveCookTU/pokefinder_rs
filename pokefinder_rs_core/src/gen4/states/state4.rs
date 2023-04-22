@@ -27,7 +27,7 @@ impl GeneratorState4 {
                 advances, pid, ivs, ability, gender, level, nature, shiny, info,
             ),
             call: (prng % 3) as u8,
-            chatot: ((prng % 8192).wrapping_mul(100) >> 13) as u8,
+            chatot: (((prng as u32) % 8192).wrapping_mul(100) >> 13) as u8,
         }
     }
 }
