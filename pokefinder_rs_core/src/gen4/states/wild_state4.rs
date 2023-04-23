@@ -46,7 +46,7 @@ impl WildGeneratorState4 {
             ),
             battle_advances,
             call: (prng % 3) as u8,
-            chatot: ((prng % 8192).wrapping_mul(100) >> 13) as u8,
+            chatot: (((prng as u32) % 8192).wrapping_mul(100) >> 13) as u8,
         }
     }
 }

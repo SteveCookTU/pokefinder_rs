@@ -1,7 +1,7 @@
 use crate::gen4::states::{
     EggGeneratorState4, GeneratorState4, SearcherState4, WildGeneratorState4, WildSearcherState4,
 };
-use crate::parents::filters::{Filter, StateFilter, WildStateFilter};
+use crate::parents::filters::{Filter, StateFilter, WildFilter, WildStateFilter};
 
 #[derive(Copy, Clone, Default)]
 pub struct StateFilter4 {
@@ -172,5 +172,45 @@ impl WildStateFilter4 {
             || (!self.base.base.powers[state.base.base.base.hidden_power as usize])
             || (self.base.base.shiny != 255
                 && (!(self.base.base.shiny & state.base.base.base.shiny)) != 0))
+    }
+}
+
+impl Filter for WildStateFilter4 {
+    fn get_natures(&self) -> [bool; 25] {
+        self.base.get_natures()
+    }
+
+    fn get_powers(&self) -> [bool; 16] {
+        self.base.get_powers()
+    }
+
+    fn get_max(&self) -> [u8; 6] {
+        self.base.get_max()
+    }
+
+    fn get_min(&self) -> [u8; 6] {
+        self.base.get_min()
+    }
+
+    fn skip(&self) -> bool {
+        self.base.skip()
+    }
+
+    fn get_ability(&self) -> u8 {
+        self.base.get_ability()
+    }
+
+    fn get_gender(&self) -> u8 {
+        self.base.get_gender()
+    }
+
+    fn get_shiny(&self) -> u8 {
+        self.base.get_shiny()
+    }
+}
+
+impl WildFilter for WildStateFilter4 {
+    fn get_encounter_slots(&self) -> [bool; 12] {
+        self.base.encounter_slots
     }
 }

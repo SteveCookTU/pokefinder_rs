@@ -272,7 +272,7 @@ impl EndianRead for WildEncounterHGSSBug {
         let mut reader = StreamContainer::new(bytes);
 
         let location = reader.read_stream_le()?;
-
+        let _padding = reader.read_stream_le::<u8>()?;
         let mut bug = [DynamicSlot::default(); 10];
         for b in bug.iter_mut() {
             *b = reader.read_stream_le()?;
