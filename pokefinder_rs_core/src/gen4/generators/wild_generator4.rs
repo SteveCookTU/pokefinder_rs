@@ -651,6 +651,19 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
             }
         };
 
+        let shiny_pid = |go: &mut PokeRNG, occidentary: &mut u32| {
+            *occidentary = occidentary.wrapping_add(1);
+            let mut low = go.next_u16_max::<true>(8);
+            *occidentary = occidentary.wrapping_add(1);
+            let mut high = go.next_u16_max::<true>(8);
+            for i in 3..16 {
+                *occidentary = occidentary.wrapping_add(1);
+                low |= (go.next_u16() & 1) << i;
+            }
+            high |= (self.base.base.tsv ^ low) & 0xFFF8;
+            ((high as u32) << 16) | (low as u32)
+        };
+
         let mut rng = PokeRNG::new_with_initial_advances(
             seed,
             self.base
@@ -664,19 +677,6 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
             let mut go = rng;
 
             let mut pid;
-
-            let shiny_pid = |go: &mut PokeRNG, occidentary: &mut u32| {
-                *occidentary = occidentary.wrapping_add(1);
-                let mut low = go.next_u16_max::<true>(8);
-                *occidentary = occidentary.wrapping_add(1);
-                let mut high = go.next_u16_max::<true>(8);
-                for i in 3..16 {
-                    *occidentary = occidentary.wrapping_add(1);
-                    low |= (go.next_u16() & 1) << i;
-                }
-                high |= (self.base.base.tsv ^ low) & 0xFFF8;
-                ((high as u32) << 16) | (low as u32)
-            };
 
             if (self.base.lead == Lead::CUTE_CHARM_F || self.base.lead == Lead::CUTE_CHARM_M)
                 && cute_charm
