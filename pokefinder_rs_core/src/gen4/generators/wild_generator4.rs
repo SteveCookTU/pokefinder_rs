@@ -641,10 +641,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
         let slot = encounter_area.get_specific_pokemon(index as usize);
         let info = slot.get_info();
 
-        let cute_charm = match info.get_gender() {
-            0 | 254 | 255 => false,
-            _ => true,
-        };
+        let cute_charm = !matches!(info.get_gender(), 0 | 254 | 255);
 
         let cute_charm_check = |info: &PersonalInfo, pid: u32| {
             if self.base.lead == Lead::CUTE_CHARM_F {
