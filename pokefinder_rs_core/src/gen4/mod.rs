@@ -5,6 +5,7 @@ pub mod filters;
 pub mod generators;
 mod hgss_roamer;
 mod profile4;
+pub mod searchers;
 mod seed_time4;
 pub mod seed_to_time_calculator4;
 pub mod states;

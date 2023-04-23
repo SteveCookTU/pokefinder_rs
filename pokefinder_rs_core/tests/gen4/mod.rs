@@ -1,6 +1,7 @@
 mod chained_sid_calc;
 mod egg_generator4;
 mod id_generator4;
+mod id_searcher4;
 mod seed_to_time_calculator4;
 mod static_generator4;
 mod wild_generator4;
