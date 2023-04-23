@@ -1,0 +1,81 @@
+use crate::enums::Method;
+use crate::gen4::filters::StateFilter4;
+use crate::gen4::generators::EggGenerator4;
+use crate::gen4::states::EggSearcherState4;
+use crate::gen4::Profile4;
+use crate::parents::searchers::Searcher;
+use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
+use std::sync::{Arc, Mutex};
+
+#[derive(Clone)]
+pub struct EggSearcher4 {
+    pub base: Searcher<Profile4, StateFilter4>,
+    pub results: Arc<Mutex<Vec<EggSearcherState4>>>,
+    pub progress: Arc<AtomicU32>,
+    pub max_delay: u32,
+    pub min_delay: u32,
+    pub searching: Arc<AtomicBool>,
+}
+
+impl EggSearcher4 {
+    pub fn new(min_delay: u32, max_delay: u32, profile: &Profile4, filter: &StateFilter4) -> Self {
+        Self {
+            base: Searcher::new(Method::None, profile, filter),
+            results: Arc::new(Mutex::new(vec![])),
+            progress: Arc::new(AtomicU32::new(0)),
+            max_delay,
+            min_delay,
+            searching: Arc::new(AtomicBool::new(false)),
+        }
+    }
+
+    pub fn cancel_search(&self) {
+        self.searching.store(false, Ordering::SeqCst);
+    }
+
+    pub fn get_progress(&self) -> u32 {
+        self.progress.load(Ordering::SeqCst)
+    }
+
+    pub fn get_results(&self) -> Vec<EggSearcherState4> {
+        std::mem::take(self.results.lock().unwrap().as_mut())
+    }
+
+    pub fn start_search(&self, generator: &EggGenerator4) {
+        self.searching.store(true, Ordering::SeqCst);
+        let mut total = 0;
+
+        for ab in 0u32..256 {
+            for cd in 0u32..24 {
+                for efgh in self.min_delay..=self.max_delay {
+                    if !self.searching.load(Ordering::SeqCst) {
+                        return;
+                    }
+
+                    if total > 10000 {
+                        self.progress.store(
+                            256u32.wrapping_mul(24).wrapping_mul(
+                                self.max_delay.wrapping_sub(self.min_delay).wrapping_add(1),
+                            ),
+                            Ordering::SeqCst,
+                        );
+                        return;
+                    }
+
+                    let seed = ((ab << 24) | (cd << 16)).wrapping_add(efgh);
+
+                    let states = generator.generate(seed, seed);
+                    if !states.is_empty() {
+                        total += states.len();
+                        self.results
+                            .lock()
+                            .unwrap()
+                            .extend(states.into_iter().map(|s| EggSearcherState4::new(seed, s)));
+                    }
+
+                    self.progress.fetch_add(1, Ordering::SeqCst);
+                }
+            }
+        }
+    }
+}

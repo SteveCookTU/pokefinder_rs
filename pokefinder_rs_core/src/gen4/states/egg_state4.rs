@@ -52,13 +52,13 @@ impl StateT for EggGeneratorState4 {
 }
 
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq)]
-pub struct EggSearcherState4<'a> {
+pub struct EggSearcherState4 {
     pub seed: u32,
-    pub state: &'a EggGeneratorState4,
+    pub state: EggGeneratorState4,
 }
 
-impl<'a> EggSearcherState4<'a> {
-    pub fn new(seed: u32, state: &'a EggGeneratorState4) -> Self {
+impl EggSearcherState4 {
+    pub fn new(seed: u32, state: EggGeneratorState4) -> Self {
         Self { seed, state }
     }
 }
