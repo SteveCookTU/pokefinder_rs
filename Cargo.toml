@@ -1,4 +1,13 @@
 [workspace]
 members = [
     'pokefinder_rs_core',
+    'pokefinder_rs_ui'
 ]
+
+[profile.release]
+opt-level = 2 # fast and small wasm
+strip = true
+
+# Optimize all dependencies even in debug builds:
+[profile.dev.package."*"]
+opt-level = 2

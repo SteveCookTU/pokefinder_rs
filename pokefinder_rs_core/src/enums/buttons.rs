@@ -1,5 +1,6 @@
 use bitflags::bitflags;
 bitflags! {
+    #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq)]
     pub struct Buttons: u16 {
         const NONE = 0;
         const R = 1;

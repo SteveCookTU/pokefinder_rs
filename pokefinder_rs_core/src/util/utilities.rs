@@ -1,5 +1,5 @@
 use crate::rng::BWRNG;
-use bzip2::read::BzDecoder;
+use bzip2_rs::DecoderReader;
 use std::io::Read;
 
 fn advance_probability_table(rng: &mut BWRNG) -> u32 {
@@ -56,9 +56,9 @@ fn get_pitch(result: u8) -> String {
 }
 
 pub fn decompress(compressed_data: &[u8]) -> Vec<u8> {
-    let mut decompressor = BzDecoder::new(compressed_data);
+    let mut reader = DecoderReader::new(compressed_data);
     let mut contents = vec![];
-    decompressor
+    reader
         .read_to_end(&mut contents)
         .expect("Failed to decompress");
     contents
