@@ -144,8 +144,9 @@ impl IVToPID {
                 }
                 ui.add_space(10.0);
                 egui_extras::TableBuilder::new(ui)
-                    .columns(Column::auto(), 9)
+                    .columns(Column::auto().clip(false), 9)
                     .auto_shrink([false; 2])
+                    .striped(true)
                     .max_scroll_height(200.0)
                     .resizable(true)
                     .header(20.0, |mut header| {

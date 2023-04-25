@@ -4,11 +4,23 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Serialize, Deserialize, PartialEq)]
 pub struct Profile4 {
-    name: String,
-    version: Game,
-    tid: u16,
-    sid: u16,
-    dex: bool,
+    pub name: String,
+    pub version: Game,
+    pub tid: u16,
+    pub sid: u16,
+    pub dex: bool,
+}
+
+impl Default for Profile4 {
+    fn default() -> Self {
+        Self {
+            name: "-".to_string(),
+            version: Game::DIAMOND,
+            tid: 12345,
+            sid: 54321,
+            dex: false,
+        }
+    }
 }
 
 impl Profile for Profile4 {

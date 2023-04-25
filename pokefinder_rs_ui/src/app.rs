@@ -1,3 +1,4 @@
+use crate::gen4::profile::ProfileManager4;
 use crate::gen4::tools::Gen4Tools;
 use egui::Visuals;
 
@@ -5,6 +6,7 @@ use egui::Visuals;
 pub struct PokeFinder {
     gen: Gen,
     gen_4_tools: Gen4Tools,
+    profile_manager4: ProfileManager4,
 }
 
 #[derive(Default, PartialEq)]
@@ -23,7 +25,11 @@ impl PokeFinder {
 
 impl eframe::App for PokeFinder {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        let Self { gen, gen_4_tools } = self;
+        let Self {
+            gen,
+            gen_4_tools,
+            profile_manager4,
+        } = self;
 
         egui::Window::new("Main").show(ctx, |ui| {
             ui.horizontal(|ui| {
@@ -31,6 +37,9 @@ impl eframe::App for PokeFinder {
                 ui.menu_button("Gen 4 Tools", |ui| {
                     if ui.button("IVs to PID").clicked() {
                         gen_4_tools.ivs_to_pid = Some(Box::default());
+                    }
+                    if ui.button("Profile Manager 4").clicked() {
+                        profile_manager4.show = true;
                     }
                 });
             });
@@ -65,6 +74,7 @@ impl eframe::App for PokeFinder {
                 }
             });
         });
-        self.gen_4_tools.show(ctx);
+        gen_4_tools.show(ctx);
+        profile_manager4.show(ctx);
     }
 }

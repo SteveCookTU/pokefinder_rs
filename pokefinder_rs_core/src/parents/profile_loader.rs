@@ -8,10 +8,12 @@ use std::sync::Mutex;
 
 static PATH: Mutex<String> = Mutex::new(String::new());
 
-fn read_json<T: DeserializeOwned>(file: &str) -> T {
+fn read_json<T: DeserializeOwned + Default>(file: &str) -> T {
     let mut path = PathBuf::from(PATH.lock().unwrap().clone());
     path.push(file);
-    let file = File::open(path).expect("Failed to open profile path");
+    let Ok(file) = File::open(path) else {
+        return T::default();
+    };
     let reader = BufReader::new(file);
     serde_json::from_reader(reader).expect("Failed to deserialize json")
 }
@@ -59,6 +61,10 @@ pub mod profile_loader_3 {
         write_json("gen3.json", &profiles);
     }
 
+    pub fn get_profiles() -> Vec<Profile3> {
+        read_json("gen3.json")
+    }
+
     pub fn remove_profile(profile: &Profile3) {
         let profiles = read_json::<Vec<Profile3>>("gen3.json")
             .into_iter()
@@ -94,6 +100,10 @@ pub mod profile_loader_4 {
         let mut profiles = read_json::<Vec<Profile4>>("gen4.json");
         profiles.push(profile);
         write_json("gen4.json", &profiles);
+    }
+
+    pub fn get_profiles() -> Vec<Profile4> {
+        read_json("gen4.json")
     }
 
     pub fn remove_profile(profile: &Profile4) {
@@ -133,6 +143,10 @@ pub mod profile_loader_5 {
         write_json("gen5.json", &profiles);
     }
 
+    pub fn get_profiles() -> Vec<Profile5> {
+        read_json("gen5.json")
+    }
+
     pub fn remove_profile(profile: &Profile5) {
         let profiles = read_json::<Vec<Profile5>>("gen5.json")
             .into_iter()
@@ -168,6 +182,10 @@ pub mod profile_loader_8 {
         let mut profiles = read_json::<Vec<Profile8>>("gen8.json");
         profiles.push(profile);
         write_json("gen8.json", &profiles);
+    }
+
+    pub fn get_profiles() -> Vec<Profile8> {
+        read_json("gen8.json")
     }
 
     pub fn remove_profile(profile: &Profile8) {
