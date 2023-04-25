@@ -131,7 +131,7 @@ fn read_file(translation: Translation) -> HashMap<u16, String> {
 }
 
 pub fn get_ability(ability: u16) -> &'static str {
-    &ABILITIES[ability as usize]
+    &ABILITIES[ability as usize - 1]
 }
 
 pub fn get_characteristic(characteristic: u8) -> &'static str {
@@ -244,7 +244,7 @@ pub fn get_natures() -> &'static [String] {
 }
 
 pub fn get_specie(specie: u16) -> &'static str {
-    &SPECIES[specie as usize]
+    &SPECIES[(specie as usize) - 1]
 }
 
 pub fn get_specie_with_form(specie: u16, form: u8) -> String {

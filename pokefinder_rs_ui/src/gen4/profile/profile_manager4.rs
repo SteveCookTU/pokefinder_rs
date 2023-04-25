@@ -37,26 +37,19 @@ impl ProfileManager4 {
                     if ui.button("New").clicked() {
                         self.editor = Some(Box::default());
                     }
-                    if ui.button("Edit").clicked() {
-                        if !self.profiles.is_empty() {
-                            self.editor =
-                                Some(Box::new(ProfileEditor4::edit(&self.profiles[self.edit].0)));
-                        }
+                    if ui.button("Edit").clicked() && !self.profiles.is_empty() {
+                        self.editor =
+                            Some(Box::new(ProfileEditor4::edit(&self.profiles[self.edit].0)));
                     }
                     if ui.button("Delete").clicked() {
-                        self.profiles = self
-                            .profiles
-                            .iter()
-                            .filter(|(profile, delete)| {
-                                if *delete {
-                                    profile_loader_4::remove_profile(profile);
-                                    false
-                                } else {
-                                    true
-                                }
-                            })
-                            .cloned()
-                            .collect();
+                        self.profiles.retain(|(profile, delete)| {
+                            if *delete {
+                                profile_loader_4::remove_profile(profile);
+                                false
+                            } else {
+                                true
+                            }
+                        });
                     }
                 });
                 ui.vertical_centered_justified(|ui| {

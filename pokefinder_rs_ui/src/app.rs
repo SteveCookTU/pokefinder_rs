@@ -40,10 +40,17 @@ impl eframe::App for PokeFinder {
                 ui.menu_button("Gen 3 Tools", |_ui| {});
                 ui.menu_button("Gen 4 Tools", |ui| {
                     if ui.button("IVs to PID").clicked() {
-                        gen_4_tools.ivs_to_pid = Some(Box::default());
+                        if gen_4_tools.ivs_to_pid.is_none() {
+                            gen_4_tools.ivs_to_pid = Some(Box::default());
+                        }
                     }
                     if ui.button("Profile Manager 4").clicked() {
                         profile_manager4.show = true;
+                    }
+                    if ui.button("SID From Chained Shiny").clicked() {
+                        if gen_4_tools.chained_sid.is_none() {
+                            gen_4_tools.chained_sid = Some(Box::default());
+                        }
                     }
                 });
             });

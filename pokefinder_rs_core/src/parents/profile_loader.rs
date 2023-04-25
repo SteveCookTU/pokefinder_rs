@@ -1,3 +1,11 @@
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen3::Profile3;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen4::Profile4;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen5::Profile5;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen8::Profile8;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 #[cfg(not(target_arch = "wasm32"))]
@@ -8,14 +16,6 @@ use std::io::{BufReader, BufWriter};
 use std::path::{Path, PathBuf};
 #[cfg(not(target_arch = "wasm32"))]
 use std::sync::Mutex;
-#[cfg(not(target_arch = "wasm32"))]
-use crate::gen3::Profile3;
-#[cfg(not(target_arch = "wasm32"))]
-use crate::gen4::Profile4;
-#[cfg(not(target_arch = "wasm32"))]
-use crate::gen5::Profile5;
-#[cfg(not(target_arch = "wasm32"))]
-use crate::gen8::Profile8;
 
 #[cfg(not(target_arch = "wasm32"))]
 static PATH: Mutex<String> = Mutex::new(String::new());
