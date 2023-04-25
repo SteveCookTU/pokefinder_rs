@@ -70,8 +70,8 @@ impl<'a> IDGenerator3<'a> {
         while cnt <= self.base.max_advances {
             let mut go = rng;
 
-            let tid = go.next_u16();
             let sid = go.next_u16();
+            let tid = go.next_u16();
             let tsv = (tid ^ sid) >> 3;
 
             let state = IDState::new_with_advances(self.base.initial_advances + cnt, tid, sid, tsv);
