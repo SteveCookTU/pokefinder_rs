@@ -1,5 +1,4 @@
 use crate::gen4::tools::Gen4Tools;
-use crate::util::IVToPID;
 use egui::Visuals;
 
 #[derive(Default)]
@@ -28,10 +27,10 @@ impl eframe::App for PokeFinder {
 
         egui::Window::new("Main").show(ctx, |ui| {
             ui.horizontal(|ui| {
-                ui.menu_button("Gen 3 Tools", |ui| {});
+                ui.menu_button("Gen 3 Tools", |_ui| {});
                 ui.menu_button("Gen 4 Tools", |ui| {
                     if ui.button("IVs to PID").clicked() {
-                        gen_4_tools.ivs_to_pid.show = true;
+                        gen_4_tools.ivs_to_pid = Some(Box::default());
                     }
                 });
             });

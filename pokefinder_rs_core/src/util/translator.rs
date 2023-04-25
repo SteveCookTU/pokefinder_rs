@@ -1,8 +1,10 @@
-use std::collections::HashMap;
-use once_cell::sync::Lazy;
+#![allow(dead_code)]
+
 use crate::enums::{Buttons, Game};
 use crate::resources::i18n;
 use crate::util;
+use once_cell::sync::Lazy;
+use std::collections::HashMap;
 
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq)]
 enum Language {
@@ -42,9 +44,7 @@ enum Translation {
     Count,
 }
 
-static LANGUAGE: Lazy<Language> = Lazy::new(|| {
-    Language::English
-});
+static LANGUAGE: Lazy<Language> = Lazy::new(|| Language::English);
 static ABILITIES: Lazy<Vec<String>> = Lazy::new(|| {
     let mut abilities = vec![];
     read_file_to_vec(Translation::Ability, &mut abilities);
@@ -55,9 +55,7 @@ static CHARACTERISTICS: Lazy<Vec<String>> = Lazy::new(|| {
     read_file_to_vec(Translation::Characteristic, &mut characteristics);
     characteristics
 });
-static FORMS: Lazy<HashMap<u16, String>> = Lazy::new(|| {
-    read_file(Translation::Form)
-});
+static FORMS: Lazy<HashMap<u16, String>> = Lazy::new(|| read_file(Translation::Form));
 static GAMES: Lazy<Vec<String>> = Lazy::new(|| {
     let mut games = vec![];
     read_file_to_vec(Translation::Game, &mut games);
@@ -89,7 +87,9 @@ static SPECIES: Lazy<Vec<String>> = Lazy::new(|| {
     species
 });
 static GENDERS: [&str; 3] = ["♂", "♀", "-"];
-static BUTTONS: [&str; 12] = ["R", "L", "X", "Y", "A", "B", "Select", "Start", "Right", "Left", "Up", "Down"];
+static BUTTONS: [&str; 12] = [
+    "R", "L", "X", "Y", "A", "B", "Select", "Start", "Right", "Left", "Up", "Down",
+];
 
 fn read_file_to_vec(translation: Translation, strings: &mut Vec<String>) {
     let index = ((*LANGUAGE as usize) * Translation::Count as usize) + translation as usize;
@@ -176,7 +176,10 @@ pub fn get_item(item: u16) -> &'static str {
 }
 
 pub fn get_items(items: &[u16]) -> Vec<&'static str> {
-    items.iter().map(|&num| ITEMS[num as usize].as_str()).collect()
+    items
+        .iter()
+        .map(|&num| ITEMS[num as usize].as_str())
+        .collect()
 }
 
 pub fn get_keypress(keypress: u8) -> &'static str {
@@ -253,5 +256,8 @@ pub fn get_specie_with_form(specie: u16, form: u8) -> String {
 }
 
 pub fn get_species(specie: &[u16]) -> Vec<&'static str> {
-    specie.iter().map(|&num| SPECIES[(num as usize) - 1].as_str()).collect()
+    specie
+        .iter()
+        .map(|&num| SPECIES[(num as usize) - 1].as_str())
+        .collect()
 }
