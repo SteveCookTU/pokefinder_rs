@@ -1,13 +1,26 @@
-use crate::gen3::Profile3;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
+#[cfg(not(target_arch = "wasm32"))]
 use std::fs::{File, OpenOptions};
+#[cfg(not(target_arch = "wasm32"))]
 use std::io::{BufReader, BufWriter};
+#[cfg(not(target_arch = "wasm32"))]
 use std::path::{Path, PathBuf};
+#[cfg(not(target_arch = "wasm32"))]
 use std::sync::Mutex;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen3::Profile3;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen4::Profile4;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen5::Profile5;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::gen8::Profile8;
 
+#[cfg(not(target_arch = "wasm32"))]
 static PATH: Mutex<String> = Mutex::new(String::new());
 
+#[cfg(not(target_arch = "wasm32"))]
 fn read_json<T: DeserializeOwned + Default>(file: &str) -> T {
     let mut path = PathBuf::from(PATH.lock().unwrap().clone());
     path.push(file);
@@ -18,6 +31,7 @@ fn read_json<T: DeserializeOwned + Default>(file: &str) -> T {
     serde_json::from_reader(reader).expect("Failed to deserialize json")
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn write_json<T: Serialize>(file: &str, obj: &T) {
     let mut path = PathBuf::from(PATH.lock().unwrap().clone());
     path.push(file);
@@ -31,14 +45,37 @@ fn write_json<T: Serialize>(file: &str, obj: &T) {
     serde_json::to_writer(writer, obj).expect("Failed to serialize struct to json")
 }
 
+#[cfg(target_arch = "wasm32")]
+fn write_json<T: Serialize>(key: &str, obj: &T) {
+    if let Some(window) = web_sys::window() {
+        let json = serde_json::to_string(obj).unwrap_or_default();
+        if let Ok(Some(local_storage)) = window.local_storage() {
+            let _ = local_storage.set_item(key, &json);
+        }
+    }
+}
+
+#[cfg(target_arch = "wasm32")]
+fn read_json<T: DeserializeOwned + Default>(key: &str) -> T {
+    if let Some(window) = web_sys::window() {
+        if let Ok(Some(local_storage)) = window.local_storage() {
+            if let Ok(Some(json)) = local_storage.get(key) {
+                return serde_json::from_str(&json).unwrap_or_default();
+            }
+        }
+    }
+    T::default()
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 pub fn init_profile_loader(location: String) -> bool {
     *PATH.lock().unwrap() = location.clone();
     let exists = Path::new(&location).exists();
     if !exists {
         write_json("gen3.json", &Vec::<Profile3>::new());
-        write_json("gen4.json", &Vec::<Profile3>::new());
-        write_json("gen5.json", &Vec::<Profile3>::new());
-        write_json("gen8.json", &Vec::<Profile3>::new());
+        write_json("gen4.json", &Vec::<Profile4>::new());
+        write_json("gen5.json", &Vec::<Profile5>::new());
+        write_json("gen8.json", &Vec::<Profile8>::new());
     }
     exists
 }

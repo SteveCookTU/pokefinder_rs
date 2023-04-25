@@ -1,6 +1,8 @@
 use crate::gen4::profile::ProfileManager4;
 use crate::gen4::tools::Gen4Tools;
 use egui::Visuals;
+#[cfg(not(target_arch = "wasm32"))]
+use pokefinder_rs_core::parents::init_profile_loader;
 
 #[derive(Default)]
 pub struct PokeFinder {
@@ -19,6 +21,8 @@ enum Gen {
 impl PokeFinder {
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         cc.egui_ctx.set_visuals(Visuals::dark());
+        #[cfg(not(target_arch = "wasm32"))]
+        init_profile_loader(String::new());
         Default::default()
     }
 }
