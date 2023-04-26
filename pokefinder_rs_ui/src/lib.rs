@@ -11,3 +11,11 @@ pub enum ProfileEditorResult {
     Edit,
     Cancel,
 }
+
+#[derive(Ord, PartialOrd, Eq, PartialEq, Default, Copy, Clone)]
+pub enum DialogResult {
+    #[default]
+    Pending,
+    Okay,
+    Cancel,
+}

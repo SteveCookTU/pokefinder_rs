@@ -49,28 +49,25 @@ pub fn calculate_times(
 }
 
 pub fn calibrate(
-    minus_delay: u32,
-    plus_delay: u32,
-    minus_second: u32,
-    plus_second: u32,
+    minus_delay: i32,
+    plus_delay: i32,
+    minus_second: i32,
+    plus_second: i32,
     target: &SeedTime4,
 ) -> Vec<SeedTimeCalibrate4> {
     let time = &target.date_time;
     let delay = target.delay;
 
     let mut results = Vec::with_capacity(
-        plus_delay
-            .wrapping_sub(minus_delay)
-            .wrapping_add(1)
-            .wrapping_mul(plus_second.wrapping_sub(minus_second).wrapping_add(1)) as usize,
+        ((plus_delay - minus_delay + 1) * (plus_second - minus_second + 1)) as usize,
     );
 
     for second_offset in minus_second..=plus_second {
-        let offset = time.add_secs(second_offset);
+        let offset = time.add_secs(second_offset as u32);
         for delay_offset in minus_delay..=plus_delay {
             results.push(SeedTimeCalibrate4::new(
                 offset,
-                delay.wrapping_add(delay_offset),
+                delay.wrapping_add(delay_offset as u32),
             ));
         }
     }
@@ -79,10 +76,10 @@ pub fn calibrate(
 }
 
 pub fn calibrate_roamers(
-    minus_delay: u32,
-    plus_delay: u32,
-    minus_second: u32,
-    plus_second: u32,
+    minus_delay: i32,
+    plus_delay: i32,
+    minus_second: i32,
+    plus_second: i32,
     roamers: [bool; 3],
     routes: [u8; 3],
     target: &SeedTime4,
@@ -91,18 +88,15 @@ pub fn calibrate_roamers(
     let delay = target.delay;
 
     let mut results = Vec::with_capacity(
-        plus_delay
-            .wrapping_sub(minus_delay)
-            .wrapping_add(1)
-            .wrapping_mul(plus_second.wrapping_sub(minus_second).wrapping_add(1)) as usize,
+        ((plus_delay - minus_delay + 1) * (plus_second - minus_second + 1)) as usize,
     );
 
     for second_offset in minus_second..=plus_second {
-        let offset = time.add_secs(second_offset);
+        let offset = time.add_secs(second_offset as u32);
         for delay_offset in minus_delay..=plus_delay {
             results.push(SeedTimeCalibrate4::new_with_roamer(
                 offset,
-                delay.wrapping_add(delay_offset),
+                delay.wrapping_add(delay_offset as u32),
                 roamers,
                 routes,
             ));
