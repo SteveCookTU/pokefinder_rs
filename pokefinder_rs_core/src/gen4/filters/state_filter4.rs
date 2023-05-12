@@ -149,7 +149,7 @@ impl WildStateFilter4 {
         if (self.base.base.ability != 255 && self.base.base.ability != state.base.base.base.ability)
             || (self.base.base.gender != 255
                 && self.base.base.gender != state.base.base.base.ability)
-            || (!self.base.base.powers[state.base.base.base.shiny as usize])
+            || (!self.base.base.powers[state.base.base.base.hidden_power as usize])
             || (self.base.base.shiny != 255
                 && (!(self.base.base.shiny & state.base.base.base.shiny)) != 0)
         {

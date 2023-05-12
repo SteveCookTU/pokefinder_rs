@@ -1,11 +1,12 @@
 use crate::parents::states::IDStateT;
 
+#[derive(Copy, Clone)]
 pub struct IDState8 {
-    advances: u32,
-    sid: u16,
-    tid: u16,
-    tsv: u16,
-    display_tid: u32,
+    pub advances: u32,
+    pub sid: u16,
+    pub tid: u16,
+    pub tsv: u16,
+    pub display_tid: u32,
 }
 
 impl IDStateT for IDState8 {
