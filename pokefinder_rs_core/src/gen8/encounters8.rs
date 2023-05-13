@@ -39,7 +39,7 @@ struct WildEncounter8 {
     swarm: [u16; 2],
     day: [u16; 2],
     night: [u16; 2],
-    radar: [u16; 2],
+    radar: [u16; 4],
     surf: [DynamicSlot; 5],
     old_rod: [DynamicSlot; 5],
     good_rod: [DynamicSlot; 5],
@@ -72,6 +72,8 @@ impl EndianRead for WildEncounter8 {
             reader.read_stream_le::<u16>()?,
         ];
         let radar = [
+            reader.read_stream_le::<u16>()?,
+            reader.read_stream_le::<u16>()?,
             reader.read_stream_le::<u16>()?,
             reader.read_stream_le::<u16>()?,
         ];

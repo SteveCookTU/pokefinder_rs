@@ -38,6 +38,8 @@ impl<'a, 'b, 'c> EventGenerator8<'a, 'b, 'c> {
         };
         if !wb8.egg {
             new.base.tsv = wb8.tid ^ wb8.sid;
+        } else {
+            new.base.tsv = (profile.get_tid() & 0xFFF0) ^ profile.get_sid();
         }
         new
     }
@@ -64,7 +66,7 @@ impl<'a, 'b, 'c> EventGenerator8<'a, 'b, 'c> {
             let shiny = match self.wb8.shiny {
                 0 => {
                     pid = rng_list.next();
-                    let psv = ((pid >> 16) & (pid & 0xFFFF)) as u16;
+                    let psv = ((pid >> 16) ^ (pid & 0xFFF0)) as u16;
 
                     if (psv ^ self.base.tsv) < 16 {
                         pid ^= 0x10000000;
@@ -73,7 +75,7 @@ impl<'a, 'b, 'c> EventGenerator8<'a, 'b, 'c> {
                 }
                 1 | 2 => {
                     pid = rng_list.next();
-                    let psv = ((pid >> 16) & (pid & 0xFFFF)) as u16;
+                    let psv = ((pid >> 16) ^ (pid & 0xFFF0)) as u16;
 
                     let real_xor = psv ^ self.base.tsv;
                     let shiny_type = if real_xor == 0 {
@@ -93,7 +95,7 @@ impl<'a, 'b, 'c> EventGenerator8<'a, 'b, 'c> {
                 }
                 4 => {
                     pid = self.wb8.pid;
-                    let psv = ((pid >> 16) & (pid & 0xFFFF)) as u16;
+                    let psv = ((pid >> 16) ^ (pid & 0xFFF0)) as u16;
 
                     let real_xor = psv ^ self.base.tsv;
                     if real_xor == 0 {

@@ -3,7 +3,7 @@ use crate::gen8::filters::StateFilter8;
 use crate::gen8::Profile8;
 use crate::parents::generators::StaticGenerator;
 use crate::parents::states::GeneratorState;
-use crate::parents::{StaticTemplate, Template};
+use crate::parents::{Profile, StaticTemplate, Template};
 use crate::rng::{RNGList, XoroshiroBDSP, Xorshift};
 
 fn gen(rng: &mut Xorshift) -> u32 {
@@ -24,7 +24,7 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
         profile: &'a Profile8,
         filter: &'b StateFilter8,
     ) -> Self {
-        Self {
+        let mut new = Self {
             base: StaticGenerator::new(
                 initial_advances,
                 max_advances,
@@ -34,7 +34,9 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
                 profile,
                 filter,
             ),
-        }
+        };
+        new.base.base.tsv = (profile.get_tid() & 0xFFF0) ^ profile.get_sid();
+        new
     }
 
     pub fn generate(
@@ -61,7 +63,7 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
             let sidtid = rng_list.next();
             let mut pid = rng_list.next();
 
-            let psv = ((pid >> 16) ^ (pid & 0xFFFF)) as u16;
+            let psv = ((pid >> 16) ^ (pid & 0xFFF0)) as u16;
 
             let shiny = if static_template.get_shiny() == Shiny::Never {
                 if (psv ^ self.base.base.tsv) < 16 {
@@ -69,7 +71,7 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
                 }
                 0
             } else {
-                let fake_xor = (((sidtid >> 16) ^ (sidtid & 0xFFFF)) as u16) ^ psv;
+                let fake_xor = (((sidtid >> 16) ^ (sidtid & 0xFFF0)) as u16) ^ psv;
                 if fake_xor < 16 {
                     let shiny = if fake_xor == 0 { 2 } else { 1 };
                     let real_xor = psv ^ self.base.base.tsv;
@@ -193,8 +195,8 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
             let sidtid = rng.next_u32(0xffffffff);
             let mut pid = rng.next_u32(0xffffffff);
 
-            let psv = ((pid >> 16) ^ (pid & 0xFFFF)) as u16;
-            let fake_xor = (((sidtid >> 16) ^ (sidtid & 0xFFFF)) as u16) ^ psv;
+            let psv = ((pid >> 16) ^ (pid & 0xFFF0)) as u16;
+            let fake_xor = (((sidtid >> 16) ^ (sidtid & 0xFFF0)) as u16) ^ psv;
             let shiny = if fake_xor < 16 {
                 let shiny = if fake_xor == 0 { 2 } else { 1 };
                 let real_xor = psv ^ self.base.base.tsv;

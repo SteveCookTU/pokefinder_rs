@@ -27,7 +27,7 @@ impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
         profile: &'a Profile8,
         filter: &'b StateFilter8,
     ) -> Self {
-        Self {
+        let mut new = Self {
             base: EggGenerator::new(
                 initial_advances,
                 max_advances,
@@ -39,7 +39,9 @@ impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
                 filter,
             ),
             shiny_charm: profile.get_shiny_charm(),
-        }
+        };
+        new.base.base.tsv = (profile.get_tid() & 0xFFF0) ^ profile.get_sid();
+        new
     }
 
     pub fn generate(&self, seed0: u64, seed1: u64) -> Vec<EggGeneratorState> {
@@ -188,7 +190,7 @@ impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
                 let mut psv = 0;
                 for _ in 0..pid_rolls {
                     pid = rng.next_u32(0xffffffff);
-                    psv = ((pid >> 16) ^ (pid & 0xffff)) as u16;
+                    psv = ((pid >> 16) ^ (pid & 0xfff0)) as u16;
                     if (psv ^ self.base.base.tsv) < 16 {
                         break;
                     }

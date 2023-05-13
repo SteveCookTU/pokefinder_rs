@@ -74,7 +74,7 @@ impl EncounterArea8 {
         }
     }
 
-    pub fn unown_form(&self, prng: u16) -> u8 {
+    pub fn unown_form(&self, prng: u32) -> u8 {
         match self.base.location {
             29 => UNOWN7[(prng as usize) % UNOWN7.len()],
             30 => UNOWN0[(prng as usize) % UNOWN0.len()],
