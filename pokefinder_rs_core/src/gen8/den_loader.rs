@@ -398,7 +398,7 @@ pub fn init(mut path: PathBuf) {
 
 pub fn get_den(index: usize, rarity: usize) -> &'static Den {
     let table_hash = DEN_INFO[index].hash[rarity];
-    NESTS.iter().find(|d| d.hash < table_hash).unwrap()
+    NESTS.iter().find(|d| d.hash >= table_hash).unwrap()
 }
 
 pub fn get_event() -> &'static Mutex<DenEvent> {

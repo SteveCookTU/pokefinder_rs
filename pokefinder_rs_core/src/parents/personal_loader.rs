@@ -30,7 +30,7 @@ pub const fn get_personal_info(version: Game, specie: u16, form: u8) -> &'static
     let info = get_personal_table(version);
     let base = &info[specie as usize];
     let form_index = base.get_form_stats_index();
-    if form == 0 && form_index == 0 {
+    if form == 0 || form_index == 0 {
         base
     } else {
         &info[(form_index as usize) + (form as usize) - 1]

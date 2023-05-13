@@ -3,6 +3,7 @@ pub mod den_loader;
 mod encounter_area8;
 pub mod encounters8;
 pub mod filters;
+pub mod generators;
 mod profile8;
 mod raid;
 pub mod states;

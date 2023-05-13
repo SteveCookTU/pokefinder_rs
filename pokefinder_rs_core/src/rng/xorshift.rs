@@ -53,6 +53,11 @@ impl Xorshift {
         new.jump(advances);
         new
     }
+
+    pub fn next_range(&mut self, min: u32, max: u32) -> u32 {
+        let diff = max.wrapping_sub(min);
+        (self.next() % diff).wrapping_add(min)
+    }
 }
 
 impl Rng for Xorshift {
