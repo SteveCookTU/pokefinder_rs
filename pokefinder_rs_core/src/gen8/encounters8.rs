@@ -387,6 +387,10 @@ pub fn get_static_encounters(index: usize) -> &'static [StaticTemplate] {
     }
 }
 
+pub fn get_static_encounter(ty: usize, index: usize) -> &'static StaticTemplate {
+    &get_static_encounters(ty)[index]
+}
+
 pub fn get_trophy_garden_pokemon() -> [u16; 16] {
     TROPHY_GARDEN
 }
