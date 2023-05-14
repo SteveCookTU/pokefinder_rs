@@ -1,5 +1,5 @@
 use crate::{assert_states, get_test_data};
-use pokefinder_rs_core::gen4::{seed_to_time_calculator4, SeedTime4};
+use pokefinder_rs_core::gen4::{tools::seed_to_time_calculator4, SeedTime4};
 use serde::Deserialize;
 
 #[derive(Deserialize)]

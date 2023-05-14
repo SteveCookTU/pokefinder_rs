@@ -3,7 +3,7 @@ use crate::DialogResult;
 use egui::{Context, Direction, Layout, Widget};
 use egui_extras::Column;
 use pokefinder_rs_core::enums::Game;
-use pokefinder_rs_core::gen4::{seed_to_time_calculator4, SeedTime4, SeedTimeCalibrate4};
+use pokefinder_rs_core::gen4::{tools::seed_to_time_calculator4, SeedTime4, SeedTimeCalibrate4};
 use pokefinder_rs_core::util::utilities4;
 
 pub struct SeedToTime4 {

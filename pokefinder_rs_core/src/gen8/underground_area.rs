@@ -106,7 +106,7 @@ impl UndergroundArea {
         let mut sum = 0;
         let mut filtered = [Pokemon::default(); 23];
         for mon in &self.pokemon {
-            if temp[..(temp_count as usize)]
+            if temp[..temp_count]
                 .iter()
                 .any(|ts| ts.size == mon.size && (ts.ty == mon.ty[0] || ts.ty == mon.ty[1]))
             {
