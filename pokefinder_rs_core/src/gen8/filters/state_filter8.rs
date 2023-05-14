@@ -202,12 +202,12 @@ impl WildFilter for WildStateFilter8 {
 }
 
 #[derive(Copy, Clone, Default)]
-pub struct UndergroundFilter<'a> {
+pub struct UndergroundStateFilter<'a> {
     pub base: StateFilter,
     pub species: &'a [u16],
 }
 
-impl<'a> UndergroundFilter<'a> {
+impl<'a> UndergroundStateFilter<'a> {
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -247,5 +247,38 @@ impl<'a> UndergroundFilter<'a> {
         }
 
         true
+    }
+}
+impl Filter for UndergroundStateFilter<'_> {
+    fn get_natures(&self) -> [bool; 25] {
+        self.base.natures
+    }
+
+    fn get_powers(&self) -> [bool; 16] {
+        self.base.powers
+    }
+
+    fn get_max(&self) -> [u8; 6] {
+        self.base.max
+    }
+
+    fn get_min(&self) -> [u8; 6] {
+        self.base.min
+    }
+
+    fn skip(&self) -> bool {
+        self.base.skip
+    }
+
+    fn get_ability(&self) -> u8 {
+        self.base.ability
+    }
+
+    fn get_gender(&self) -> u8 {
+        self.base.gender
+    }
+
+    fn get_shiny(&self) -> u8 {
+        self.base.shiny
     }
 }

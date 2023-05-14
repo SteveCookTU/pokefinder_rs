@@ -2,20 +2,20 @@ use crate::rng::{RNGList, Xorshift};
 use crate::util::translator;
 use no_std_io::EndianRead;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub struct TypeRate {
     pub rate: u16,
     pub ty: u8,
 }
 
-#[derive(Copy, Clone, Default)]
+#[derive(Copy, Clone, Default, Debug)]
 pub struct TypeSize {
     pub value: u16,
     pub size: u8,
     pub ty: u8,
 }
 
-#[derive(Copy, Clone, Default)]
+#[derive(Copy, Clone, Default, Debug)]
 pub struct Pokemon {
     pub rate: u16,
     pub specie: u16,
@@ -23,13 +23,13 @@ pub struct Pokemon {
     pub ty: [u8; 2],
 }
 
-#[derive(Copy, Clone, Default, EndianRead)]
+#[derive(Copy, Clone, Default, EndianRead, Debug)]
 pub struct SpecialPokemon {
     pub rate: u16,
     pub specie: u16,
 }
 
-#[derive(Clone, Default)]
+#[derive(Clone, Default, Debug)]
 pub struct UndergroundArea {
     pub pokemon: Vec<Pokemon>,
     pub special_pokemon: Vec<SpecialPokemon>,
@@ -82,7 +82,7 @@ impl UndergroundArea {
             }
         }
 
-        new.type_rates.sort_by(|l, r| l.rate.cmp(&r.rate));
+        new.type_rates.sort_by(|l, r| r.rate.cmp(&l.rate));
 
         for i in 1..new.type_rates.len() {
             new.type_rates[i].rate += new.type_rates[i - 1].rate;
@@ -94,19 +94,19 @@ impl UndergroundArea {
     pub fn get_pokemon(&self, rng_list: &mut RNGList<u32, Xorshift, 256>, ty: TypeSize) -> u16 {
         let mut temp_count = 0;
         let mut temp = [TypeSize::default(); 23];
+
         for type_size in &self.type_sizes {
             if ty.value == type_size.value {
                 temp[temp_count] = *type_size;
                 temp_count += 1;
             }
         }
-        debug_assert!(temp_count <= temp.len());
 
         let mut filtered_count = 0;
         let mut sum = 0;
         let mut filtered = [Pokemon::default(); 23];
         for mon in &self.pokemon {
-            if temp
+            if temp[..(temp_count as usize)]
                 .iter()
                 .any(|ts| ts.size == mon.size && (ts.ty == mon.ty[0] || ts.ty == mon.ty[1]))
             {
@@ -115,9 +115,7 @@ impl UndergroundArea {
                 filtered_count += 1;
             }
         }
-        debug_assert!(filtered_count <= filtered.len());
-        debug_assert!(temp_count == filtered_count);
-        filtered[..filtered_count].sort_by(|l, r| l.rate.cmp(&r.rate));
+        filtered[..filtered_count].sort_by(|l, r| r.rate.cmp(&l.rate));
 
         let mut rate = rng_list.next_alt(rand) * sum as f32;
         for filter in filtered.iter().take(filtered_count) {
