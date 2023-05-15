@@ -1,13 +1,17 @@
 use crate::parents::states::{State, StateT};
 use crate::parents::PersonalInfo;
 
+/// State struct that provides additional egg information
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Default)]
 pub struct EggState {
+    /// Base pokemon information
     pub base: State,
+    /// Pokemon IV inheritance
     pub inheritance: [u8; 6],
 }
 
 impl EggState {
+    /// Construct a new [`EggState`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         pid: u32,
@@ -26,6 +30,7 @@ impl EggState {
         }
     }
 
+    /// Construct a new [`EggState`] struct with an EC different than the PID
     #[allow(clippy::too_many_arguments)]
     pub fn new_with_ec(
         ec: u32,
@@ -52,13 +57,17 @@ impl StateT for EggState {
     }
 }
 
+/// State struct that provides additional information from an egg generator
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct EggGeneratorState {
+    /// Base egg pokemon information
     pub base: EggState,
+    /// Advances of the state
     pub advances: u32,
 }
 
 impl EggGeneratorState {
+    /// Construct a new [`EggGeneratorState`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         advances: u32,
@@ -88,6 +97,7 @@ impl EggGeneratorState {
         }
     }
 
+    /// Construct a new [`EggGeneratorState`] struct with an EC different than the PID
     #[allow(clippy::too_many_arguments)]
     pub fn new_with_ec(
         advances: u32,
@@ -126,13 +136,17 @@ impl StateT for EggGeneratorState {
     }
 }
 
+/// State struct that provides additional information from an egg searcher
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct EggSearcherState {
+    /// Base egg pokemon information
     pub base: EggState,
+    /// Seed of the state
     pub seed: u32,
 }
 
 impl EggSearcherState {
+    /// Construct a new [`EggSearcherState`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         seed: u32,

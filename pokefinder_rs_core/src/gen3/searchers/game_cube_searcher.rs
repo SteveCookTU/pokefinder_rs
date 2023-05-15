@@ -1,10 +1,10 @@
 use crate::enums::{Game, Method, ShadowType, Shiny};
 use crate::gen3::filters::StateFilter3;
-use crate::gen3::{Profile3, ShadowTemplate};
+use crate::gen3::{shadow_lock, Profile3, ShadowTemplate};
 use crate::parents::filters::Filter;
 use crate::parents::searchers::Searcher;
 use crate::parents::states::SearcherState;
-use crate::parents::{shadow_lock, PersonalInfo, Profile, StaticTemplate, Template};
+use crate::parents::{PersonalInfo, Profile, StaticTemplate, Template};
 use crate::rng::{lcrng_reverse, XDRNG, XDRNGR};
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 use std::sync::{Arc, Mutex};
@@ -175,7 +175,7 @@ impl GameCubeSearcher {
             return;
         }
 
-        let tsv = match static_template.specie {
+        let tsv = match static_template.species {
             25 | 251 => 31121,
             250 => 10048,
             _ => self.base.tsv,
@@ -475,14 +475,14 @@ impl GameCubeSearcher {
             let mut high;
             let mut low;
 
-            if static_template.specie == 133 {
+            if static_template.species == 133 {
                 let mut temp = XDRNGR::new(rng.seed);
                 temp.advance(2);
                 tsv = temp.next_u16() ^ temp.next_u16();
                 seed = temp.next();
             }
 
-            match static_template.specie {
+            match static_template.species {
                 197 => {
                     let mut temp = XDRNGR::new(rng.seed);
                     temp.advance(2);

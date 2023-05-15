@@ -44,7 +44,7 @@ struct GeneratorResult {
     nature: u8,
     pid: u32,
     shiny: u8,
-    specie: u16,
+    species: u16,
     stats: [u16; 6],
 }
 
@@ -63,7 +63,7 @@ impl From<UndergroundState> for GeneratorResult {
             nature: value.base.base.nature,
             pid: value.base.base.pid,
             shiny: value.base.base.shiny,
-            specie: value.specie,
+            species: value.species,
             stats: value.base.base.stats,
             egg_move: value.egg_move,
         }

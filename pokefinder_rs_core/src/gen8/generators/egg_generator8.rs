@@ -47,10 +47,10 @@ impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
     pub fn generate(&self, seed0: u64, seed1: u64) -> Vec<EggGeneratorState> {
         let base = personal_loader::get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
-        let (male, female) = match self.base.daycare.get_egg_specie() {
+        let (male, female) = match self.base.daycare.get_egg_species() {
             29 | 32 => (
                 Some(personal_loader::get_personal_info(
                     self.base.base.profile.get_version(),
@@ -115,7 +115,7 @@ impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
 
                 let mut rng = XoroshiroBDSP::new(seed);
                 let mut info = base;
-                let gender = if matches!(self.base.daycare.get_egg_specie(), 29 | 32 | 313 | 314) {
+                let gender = if matches!(self.base.daycare.get_egg_species(), 29 | 32 | 313 | 314) {
                     let gender = rng.next_u32(2) as u8;
                     if gender != 0 {
                         info = female.unwrap();

@@ -129,7 +129,7 @@ impl<'a, 'b> RaidGenerator<'a, 'b> {
                 },
             };
 
-            let nature = if raid.base.specie != 849 {
+            let nature = if raid.base.species != 849 {
                 rng.next_u32::<25>() as u8
             } else if raid.base.form == 0 {
                 TOXTRICITY_AMPED_NATURES[rng.next_u32::<13>() as usize]

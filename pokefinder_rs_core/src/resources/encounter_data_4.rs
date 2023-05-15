@@ -1,7 +1,7 @@
 use crate::enums::{Game, Method, Shiny};
 use crate::gen4::StaticTemplate4;
 
-pub static STARTERS: [StaticTemplate4; 12] = [
+pub(crate) static STARTERS: [StaticTemplate4; 12] = [
     StaticTemplate4::new(Game::DPPT, 387, 0, Shiny::Random, 5, Method::Method1),
     StaticTemplate4::new(Game::DPPT, 390, 0, Shiny::Random, 5, Method::Method1),
     StaticTemplate4::new(Game::DPPT, 393, 0, Shiny::Random, 5, Method::Method1),
@@ -16,7 +16,7 @@ pub static STARTERS: [StaticTemplate4; 12] = [
     StaticTemplate4::new(Game::HGSS, 258, 0, Shiny::Random, 5, Method::Method1),
 ];
 
-pub static FOSSILS: [StaticTemplate4; 7] = [
+pub(crate) static FOSSILS: [StaticTemplate4; 7] = [
     StaticTemplate4::new(Game::GEN4, 138, 0, Shiny::Random, 20, Method::Method1),
     StaticTemplate4::new(Game::GEN4, 140, 0, Shiny::Random, 20, Method::Method1),
     StaticTemplate4::new(Game::GEN4, 142, 0, Shiny::Random, 20, Method::Method1),
@@ -26,7 +26,7 @@ pub static FOSSILS: [StaticTemplate4; 7] = [
     StaticTemplate4::new(Game::GEN4, 410, 0, Shiny::Random, 20, Method::Method1),
 ];
 
-pub static GIFTS: [StaticTemplate4; 14] = [
+pub(crate) static GIFTS: [StaticTemplate4; 14] = [
     StaticTemplate4::new(Game::DP, 133, 0, Shiny::Random, 5, Method::Method1),
     StaticTemplate4::new(Game::PLATINUM, 133, 0, Shiny::Random, 20, Method::Method1),
     StaticTemplate4::new(Game::PLATINUM, 137, 0, Shiny::Random, 25, Method::Method1),
@@ -43,7 +43,7 @@ pub static GIFTS: [StaticTemplate4; 14] = [
     StaticTemplate4::new(Game::HGSS, 218, 0, Shiny::Random, 1, Method::Method1),
 ];
 
-pub static GAME_CORNER: [StaticTemplate4; 7] = [
+pub(crate) static GAME_CORNER: [StaticTemplate4; 7] = [
     StaticTemplate4::new(Game::HGSS, 122, 0, Shiny::Random, 15, Method::Method1),
     StaticTemplate4::new(Game::HGSS, 133, 0, Shiny::Random, 15, Method::Method1),
     StaticTemplate4::new(Game::HGSS, 137, 0, Shiny::Random, 15, Method::Method1),
@@ -53,7 +53,7 @@ pub static GAME_CORNER: [StaticTemplate4; 7] = [
     StaticTemplate4::new(Game::HGSS, 147, 0, Shiny::Random, 15, Method::Method1),
 ];
 
-pub static STATIONARY: [StaticTemplate4; 13] = [
+pub(crate) static STATIONARY: [StaticTemplate4; 13] = [
     StaticTemplate4::new(Game::DP, 425, 0, Shiny::Random, 22, Method::MethodJ),
     StaticTemplate4::new(Game::PLATINUM, 425, 0, Shiny::Random, 15, Method::MethodJ),
     StaticTemplate4::new(Game::DP, 479, 0, Shiny::Random, 15, Method::MethodJ),
@@ -69,7 +69,7 @@ pub static STATIONARY: [StaticTemplate4; 13] = [
     StaticTemplate4::new(Game::HGSS, 185, 0, Shiny::Random, 20, Method::MethodK),
 ];
 
-pub static LEGENDS: [StaticTemplate4; 33] = [
+pub(crate) static LEGENDS: [StaticTemplate4; 33] = [
     StaticTemplate4::new(Game::PLATINUM, 377, 0, Shiny::Random, 30, Method::MethodJ),
     StaticTemplate4::new(Game::PLATINUM, 378, 0, Shiny::Random, 30, Method::MethodJ),
     StaticTemplate4::new(Game::PLATINUM, 379, 0, Shiny::Random, 30, Method::MethodJ),
@@ -133,13 +133,13 @@ pub static LEGENDS: [StaticTemplate4; 33] = [
     StaticTemplate4::new(Game::HGSS, 487, 1, Shiny::Random, 1, Method::Method1),
 ];
 
-pub static EVENTS: [StaticTemplate4; 3] = [
+pub(crate) static EVENTS: [StaticTemplate4; 3] = [
     StaticTemplate4::new(Game::GEN4, 490, 0, Shiny::Never, 1, Method::Method1),
     StaticTemplate4::new(Game::PLATINUM, 491, 0, Shiny::Random, 50, Method::MethodJ),
     StaticTemplate4::new(Game::PLATINUM, 492, 0, Shiny::Random, 30, Method::MethodJ),
 ];
 
-pub static ROAMERS: [StaticTemplate4; 9] = [
+pub(crate) static ROAMERS: [StaticTemplate4; 9] = [
     StaticTemplate4::new(Game::DPPT, 481, 0, Shiny::Random, 50, Method::Method1),
     StaticTemplate4::new(Game::DPPT, 488, 0, Shiny::Random, 50, Method::Method1),
     StaticTemplate4::new(Game::PLATINUM, 144, 0, Shiny::Random, 60, Method::Method1),
@@ -158,7 +158,7 @@ pub static ROAMERS: [StaticTemplate4; 9] = [
     ),
 ];
 
-pub static DIAMOND: [u8; 4189] = [
+pub(crate) static DIAMOND: [u8; 4189] = [
     236, 82, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 181, 133, 28, 158, 0, 0, 185, 127, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 254, 255, 215, 221, 255, 255, 254, 125, 255, 255, 255,
     255, 255, 255, 172, 185, 125, 234, 253, 232, 141, 225, 0, 96, 18, 221, 245, 119, 182, 20, 168,
@@ -360,7 +360,7 @@ pub static DIAMOND: [u8; 4189] = [
     116, 12, 74, 223, 252, 93, 201, 20, 225, 66, 66, 214, 20, 114, 120,
 ];
 
-pub static HEART_GOLD: [u8; 4181] = [
+pub(crate) static HEART_GOLD: [u8; 4181] = [
     104, 93, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 231, 5, 67, 141, 0, 21, 121, 255, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 247, 255, 255, 255, 238, 173, 0,
     60, 216, 44, 172, 185, 249, 234, 149, 148, 216, 33, 128, 96, 18, 61, 95, 125, 221, 203, 83, 29,
@@ -564,7 +564,7 @@ pub static HEART_GOLD: [u8; 4181] = [
     14, 52,
 ];
 
-pub static HG_HEADBUTT: [u8; 1034] = [
+pub(crate) static HG_HEADBUTT: [u8; 1034] = [
     14, 17, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 121, 161, 29, 221, 0, 5, 168, 127, 254, 127,
     255, 255, 255, 209, 254, 68, 56, 12, 128, 2, 132, 253, 224, 255, 62, 232, 100, 28, 4, 140, 192,
     32, 1, 0, 4, 1, 0, 80, 4, 207, 1, 82, 0, 0, 122, 6, 18, 166, 80, 73, 160, 122, 158, 154, 153,
@@ -616,7 +616,7 @@ pub static HG_HEADBUTT: [u8; 1034] = [
     208, 142, 238, 128,
 ];
 
-pub static HGSS_BUG: [u8; 145] = [
+pub(crate) static HGSS_BUG: [u8; 145] = [
     168, 0, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 142, 171, 119, 28, 0, 0, 79, 120, 224, 96,
     191, 240, 125, 84, 1, 64, 48, 0, 8, 128, 1, 240, 0, 160, 0, 100, 37, 34, 79, 72, 255, 85, 25,
     52, 245, 1, 154, 143, 19, 213, 4, 170, 159, 250, 169, 50, 49, 146, 105, 128, 2, 49, 107, 218,
@@ -626,7 +626,7 @@ pub static HGSS_BUG: [u8; 145] = [
     100, 130, 158, 68, 152, 236, 93, 201, 20, 225, 66, 66, 58, 173, 220, 112,
 ];
 
-pub static HGSS_SAFARI: [u8; 1869] = [
+pub(crate) static HGSS_SAFARI: [u8; 1869] = [
     120, 42, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 22, 76, 137, 85, 0, 12, 51, 127, 255, 255,
     247, 255, 255, 111, 255, 255, 254, 159, 254, 254, 102, 253, 111, 253, 147, 124, 0, 143, 255,
     248, 0, 46, 142, 187, 216, 2, 0, 6, 24, 1, 8, 96, 7, 95, 62, 205, 1, 52, 179, 183, 16, 128, 86,
@@ -719,7 +719,7 @@ pub static HGSS_SAFARI: [u8; 1869] = [
     10, 18, 2, 201, 145, 42, 160,
 ];
 
-pub static PEARL: [u8; 4203] = [
+pub(crate) static PEARL: [u8; 4203] = [
     236, 82, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 43, 50, 205, 139, 0, 0, 185, 127, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 254, 255, 215, 221, 255, 255, 254, 253, 255, 255, 255,
     255, 255, 255, 172, 184, 125, 234, 253, 234, 157, 224, 0, 96, 18, 221, 245, 116, 130, 163, 59,
@@ -923,7 +923,7 @@ pub static PEARL: [u8; 4203] = [
     201, 20, 225, 66, 64, 172, 203, 54, 44,
 ];
 
-pub static PLATINUM: [u8; 4217] = [
+pub(crate) static PLATINUM: [u8; 4217] = [
     236, 82, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 243, 234, 223, 7, 0, 0, 182, 127, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 254, 255, 215, 223, 255, 255, 255, 253, 255, 255, 255,
     255, 255, 255, 236, 186, 125, 234, 255, 236, 157, 33, 0, 96, 18, 220, 251, 149, 69, 41, 110,
@@ -1126,7 +1126,7 @@ pub static PLATINUM: [u8; 4217] = [
     15, 254, 46, 228, 138, 112, 161, 33, 231, 213, 190, 14,
 ];
 
-pub static SOUL_SILVER: [u8; 4231] = [
+pub(crate) static SOUL_SILVER: [u8; 4231] = [
     104, 93, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 222, 65, 27, 105, 0, 21, 93, 255, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 247, 255, 255, 255, 238, 173, 0,
     63, 24, 44, 172, 185, 249, 106, 245, 172, 24, 33, 128, 96, 18, 61, 94, 251, 182, 231, 12, 238,
@@ -1332,7 +1332,7 @@ pub static SOUL_SILVER: [u8; 4231] = [
     1, 200, 64, 3, 43, 117, 146, 128, 87, 255, 197, 220, 145, 78, 20, 36, 55, 144, 70, 218, 64,
 ];
 
-pub static SS_HEADBUTT: [u8; 1031] = [
+pub(crate) static SS_HEADBUTT: [u8; 1031] = [
     14, 17, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 120, 99, 147, 173, 0, 5, 168, 127, 254, 127,
     255, 255, 255, 209, 254, 68, 56, 12, 128, 2, 132, 253, 224, 255, 62, 232, 100, 28, 4, 143, 0,
     32, 1, 0, 4, 1, 0, 80, 4, 207, 105, 45, 72, 0, 1, 233, 209, 194, 84, 202, 9, 52, 13, 60, 83,

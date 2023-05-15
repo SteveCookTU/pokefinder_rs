@@ -5,6 +5,7 @@ pub mod generators;
 mod lock_info;
 mod profile3;
 pub mod searchers;
+pub mod shadow_lock;
 mod shadow_template;
 pub mod states;
 pub mod tools;

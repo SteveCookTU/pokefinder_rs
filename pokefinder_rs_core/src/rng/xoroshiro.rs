@@ -41,11 +41,13 @@ fn split_mix(mut seed: u64, state: u64) -> u64 {
     seed ^ (seed >> 31)
 }
 
+/// Provides random numbers via the Xoroshiro algorithm
 #[derive(Copy, Clone, Default)]
 pub struct Xoroshiro {
     state: [u64; 2],
 }
 
+/// Converts a 64bit seed into a [`Xoroshiro`] RNG
 impl From<u64> for Xoroshiro {
     fn from(value: u64) -> Self {
         Xoroshiro::new(value, 0x82A2B175229D6A5B)
@@ -53,12 +55,14 @@ impl From<u64> for Xoroshiro {
 }
 
 impl Xoroshiro {
+    /// Constructs a new [`Xoroshiro`] struct
     pub fn new(seed0: u64, seed1: u64) -> Self {
         Self {
             state: [seed0, seed1],
         }
     }
 
+    /// Gets the next 32bit PRNG state bounded by the `MAX` value
     pub fn next_u32<const MAX: u32>(&mut self) -> u32 {
         const BIT_MASK: fn(u32) -> u32 = |mut x: u32| {
             x -= 1;
@@ -86,6 +90,7 @@ impl Xoroshiro {
 impl Rng for Xoroshiro {
     type Output = u64;
 
+    /// Gets the next 64bit PRNG state
     fn next(&mut self) -> Self::Output {
         let s0 = self.state[0];
         let mut s1 = self.state[1];
@@ -104,6 +109,9 @@ impl Rng for Xoroshiro {
         }
     }
 
+    /// Jumps the RNG by `advances` amount
+    ///
+    /// Uses a precomputed jump table to complete in O(4096)
     fn jump(&mut self, mut advances: u32) {
         self.advance(advances & 0x7F);
         advances >>= 7;
@@ -132,11 +140,13 @@ impl Rng for Xoroshiro {
     }
 }
 
+/// Provides random numbers via the Xoroshiro algorithm with modified construction for BDSP
 #[derive(Copy, Clone, Default)]
 pub struct XoroshiroBDSP {
-    pub base: Xoroshiro,
+    base: Xoroshiro,
 }
 
+/// Converts a 64bit seed into a [`XoroshiroBDSP`] RNG
 impl From<u64> for XoroshiroBDSP {
     fn from(value: u64) -> Self {
         XoroshiroBDSP::new(value)
@@ -144,6 +154,7 @@ impl From<u64> for XoroshiroBDSP {
 }
 
 impl XoroshiroBDSP {
+    /// Construct a new [`XoroshiroBDSP`] struct
     pub fn new(seed: u64) -> Self {
         Self {
             base: Xoroshiro::new(
@@ -153,6 +164,7 @@ impl XoroshiroBDSP {
         }
     }
 
+    /// Gets the next 32bit PRNG state bounded by the `max` value
     pub fn next_u32(&mut self, max: u32) -> u32 {
         (self.base.next() >> 32) as u32 % max
     }
@@ -161,6 +173,7 @@ impl XoroshiroBDSP {
 impl Rng for XoroshiroBDSP {
     type Output = u64;
 
+    /// Gets the next 64bit PRNG state
     fn next(&mut self) -> Self::Output {
         self.base.next()
     }
@@ -169,6 +182,9 @@ impl Rng for XoroshiroBDSP {
         self.base.advance(advances);
     }
 
+    /// Jumps the RNG by `advances` amount
+    ///
+    /// Uses a precomputed jump table to complete in O(4096)
     fn jump(&mut self, advances: u32) {
         self.base.jump(advances);
     }

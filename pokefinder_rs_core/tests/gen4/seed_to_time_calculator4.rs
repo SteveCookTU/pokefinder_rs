@@ -30,13 +30,13 @@ struct CalculateTimeResult {
 impl From<SeedTime4> for CalculateTimeResult {
     fn from(value: SeedTime4) -> Self {
         Self {
-            day: value.date_time.date.day(),
+            day: value.date_time.date().day(),
             delay: value.delay,
-            hour: value.date_time.time.hour(),
-            minute: value.date_time.time.minute(),
-            month: value.date_time.date.month(),
-            second: value.date_time.time.second(),
-            year: value.date_time.date.year(),
+            hour: value.date_time.time().hour(),
+            minute: value.date_time.time().minute(),
+            month: value.date_time.date().month(),
+            second: value.date_time.time().second(),
+            year: value.date_time.date().year(),
         }
     }
 }

@@ -1,23 +1,33 @@
 use crate::enums::{Game, Shiny};
 use crate::parents::{personal_loader, PersonalInfo};
 
+/// Contains common information that impacts the generation of static encounters
 #[derive(Copy, Clone)]
 pub struct StaticTemplate {
+    /// Template ability
     pub ability: u8,
+    /// Template form
     pub form: u8,
+    /// Template gender
     pub gender: u8,
+    /// Template IV count
     pub iv_count: u8,
+    /// Template level
     pub level: u8,
+    /// Template [`Shiny`]
     pub shiny: Shiny,
-    pub specie: u16,
+    /// Template species
+    pub species: u16,
+    /// Template [`Game`]
     pub version: Game,
 }
 
 impl StaticTemplate {
+    /// Construct a new [`StaticTemplate`] struct
     #[allow(clippy::too_many_arguments)]
     pub const fn new(
         version: Game,
-        specie: u16,
+        species: u16,
         form: u8,
         shiny: Shiny,
         ability: u8,
@@ -32,7 +42,7 @@ impl StaticTemplate {
             iv_count,
             level,
             shiny,
-            specie,
+            species,
             version,
         }
     }
@@ -63,8 +73,8 @@ impl Template for StaticTemplate {
         self.shiny
     }
 
-    fn get_specie(&self) -> u16 {
-        self.specie
+    fn get_species(&self) -> u16 {
+        self.species
     }
 
     fn get_version(&self) -> Game {
@@ -72,24 +82,34 @@ impl Template for StaticTemplate {
     }
 }
 
+/// Trait that contains common functions for templates that impact the generation of static encounters
 pub trait Template {
+    /// Determines what ability the template should have
     fn get_ability(&self) -> u8;
 
+    /// Determines what form the template should have
     fn get_form(&self) -> u8;
 
+    /// Determines what gender the template should have
     fn get_gender(&self) -> u8;
 
+    /// Returns the pokemon information
     fn get_info(&self) -> &'static PersonalInfo {
-        personal_loader::get_personal_info(self.get_version(), self.get_specie(), self.get_form())
+        personal_loader::get_personal_info(self.get_version(), self.get_species(), self.get_form())
     }
 
+    /// Determines what IV count the template should have
     fn get_iv_count(&self) -> u8;
 
+    /// Determines what level the template should have
     fn get_level(&self) -> u8;
 
+    /// Determines what [`Shiny`] the template should have
     fn get_shiny(&self) -> Shiny;
 
-    fn get_specie(&self) -> u16;
+    /// Determines what species the template should have
+    fn get_species(&self) -> u16;
 
+    /// Determines what [`Game`] the template should appear in
     fn get_version(&self) -> Game;
 }

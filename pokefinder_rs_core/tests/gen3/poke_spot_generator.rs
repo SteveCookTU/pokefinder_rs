@@ -39,7 +39,7 @@ struct PokeSpotGeneratorResult {
     level: u8,
     nature: u8,
     pid: u32,
-    specie: u16,
+    species: u16,
     stats: [u16; 6],
 }
 
@@ -58,7 +58,7 @@ impl From<PokeSpotState> for PokeSpotGeneratorResult {
             level: value.base.base.level,
             nature: value.base.base.nature,
             pid: value.base.base.pid,
-            specie: value.specie,
+            species: value.species,
             stats: value.base.base.stats,
         }
     }

@@ -95,7 +95,7 @@ impl EncounterArea4 {
                 rng.next_u16_max::<MOD>(2) != 0
             } {
                 for s in &self.base.pokemon {
-                    if s.specie == slot.specie {
+                    if s.species == slot.species {
                         level = level.max(s.max_level);
                     }
                 }
@@ -127,7 +127,7 @@ impl EncounterArea4 {
             let mut level = slot.max_level;
             if force {
                 for s in &self.base.pokemon {
-                    if s.specie == slot.specie {
+                    if s.species == slot.species {
                         level = level.max(s.max_level);
                     }
                 }

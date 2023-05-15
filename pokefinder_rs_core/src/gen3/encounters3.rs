@@ -131,11 +131,11 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
                 let mut slots = Vec::with_capacity(12);
                 for slot in entry.grass {
                     slots.push(Slot::new_with_form(
-                        slot.specie & 0x7FF,
-                        (slot.specie >> 11) as u8,
+                        slot.species & 0x7FF,
+                        (slot.species >> 11) as u8,
                         slot.level,
                         slot.level,
-                        &info[(slot.specie as usize) & 0x7FF],
+                        &info[(slot.species as usize) & 0x7FF],
                     ));
                 }
                 encounters.push(EncounterArea3::new(
@@ -149,10 +149,10 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.surf {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea3::new(
@@ -166,10 +166,10 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.rock {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea3::new(
@@ -183,10 +183,10 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
                 let mut slots = Vec::with_capacity(2);
                 for slot in entry.old {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea3::new(
@@ -200,10 +200,10 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
                 let mut slots = Vec::with_capacity(3);
                 for slot in entry.good {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea3::new(
@@ -217,10 +217,10 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.super_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea3::new(
@@ -248,10 +248,10 @@ pub fn get_poke_spot_encounters() -> Vec<EncounterArea> {
         let mut slots = Vec::with_capacity(3);
         for slot in entry.spot {
             slots.push(Slot::new(
-                slot.specie,
+                slot.species,
                 slot.min_level,
                 slot.max_level,
-                &info[slot.specie as usize],
+                &info[slot.species as usize],
             ));
         }
         encounters.push(EncounterArea::new(

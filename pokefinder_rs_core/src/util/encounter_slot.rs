@@ -3,14 +3,14 @@ use no_std_io::EndianRead;
 
 #[derive(EndianRead, Copy, Clone, Default)]
 pub(crate) struct DynamicSlot {
-    pub specie: u16,
+    pub species: u16,
     pub max_level: u8,
     pub min_level: u8,
 }
 
 #[derive(EndianRead, Copy, Clone, Default)]
 pub(crate) struct StaticSlot {
-    pub specie: u16,
+    pub species: u16,
     pub level: u8,
     pub _padding: u8,
 }
@@ -55,6 +55,7 @@ const WATER_2: [u8; 100] = compute_table::<5, false>([40, 80, 95, 99, 100]);
 const WATER_3: [u8; 100] = compute_table::<5, false>([40, 70, 85, 95, 100]);
 const WATER_4: [u8; 100] = compute_table::<5, false>([60, 90, 95, 99, 100]);
 
+/// Calculates the encounter slot for Gen 3
 pub fn h_slot(rand: u8, encounter: Encounter) -> u8 {
     match encounter {
         Encounter::OldRod => WATER_0[rand as usize],
@@ -65,6 +66,7 @@ pub fn h_slot(rand: u8, encounter: Encounter) -> u8 {
     }
 }
 
+/// Calculates the encounter slot for DPPt
 pub fn j_slot(rand: u8, encounter: Encounter) -> u8 {
     match encounter {
         Encounter::GoodRod | Encounter::SuperRod => WATER_2[rand as usize],
@@ -73,6 +75,7 @@ pub fn j_slot(rand: u8, encounter: Encounter) -> u8 {
     }
 }
 
+/// Calculates the encounter slot for HGSS
 pub fn k_slot(rand: u8, encounter: Encounter) -> u8 {
     match encounter {
         Encounter::OldRod | Encounter::GoodRod | Encounter::SuperRod => WATER_3[rand as usize],
@@ -86,6 +89,7 @@ pub fn k_slot(rand: u8, encounter: Encounter) -> u8 {
     }
 }
 
+/// Calculates the encounter slot for BDSP
 pub fn bdsp_slot(rand: u8, encounter: Encounter) -> u8 {
     match encounter {
         Encounter::GoodRod | Encounter::SuperRod => WATER_2[rand as usize],

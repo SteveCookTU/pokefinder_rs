@@ -1,12 +1,23 @@
+/// Provides random numbers via the Mersenne Twister algorithm
+///
+/// The assumptions of MTFast allow some simplifications to be made from normal MT
+/// 1. Computing less of the internal MT array
+/// 2. Storing less of the internal MT array
+/// 3. Skipping the shuffle check when generating numbers for use
+/// 4. If the fast parameter is true, skip the last bit shift operation and shift by 27 during shuffle (only in Gen 5)
+/// 5. Temper the results in the initial shuffle to take advantage of SIMD
+///
+/// SIMD is not currently used in this implementation
 #[derive(Copy, Clone)]
 pub struct MTFast<const SIZE: usize, const ALIGNED_SIZE: usize, const FAST: bool> {
-    pub state: [u32; ALIGNED_SIZE],
-    pub index: u16,
+    state: [u32; ALIGNED_SIZE],
+    index: u16,
 }
 
 impl<const SIZE: usize, const ALIGNED_SIZE: usize, const FAST: bool>
     MTFast<SIZE, ALIGNED_SIZE, FAST>
 {
+    /// Construct a new MTFast struct
     pub fn new(mut seed: u32, advances: u32) -> Self {
         assert!(SIZE < 227, "Size exceeds range of MTFast");
         let mut ptr = [0; ALIGNED_SIZE];
@@ -112,6 +123,7 @@ impl<const SIZE: usize, const ALIGNED_SIZE: usize, const FAST: bool>
         }
     }
 
+    /// Gets the next 32bit PRNG state
     #[allow(clippy::should_implement_trait)]
     pub fn next(&mut self) -> u32 {
         let state = self.state[self.index as usize];

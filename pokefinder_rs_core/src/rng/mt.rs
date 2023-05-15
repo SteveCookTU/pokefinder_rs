@@ -1,10 +1,12 @@
+/// Provides random numbers via the Mersenne Twister algorithm
 #[derive(Clone)]
 pub struct MT {
-    pub state: [u32; 624],
-    pub index: usize,
+    state: [u32; 624],
+    index: usize,
 }
 
 impl MT {
+    /// Construct a new MT struct
     pub fn new(mut seed: u32) -> Self {
         let mut state = [0; 624];
         state[0] = seed;
@@ -19,12 +21,16 @@ impl MT {
         Self { state, index: 624 }
     }
 
+    /// Construct a new MT struct with initial advances
+    ///
+    /// Internally this uses [`MT::advance()`] for the initial advances
     pub fn new_with_initial_advances(seed: u32, advances: u32) -> Self {
         let mut new = Self::new(seed);
         new.advance(advances);
         new
     }
 
+    /// Advances the RNG by `advances` amount
     pub fn advance(&mut self, advances: u32) {
         let mut advance = (advances as usize) + self.index;
         while advance >= 624 {
@@ -34,6 +40,7 @@ impl MT {
         self.index = advance;
     }
 
+    /// Gets the next 32bit PRNG state
     #[allow(clippy::should_implement_trait)]
     pub fn next(&mut self) -> u32 {
         if self.index == 624 {
@@ -52,6 +59,7 @@ impl MT {
         y
     }
 
+    /// Gets the next 16bit PRNG state
     pub fn next_u16(&mut self) -> u16 {
         (self.next() >> 16) as u16
     }

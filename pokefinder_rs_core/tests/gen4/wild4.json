@@ -35,7 +35,7 @@
             "nature": 22,
             "pid": 1504931347,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               88,
               36,
@@ -71,7 +71,7 @@
             "nature": 8,
             "pid": 2571949683,
             "shiny": 0,
-            "specie": 279,
+            "species": 279,
             "stats": [
               98,
               55,
@@ -107,7 +107,7 @@
             "nature": 3,
             "pid": 3029492178,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               124,
               97,
@@ -143,7 +143,7 @@
             "nature": 23,
             "pid": 1078837423,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               102,
               69,
@@ -179,7 +179,7 @@
             "nature": 21,
             "pid": 2008720646,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               95,
               54,
@@ -215,7 +215,7 @@
             "nature": 9,
             "pid": 3723291534,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               109,
               78,
@@ -251,7 +251,7 @@
             "nature": 20,
             "pid": 1561611645,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               122,
               87,
@@ -287,7 +287,7 @@
             "nature": 14,
             "pid": 2380967914,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               93,
               71,
@@ -323,7 +323,7 @@
             "nature": 5,
             "pid": 276925930,
             "shiny": 0,
-            "specie": 441,
+            "species": 441,
             "stats": [
               108,
               50,
@@ -359,7 +359,7 @@
             "nature": 16,
             "pid": 2313334916,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               118,
               91,
@@ -405,7 +405,7 @@
             "nature": 22,
             "pid": 2815029522,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               127,
               93,
@@ -441,7 +441,7 @@
             "nature": 8,
             "pid": 1463881783,
             "shiny": 0,
-            "specie": 279,
+            "species": 279,
             "stats": [
               108,
               45,
@@ -477,7 +477,7 @@
             "nature": 1,
             "pid": 1454611801,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               128,
               111,
@@ -513,7 +513,7 @@
             "nature": 8,
             "pid": 1955283283,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               109,
               69,
@@ -549,7 +549,7 @@
             "nature": 20,
             "pid": 2397147820,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               123,
               84,
@@ -585,7 +585,7 @@
             "nature": 1,
             "pid": 4006536776,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               101,
               86,
@@ -621,7 +621,7 @@
             "nature": 6,
             "pid": 2475736281,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               106,
               72,
@@ -657,7 +657,7 @@
             "nature": 5,
             "pid": 2460398330,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               123,
               90,
@@ -693,7 +693,7 @@
             "nature": 13,
             "pid": 3002762363,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               120,
               97,
@@ -729,7 +729,7 @@
             "nature": 9,
             "pid": 1011898384,
             "shiny": 0,
-            "specie": 441,
+            "species": 441,
             "stats": [
               109,
               64,
@@ -775,7 +775,7 @@
             "nature": 7,
             "pid": 157,
             "shiny": 0,
-            "specie": 279,
+            "species": 279,
             "stats": [
               108,
               55,
@@ -811,7 +811,7 @@
             "nature": 24,
             "pid": 2010608024,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               99,
               73,
@@ -847,7 +847,7 @@
             "nature": 18,
             "pid": 168,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               118,
               92,
@@ -883,7 +883,7 @@
             "nature": 18,
             "pid": 3231894818,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               93,
               66,
@@ -919,7 +919,7 @@
             "nature": 20,
             "pid": 2080509345,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               78,
               34,
@@ -955,7 +955,7 @@
             "nature": 17,
             "pid": 167,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               105,
               79,
@@ -991,7 +991,7 @@
             "nature": 17,
             "pid": 1656249792,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               79,
               38,
@@ -1027,7 +1027,7 @@
             "nature": 20,
             "pid": 2043770920,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               79,
               29,
@@ -1063,7 +1063,7 @@
             "nature": 1,
             "pid": 151,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               94,
               75,
@@ -1099,7 +1099,7 @@
             "nature": 12,
             "pid": 1889739137,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               100,
               69,
@@ -1145,7 +1145,7 @@
             "nature": 7,
             "pid": 960698807,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               105,
               85,
@@ -1181,7 +1181,7 @@
             "nature": 23,
             "pid": 188766373,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               126,
               91,
@@ -1217,7 +1217,7 @@
             "nature": 3,
             "pid": 1894565353,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               103,
               67,
@@ -1253,7 +1253,7 @@
             "nature": 19,
             "pid": 2120410319,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               103,
               78,
@@ -1289,7 +1289,7 @@
             "nature": 11,
             "pid": 2807113136,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               94,
               58,
@@ -1325,7 +1325,7 @@
             "nature": 3,
             "pid": 1640087053,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               105,
               80,
@@ -1361,7 +1361,7 @@
             "nature": 10,
             "pid": 3838564285,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               73,
               36,
@@ -1397,7 +1397,7 @@
             "nature": 3,
             "pid": 1640087053,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               93,
               59,
@@ -1433,7 +1433,7 @@
             "nature": 18,
             "pid": 2763524943,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               101,
               59,
@@ -1469,7 +1469,7 @@
             "nature": 9,
             "pid": 926175684,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               100,
               64,
@@ -1515,7 +1515,7 @@
             "nature": 7,
             "pid": 653928882,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               111,
               73,
@@ -1551,7 +1551,7 @@
             "nature": 21,
             "pid": 1094326471,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               107,
               82,
@@ -1587,7 +1587,7 @@
             "nature": 12,
             "pid": 34621312,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               124,
               99,
@@ -1623,7 +1623,7 @@
             "nature": 18,
             "pid": 699586393,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               108,
               82,
@@ -1659,7 +1659,7 @@
             "nature": 3,
             "pid": 664799703,
             "shiny": 0,
-            "specie": 441,
+            "species": 441,
             "stats": [
               117,
               69,
@@ -1695,7 +1695,7 @@
             "nature": 14,
             "pid": 1609957889,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               72,
               38,
@@ -1731,7 +1731,7 @@
             "nature": 1,
             "pid": 3572419426,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               112,
               92,
@@ -1767,7 +1767,7 @@
             "nature": 10,
             "pid": 3716337785,
             "shiny": 0,
-            "specie": 441,
+            "species": 441,
             "stats": [
               106,
               51,
@@ -1803,7 +1803,7 @@
             "nature": 10,
             "pid": 1116228760,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               109,
               64,
@@ -1839,7 +1839,7 @@
             "nature": 6,
             "pid": 1270582756,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               113,
               82,
@@ -1885,7 +1885,7 @@
             "nature": 7,
             "pid": 124084107,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               107,
               76,
@@ -1921,7 +1921,7 @@
             "nature": 20,
             "pid": 231445620,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               123,
               82,
@@ -1957,7 +1957,7 @@
             "nature": 22,
             "pid": 3047317672,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               103,
               78,
@@ -1993,7 +1993,7 @@
             "nature": 17,
             "pid": 1603010042,
             "shiny": 0,
-            "specie": 279,
+            "species": 279,
             "stats": [
               100,
               55,
@@ -2029,7 +2029,7 @@
             "nature": 20,
             "pid": 1796242245,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               79,
               36,
@@ -2065,7 +2065,7 @@
             "nature": 24,
             "pid": 1765681924,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               101,
               71,
@@ -2101,7 +2101,7 @@
             "nature": 16,
             "pid": 2312528491,
             "shiny": 0,
-            "specie": 82,
+            "species": 82,
             "stats": [
               94,
               63,
@@ -2137,7 +2137,7 @@
             "nature": 17,
             "pid": 1603010042,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               80,
               38,
@@ -2173,7 +2173,7 @@
             "nature": 3,
             "pid": 386418378,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               74,
               38,
@@ -2209,7 +2209,7 @@
             "nature": 4,
             "pid": 420820729,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               101,
               86,
@@ -2255,7 +2255,7 @@
             "nature": 7,
             "pid": 3478127332,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               116,
               82,
@@ -2291,7 +2291,7 @@
             "nature": 0,
             "pid": 3759077675,
             "shiny": 0,
-            "specie": 404,
+            "species": 404,
             "stats": [
               103,
               80,
@@ -2327,7 +2327,7 @@
             "nature": 7,
             "pid": 3478127332,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               129,
               98,
@@ -2363,7 +2363,7 @@
             "nature": 0,
             "pid": 3759077675,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               73,
               39,
@@ -2399,7 +2399,7 @@
             "nature": 12,
             "pid": 2778376537,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               124,
               92,
@@ -2435,7 +2435,7 @@
             "nature": 10,
             "pid": 2384579535,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               82,
               34,
@@ -2471,7 +2471,7 @@
             "nature": 0,
             "pid": 3135435625,
             "shiny": 0,
-            "specie": 441,
+            "species": 441,
             "stats": [
               106,
               60,
@@ -2507,7 +2507,7 @@
             "nature": 0,
             "pid": 3759077675,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               110,
               80,
@@ -2543,7 +2543,7 @@
             "nature": 0,
             "pid": 3135435625,
             "shiny": 0,
-            "specie": 419,
+            "species": 419,
             "stats": [
               118,
               95,
@@ -2579,7 +2579,7 @@
             "nature": 1,
             "pid": 1707628076,
             "shiny": 0,
-            "specie": 125,
+            "species": 125,
             "stats": [
               100,
               89,
@@ -2625,7 +2625,7 @@
             "nature": 7,
             "pid": 3804376157,
             "shiny": 0,
-            "specie": 72,
+            "species": 72,
             "stats": [
               77,
               35,
@@ -2661,7 +2661,7 @@
             "nature": 16,
             "pid": 979856341,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               72,
               28,
@@ -2697,7 +2697,7 @@
             "nature": 17,
             "pid": 729461067,
             "shiny": 0,
-            "specie": 72,
+            "species": 72,
             "stats": [
               73,
               40,
@@ -2733,7 +2733,7 @@
             "nature": 16,
             "pid": 979856341,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               68,
               27,
@@ -2769,7 +2769,7 @@
             "nature": 4,
             "pid": 3157911754,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               82,
               38,
@@ -2805,7 +2805,7 @@
             "nature": 21,
             "pid": 3016263971,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               71,
               34,
@@ -2841,7 +2841,7 @@
             "nature": 22,
             "pid": 1937814472,
             "shiny": 0,
-            "specie": 72,
+            "species": 72,
             "stats": [
               72,
               33,
@@ -2877,7 +2877,7 @@
             "nature": 7,
             "pid": 1815466482,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               74,
               31,
@@ -2913,7 +2913,7 @@
             "nature": 12,
             "pid": 664008462,
             "shiny": 0,
-            "specie": 278,
+            "species": 278,
             "stats": [
               71,
               26,
@@ -2949,7 +2949,7 @@
             "nature": 24,
             "pid": 2522471474,
             "shiny": 0,
-            "specie": 72,
+            "species": 72,
             "stats": [
               88,
               39,
@@ -2995,7 +2995,7 @@
             "nature": 7,
             "pid": 3732615207,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               20,
               7,
@@ -3041,7 +3041,7 @@
             "nature": 13,
             "pid": 1658839363,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               38,
               8,
@@ -3077,7 +3077,7 @@
             "nature": 15,
             "pid": 3292192915,
             "shiny": 0,
-            "specie": 223,
+            "species": 223,
             "stats": [
               38,
               23,
@@ -3113,7 +3113,7 @@
             "nature": 18,
             "pid": 2953193568,
             "shiny": 0,
-            "specie": 223,
+            "species": 223,
             "stats": [
               36,
               28,
@@ -3149,7 +3149,7 @@
             "nature": 19,
             "pid": 233994319,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               29,
               10,
@@ -3195,7 +3195,7 @@
             "nature": 14,
             "pid": 2170767289,
             "shiny": 0,
-            "specie": 224,
+            "species": 224,
             "stats": [
               88,
               76,
@@ -3231,7 +3231,7 @@
             "nature": 6,
             "pid": 2394424256,
             "shiny": 0,
-            "specie": 130,
+            "species": 130,
             "stats": [
               166,
               134,
@@ -3267,7 +3267,7 @@
             "nature": 18,
             "pid": 1602355693,
             "shiny": 0,
-            "specie": 130,
+            "species": 130,
             "stats": [
               106,
               84,
@@ -3303,7 +3303,7 @@
             "nature": 4,
             "pid": 1305857204,
             "shiny": 0,
-            "specie": 130,
+            "species": 130,
             "stats": [
               104,
               100,
@@ -3339,7 +3339,7 @@
             "nature": 14,
             "pid": 3434378564,
             "shiny": 0,
-            "specie": 224,
+            "species": 224,
             "stats": [
               110,
               87,
@@ -3375,7 +3375,7 @@
             "nature": 16,
             "pid": 1924754866,
             "shiny": 0,
-            "specie": 130,
+            "species": 130,
             "stats": [
               112,
               97,
@@ -3411,7 +3411,7 @@
             "nature": 17,
             "pid": 211469117,
             "shiny": 0,
-            "specie": 224,
+            "species": 224,
             "stats": [
               115,
               89,
@@ -3457,7 +3457,7 @@
             "nature": 21,
             "pid": 2620787721,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               70,
               55,
@@ -3493,7 +3493,7 @@
             "nature": 7,
             "pid": 2354111107,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               63,
               45,
@@ -3529,7 +3529,7 @@
             "nature": 11,
             "pid": 2851705086,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               55,
               39,
@@ -3565,7 +3565,7 @@
             "nature": 21,
             "pid": 3482340821,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               59,
               37,
@@ -3601,7 +3601,7 @@
             "nature": 14,
             "pid": 2170767289,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               66,
               51,
@@ -3637,7 +3637,7 @@
             "nature": 6,
             "pid": 2394424256,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               58,
               38,
@@ -3673,7 +3673,7 @@
             "nature": 3,
             "pid": 2720826728,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               57,
               38,
@@ -3709,7 +3709,7 @@
             "nature": 18,
             "pid": 1602355693,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               55,
               37,
@@ -3745,7 +3745,7 @@
             "nature": 4,
             "pid": 1305857204,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               63,
               52,
@@ -3781,7 +3781,7 @@
             "nature": 14,
             "pid": 3434378564,
             "shiny": 0,
-            "specie": 201,
+            "species": 201,
             "stats": [
               53,
               36,
@@ -3829,7 +3829,7 @@
             "nature": 24,
             "pid": 813709149,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               17,
@@ -3865,7 +3865,7 @@
             "nature": 5,
             "pid": 4231227355,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               18,
@@ -3901,7 +3901,7 @@
             "nature": 20,
             "pid": 1621222420,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               17,
@@ -3937,7 +3937,7 @@
             "nature": 18,
             "pid": 1671314793,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               37,
               25,
@@ -3973,7 +3973,7 @@
             "nature": 10,
             "pid": 2902820410,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               16,
@@ -4009,7 +4009,7 @@
             "nature": 22,
             "pid": 2489114822,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               19,
@@ -4045,7 +4045,7 @@
             "nature": 12,
             "pid": 2440584662,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               31,
               14,
@@ -4081,7 +4081,7 @@
             "nature": 13,
             "pid": 3754258538,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               33,
               18,
@@ -4117,7 +4117,7 @@
             "nature": 3,
             "pid": 1636640678,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               22,
@@ -4153,7 +4153,7 @@
             "nature": 6,
             "pid": 378691981,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               39,
               28,
@@ -4199,7 +4199,7 @@
             "nature": 22,
             "pid": 4135838072,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               36,
               27,
@@ -4235,7 +4235,7 @@
             "nature": 20,
             "pid": 602334120,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               18,
@@ -4271,7 +4271,7 @@
             "nature": 7,
             "pid": 2834066457,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               37,
               28,
@@ -4307,7 +4307,7 @@
             "nature": 5,
             "pid": 3497240555,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               17,
@@ -4343,7 +4343,7 @@
             "nature": 5,
             "pid": 4148847905,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               35,
               15,
@@ -4379,7 +4379,7 @@
             "nature": 9,
             "pid": 2890502984,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               17,
@@ -4415,7 +4415,7 @@
             "nature": 2,
             "pid": 1569699377,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               17,
@@ -4451,7 +4451,7 @@
             "nature": 6,
             "pid": 432808356,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               19,
@@ -4487,7 +4487,7 @@
             "nature": 17,
             "pid": 930601192,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               17,
@@ -4523,7 +4523,7 @@
             "nature": 3,
             "pid": 583721153,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               23,
@@ -4569,7 +4569,7 @@
             "nature": 16,
             "pid": 166,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               16,
@@ -4605,7 +4605,7 @@
             "nature": 8,
             "pid": 158,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               19,
@@ -4641,7 +4641,7 @@
             "nature": 3,
             "pid": 1253718253,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               20,
@@ -4677,7 +4677,7 @@
             "nature": 8,
             "pid": 4158771358,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               18,
@@ -4713,7 +4713,7 @@
             "nature": 6,
             "pid": 156,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               33,
               20,
@@ -4749,7 +4749,7 @@
             "nature": 6,
             "pid": 776010181,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               20,
@@ -4785,7 +4785,7 @@
             "nature": 16,
             "pid": 166,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               19,
@@ -4821,7 +4821,7 @@
             "nature": 16,
             "pid": 166,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               39,
               26,
@@ -4857,7 +4857,7 @@
             "nature": 22,
             "pid": 172,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               18,
@@ -4893,7 +4893,7 @@
             "nature": 15,
             "pid": 165,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               18,
@@ -4939,7 +4939,7 @@
             "nature": 20,
             "pid": 4094667470,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               13,
@@ -4975,7 +4975,7 @@
             "nature": 8,
             "pid": 2466280758,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               31,
               13,
@@ -5011,7 +5011,7 @@
             "nature": 15,
             "pid": 790899290,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               38,
               21,
@@ -5047,7 +5047,7 @@
             "nature": 3,
             "pid": 250143603,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               34,
               19,
@@ -5083,7 +5083,7 @@
             "nature": 18,
             "pid": 1630109068,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               17,
@@ -5119,7 +5119,7 @@
             "nature": 11,
             "pid": 615446161,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               18,
@@ -5155,7 +5155,7 @@
             "nature": 20,
             "pid": 4094667470,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               13,
@@ -5191,7 +5191,7 @@
             "nature": 16,
             "pid": 2539053191,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               17,
@@ -5227,7 +5227,7 @@
             "nature": 19,
             "pid": 1459678269,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               28,
               11,
@@ -5263,7 +5263,7 @@
             "nature": 15,
             "pid": 3040698665,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               33,
               12,
@@ -5309,7 +5309,7 @@
             "nature": 0,
             "pid": 201022800,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               39,
               21,
@@ -5345,7 +5345,7 @@
             "nature": 9,
             "pid": 1022845909,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               19,
@@ -5381,7 +5381,7 @@
             "nature": 2,
             "pid": 2598836477,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               20,
@@ -5417,7 +5417,7 @@
             "nature": 23,
             "pid": 2869946148,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               20,
@@ -5453,7 +5453,7 @@
             "nature": 16,
             "pid": 4269730366,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               39,
               24,
@@ -5489,7 +5489,7 @@
             "nature": 1,
             "pid": 2510252201,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               37,
               30,
@@ -5525,7 +5525,7 @@
             "nature": 14,
             "pid": 4203956589,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               17,
@@ -5561,7 +5561,7 @@
             "nature": 4,
             "pid": 3158179454,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               20,
@@ -5597,7 +5597,7 @@
             "nature": 16,
             "pid": 4269730366,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               15,
@@ -5633,7 +5633,7 @@
             "nature": 16,
             "pid": 1700228091,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               39,
               26,
@@ -5679,7 +5679,7 @@
             "nature": 16,
             "pid": 3173765466,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               33,
               17,
@@ -5715,7 +5715,7 @@
             "nature": 20,
             "pid": 3119640270,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               28,
               9,
@@ -5751,7 +5751,7 @@
             "nature": 14,
             "pid": 1240936064,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               34,
               11,
@@ -5787,7 +5787,7 @@
             "nature": 18,
             "pid": 3275660243,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               19,
@@ -5823,7 +5823,7 @@
             "nature": 14,
             "pid": 1240936064,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               17,
@@ -5859,7 +5859,7 @@
             "nature": 16,
             "pid": 3141411816,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               18,
@@ -5895,7 +5895,7 @@
             "nature": 19,
             "pid": 213663969,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               36,
               18,
@@ -5931,7 +5931,7 @@
             "nature": 4,
             "pid": 1458579354,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               23,
@@ -5967,7 +5967,7 @@
             "nature": 13,
             "pid": 3851671888,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               17,
@@ -6003,7 +6003,7 @@
             "nature": 6,
             "pid": 3644541431,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               32,
               20,
@@ -6049,7 +6049,7 @@
             "nature": 20,
             "pid": 1767790595,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               35,
               15,
@@ -6085,7 +6085,7 @@
             "nature": 0,
             "pid": 293653150,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               20,
@@ -6121,7 +6121,7 @@
             "nature": 14,
             "pid": 1793432439,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               21,
@@ -6157,7 +6157,7 @@
             "nature": 0,
             "pid": 293653150,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               36,
               19,
@@ -6193,7 +6193,7 @@
             "nature": 0,
             "pid": 3282109475,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               17,
@@ -6229,7 +6229,7 @@
             "nature": 0,
             "pid": 293653150,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               38,
               20,
@@ -6265,7 +6265,7 @@
             "nature": 23,
             "pid": 2714939573,
             "shiny": 0,
-            "specie": 69,
+            "species": 69,
             "stats": [
               38,
               27,
@@ -6301,7 +6301,7 @@
             "nature": 0,
             "pid": 293653150,
             "shiny": 0,
-            "specie": 81,
+            "species": 81,
             "stats": [
               35,
               18,
@@ -6337,7 +6337,7 @@
             "nature": 0,
             "pid": 3282109475,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               34,
               17,
@@ -6373,7 +6373,7 @@
             "nature": 6,
             "pid": 366869831,
             "shiny": 0,
-            "specie": 16,
+            "species": 16,
             "stats": [
               37,
               21,
@@ -6419,7 +6419,7 @@
             "nature": 11,
             "pid": 1405187286,
             "shiny": 0,
-            "specie": 55,
+            "species": 55,
             "stats": [
               36,
               23,
@@ -6455,7 +6455,7 @@
             "nature": 21,
             "pid": 3008444846,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               30,
               17,
@@ -6491,7 +6491,7 @@
             "nature": 1,
             "pid": 2595752151,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               21,
               11,
@@ -6527,7 +6527,7 @@
             "nature": 7,
             "pid": 56957382,
             "shiny": 0,
-            "specie": 55,
+            "species": 55,
             "stats": [
               37,
               22,
@@ -6563,7 +6563,7 @@
             "nature": 24,
             "pid": 67068774,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               21,
               10,
@@ -6599,7 +6599,7 @@
             "nature": 21,
             "pid": 3008444846,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               20,
               11,
@@ -6635,7 +6635,7 @@
             "nature": 3,
             "pid": 169716028,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               21,
               11,
@@ -6671,7 +6671,7 @@
             "nature": 3,
             "pid": 3101618878,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               21,
               12,
@@ -6707,7 +6707,7 @@
             "nature": 17,
             "pid": 2958277742,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               32,
               17,
@@ -6743,7 +6743,7 @@
             "nature": 21,
             "pid": 3008444846,
             "shiny": 0,
-            "specie": 54,
+            "species": 54,
             "stats": [
               30,
               17,
@@ -6789,7 +6789,7 @@
             "nature": 21,
             "pid": 2202007421,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               24,
               7,
@@ -6825,7 +6825,7 @@
             "nature": 13,
             "pid": 3031533688,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               26,
               7,
@@ -6861,7 +6861,7 @@
             "nature": 22,
             "pid": 1356714797,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               29,
               16,
@@ -6907,7 +6907,7 @@
             "nature": 0,
             "pid": 381883175,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               25,
               8,
@@ -6943,7 +6943,7 @@
             "nature": 10,
             "pid": 2819259110,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               27,
               6,
@@ -6979,7 +6979,7 @@
             "nature": 15,
             "pid": 3654140690,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               25,
               8,
@@ -7015,7 +7015,7 @@
             "nature": 1,
             "pid": 1482790076,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               24,
               9,
@@ -7051,7 +7051,7 @@
             "nature": 16,
             "pid": 857657841,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               24,
               7,
@@ -7087,7 +7087,7 @@
             "nature": 11,
             "pid": 2606633786,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               24,
               8,
@@ -7133,7 +7133,7 @@
             "nature": 6,
             "pid": 1251361431,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               47,
               30,
@@ -7169,7 +7169,7 @@
             "nature": 8,
             "pid": 1047720708,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               43,
               9,
@@ -7205,7 +7205,7 @@
             "nature": 12,
             "pid": 1263368087,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               47,
               26,
@@ -7241,7 +7241,7 @@
             "nature": 16,
             "pid": 2071988241,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               51,
               26,
@@ -7287,7 +7287,7 @@
             "nature": 9,
             "pid": 1113628759,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               84,
               52,
@@ -7323,7 +7323,7 @@
             "nature": 24,
             "pid": 2480867224,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               84,
               47,
@@ -7359,7 +7359,7 @@
             "nature": 11,
             "pid": 2834336536,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               84,
               56,
@@ -7395,7 +7395,7 @@
             "nature": 20,
             "pid": 1389743595,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               92,
               48,
@@ -7431,7 +7431,7 @@
             "nature": 20,
             "pid": 2613126870,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               90,
               41,
@@ -7467,7 +7467,7 @@
             "nature": 11,
             "pid": 1643670961,
             "shiny": 0,
-            "specie": 129,
+            "species": 129,
             "stats": [
               68,
               21,
@@ -7503,7 +7503,7 @@
             "nature": 13,
             "pid": 1054738863,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               90,
               55,
@@ -7539,7 +7539,7 @@
             "nature": 7,
             "pid": 1673922982,
             "shiny": 0,
-            "specie": 60,
+            "species": 60,
             "stats": [
               93,
               53,
@@ -7585,7 +7585,7 @@
             "nature": 9,
             "pid": 3729128259,
             "shiny": 0,
-            "specie": 213,
+            "species": 213,
             "stats": [
               55,
               14,
@@ -7621,7 +7621,7 @@
             "nature": 24,
             "pid": 3681532649,
             "shiny": 0,
-            "specie": 98,
+            "species": 98,
             "stats": [
               42,
               45,
@@ -7667,7 +7667,7 @@
             "nature": 10,
             "pid": 2576325010,
             "shiny": 0,
-            "specie": 98,
+            "species": 98,
             "stats": [
               42,
               41,
@@ -7703,7 +7703,7 @@
             "nature": 6,
             "pid": 932908906,
             "shiny": 0,
-            "specie": 213,
+            "species": 213,
             "stats": [
               44,
               10,
@@ -7739,7 +7739,7 @@
             "nature": 4,
             "pid": 1765120904,
             "shiny": 0,
-            "specie": 213,
+            "species": 213,
             "stats": [
               55,
               12,
@@ -7775,7 +7775,7 @@
             "nature": 8,
             "pid": 977695858,
             "shiny": 0,
-            "specie": 98,
+            "species": 98,
             "stats": [
               49,
               57,
@@ -7821,7 +7821,7 @@
             "nature": 24,
             "pid": 3598695599,
             "shiny": 0,
-            "specie": 12,
+            "species": 12,
             "stats": [
               45,
               20,
@@ -7857,7 +7857,7 @@
             "nature": 18,
             "pid": 983141818,
             "shiny": 0,
-            "specie": 48,
+            "species": 48,
             "stats": [
               45,
               24,
@@ -7893,7 +7893,7 @@
             "nature": 8,
             "pid": 2918285983,
             "shiny": 0,
-            "specie": 11,
+            "species": 11,
             "stats": [
               31,
               10,
@@ -7929,7 +7929,7 @@
             "nature": 20,
             "pid": 4161561870,
             "shiny": 0,
-            "specie": 15,
+            "species": 15,
             "stats": [
               43,
               23,
@@ -7965,7 +7965,7 @@
             "nature": 3,
             "pid": 3911334553,
             "shiny": 0,
-            "specie": 123,
+            "species": 123,
             "stats": [
               44,
               37,
@@ -8001,7 +8001,7 @@
             "nature": 4,
             "pid": 547353954,
             "shiny": 0,
-            "specie": 15,
+            "species": 15,
             "stats": [
               44,
               33,
@@ -8037,7 +8037,7 @@
             "nature": 19,
             "pid": 2416785494,
             "shiny": 0,
-            "specie": 127,
+            "species": 127,
             "stats": [
               42,
               43,
@@ -8073,7 +8073,7 @@
             "nature": 4,
             "pid": 2704815979,
             "shiny": 0,
-            "specie": 15,
+            "species": 15,
             "stats": [
               43,
               30,
@@ -8109,7 +8109,7 @@
             "nature": 9,
             "pid": 472749009,
             "shiny": 0,
-            "specie": 46,
+            "species": 46,
             "stats": [
               35,
               26,
@@ -8145,7 +8145,7 @@
             "nature": 18,
             "pid": 983141818,
             "shiny": 0,
-            "specie": 127,
+            "species": 127,
             "stats": [
               42,
               41,
@@ -8191,7 +8191,7 @@
             "nature": 6,
             "pid": 329436281,
             "shiny": 0,
-            "specie": 21,
+            "species": 21,
             "stats": [
               20,
               11,
@@ -8227,7 +8227,7 @@
             "nature": 21,
             "pid": 2269611071,
             "shiny": 0,
-            "specie": 21,
+            "species": 21,
             "stats": [
               18,
               10,
@@ -8263,7 +8263,7 @@
             "nature": 21,
             "pid": 1821564996,
             "shiny": 0,
-            "specie": 21,
+            "species": 21,
             "stats": [
               19,
               12,
@@ -8299,7 +8299,7 @@
             "nature": 15,
             "pid": 647931040,
             "shiny": 0,
-            "specie": 214,
+            "species": 214,
             "stats": [
               21,
               13,
@@ -8335,7 +8335,7 @@
             "nature": 2,
             "pid": 955144377,
             "shiny": 0,
-            "specie": 214,
+            "species": 214,
             "stats": [
               21,
               16,
@@ -8371,7 +8371,7 @@
             "nature": 19,
             "pid": 2414779669,
             "shiny": 0,
-            "specie": 21,
+            "species": 21,
             "stats": [
               15,
               9,
@@ -8407,7 +8407,7 @@
             "nature": 18,
             "pid": 2275905518,
             "shiny": 0,
-            "specie": 214,
+            "species": 214,
             "stats": [
               17,
               12,
@@ -8443,7 +8443,7 @@
             "nature": 3,
             "pid": 155173153,
             "shiny": 0,
-            "specie": 21,
+            "species": 21,
             "stats": [
               20,
               12,
@@ -8479,7 +8479,7 @@
             "nature": 3,
             "pid": 1256453253,
             "shiny": 0,
-            "specie": 190,
+            "species": 190,
             "stats": [
               16,
               11,
@@ -8515,7 +8515,7 @@
             "nature": 19,
             "pid": 2414779669,
             "shiny": 0,
-            "specie": 214,
+            "species": 214,
             "stats": [
               20,
               16,
@@ -8561,7 +8561,7 @@
             "nature": 0,
             "pid": 312824725,
             "shiny": 0,
-            "specie": 19,
+            "species": 19,
             "stats": [
               37,
               22,
@@ -8597,7 +8597,7 @@
             "nature": 5,
             "pid": 4231227355,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               35,
               13,
@@ -8633,7 +8633,7 @@
             "nature": 11,
             "pid": 3430949986,
             "shiny": 0,
-            "specie": 203,
+            "species": 203,
             "stats": [
               49,
               35,
@@ -8669,7 +8669,7 @@
             "nature": 8,
             "pid": 2824189858,
             "shiny": 0,
-            "specie": 19,
+            "species": 19,
             "stats": [
               38,
               22,
@@ -8705,7 +8705,7 @@
             "nature": 0,
             "pid": 3026616025,
             "shiny": 0,
-            "specie": 203,
+            "species": 203,
             "stats": [
               55,
               35,
@@ -8741,7 +8741,7 @@
             "nature": 22,
             "pid": 2489114822,
             "shiny": 0,
-            "specie": 19,
+            "species": 19,
             "stats": [
               38,
               24,
@@ -8777,7 +8777,7 @@
             "nature": 2,
             "pid": 2329912202,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               37,
               12,
@@ -8813,7 +8813,7 @@
             "nature": 2,
             "pid": 745504927,
             "shiny": 0,
-            "specie": 63,
+            "species": 63,
             "stats": [
               38,
               17,
@@ -8849,7 +8849,7 @@
             "nature": 13,
             "pid": 1089256963,
             "shiny": 0,
-            "specie": 19,
+            "species": 19,
             "stats": [
               38,
               25,
@@ -8885,7 +8885,7 @@
             "nature": 16,
             "pid": 2861117866,
             "shiny": 0,
-            "specie": 203,
+            "species": 203,
             "stats": [
               51,
               37,
@@ -8935,7 +8935,7 @@
             "nature": 0,
             "pid": 3552946825,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               83,
@@ -8971,7 +8971,7 @@
             "nature": 22,
             "pid": 3360178372,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               135,
               83,
@@ -9007,7 +9007,7 @@
             "nature": 8,
             "pid": 3080890308,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               137,
               69,
@@ -9043,7 +9043,7 @@
             "nature": 4,
             "pid": 1742450629,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               75,
@@ -9079,7 +9079,7 @@
             "nature": 13,
             "pid": 3754258538,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               129,
               78,
@@ -9115,7 +9115,7 @@
             "nature": 22,
             "pid": 3360178372,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               135,
               83,
@@ -9151,7 +9151,7 @@
             "nature": 17,
             "pid": 840124667,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               131,
               79,
@@ -9187,7 +9187,7 @@
             "nature": 10,
             "pid": 2902820410,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               67,
@@ -9223,7 +9223,7 @@
             "nature": 24,
             "pid": 2059180349,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               131,
               82,
@@ -9259,7 +9259,7 @@
             "nature": 23,
             "pid": 1096857248,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               138,
               77,
@@ -9307,7 +9307,7 @@
             "nature": 22,
             "pid": 3360178372,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               135,
               83,
@@ -9343,7 +9343,7 @@
             "nature": 8,
             "pid": 158,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               135,
               75,
@@ -9379,7 +9379,7 @@
             "nature": 4,
             "pid": 1742450629,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               75,
@@ -9415,7 +9415,7 @@
             "nature": 13,
             "pid": 3754258538,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               129,
               78,
@@ -9451,7 +9451,7 @@
             "nature": 22,
             "pid": 172,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               130,
               83,
@@ -9487,7 +9487,7 @@
             "nature": 17,
             "pid": 167,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               140,
               83,
@@ -9523,7 +9523,7 @@
             "nature": 10,
             "pid": 160,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               62,
@@ -9559,7 +9559,7 @@
             "nature": 24,
             "pid": 174,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               133,
               80,
@@ -9595,7 +9595,7 @@
             "nature": 23,
             "pid": 173,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               142,
               69,
@@ -9631,7 +9631,7 @@
             "nature": 24,
             "pid": 174,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               130,
               79,
@@ -9679,7 +9679,7 @@
             "nature": 0,
             "pid": 3552946825,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               83,
@@ -9715,7 +9715,7 @@
             "nature": 8,
             "pid": 3080890308,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               137,
               69,
@@ -9751,7 +9751,7 @@
             "nature": 0,
             "pid": 3552946825,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               83,
@@ -9787,7 +9787,7 @@
             "nature": 0,
             "pid": 4027127350,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               73,
@@ -9823,7 +9823,7 @@
             "nature": 22,
             "pid": 3360178372,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               135,
               83,
@@ -9859,7 +9859,7 @@
             "nature": 17,
             "pid": 840124667,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               131,
               79,
@@ -9895,7 +9895,7 @@
             "nature": 10,
             "pid": 2902820410,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               67,
@@ -9931,7 +9931,7 @@
             "nature": 0,
             "pid": 4027127350,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               73,
@@ -9967,7 +9967,7 @@
             "nature": 23,
             "pid": 1096857248,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               138,
               77,
@@ -10003,7 +10003,7 @@
             "nature": 24,
             "pid": 2059180349,
             "shiny": 0,
-            "specie": 49,
+            "species": 49,
             "stats": [
               131,
               82,
@@ -10051,7 +10051,7 @@
             "nature": 11,
             "pid": 3079033736,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               131,
               82,
@@ -10087,7 +10087,7 @@
             "nature": 5,
             "pid": 1305061830,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               138,
               67,
@@ -10123,7 +10123,7 @@
             "nature": 22,
             "pid": 2968016097,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               139,
               74,
@@ -10159,7 +10159,7 @@
             "nature": 2,
             "pid": 3464112752,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               130,
               90,
@@ -10195,7 +10195,7 @@
             "nature": 12,
             "pid": 4046722362,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               133,
               74,
@@ -10231,7 +10231,7 @@
             "nature": 8,
             "pid": 1855294108,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               78,
@@ -10267,7 +10267,7 @@
             "nature": 4,
             "pid": 2705540429,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               139,
               90,
@@ -10303,7 +10303,7 @@
             "nature": 16,
             "pid": 3333104291,
             "shiny": 2,
-            "specie": 49,
+            "species": 49,
             "stats": [
               141,
               81,
@@ -10339,7 +10339,7 @@
             "nature": 12,
             "pid": 1969000787,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               127,
               70,
@@ -10375,7 +10375,7 @@
             "nature": 7,
             "pid": 2896578732,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               141,
               70,
@@ -10423,7 +10423,7 @@
             "nature": 5,
             "pid": 1305061830,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               138,
               67,
@@ -10459,7 +10459,7 @@
             "nature": 22,
             "pid": 2968016097,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               139,
               74,
@@ -10495,7 +10495,7 @@
             "nature": 2,
             "pid": 3464112752,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               130,
               90,
@@ -10531,7 +10531,7 @@
             "nature": 12,
             "pid": 4046722362,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               133,
               74,
@@ -10567,7 +10567,7 @@
             "nature": 8,
             "pid": 1855294108,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               78,
@@ -10603,7 +10603,7 @@
             "nature": 18,
             "pid": 2146278368,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               69,
@@ -10639,7 +10639,7 @@
             "nature": 16,
             "pid": 3333104291,
             "shiny": 2,
-            "specie": 49,
+            "species": 49,
             "stats": [
               141,
               81,
@@ -10675,7 +10675,7 @@
             "nature": 19,
             "pid": 49604344,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               75,
@@ -10711,7 +10711,7 @@
             "nature": 7,
             "pid": 2896578732,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               141,
               70,
@@ -10747,7 +10747,7 @@
             "nature": 4,
             "pid": 1572059579,
             "shiny": 2,
-            "specie": 49,
+            "species": 49,
             "stats": [
               130,
               91,
@@ -10795,7 +10795,7 @@
             "nature": 0,
             "pid": 3729799775,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               132,
               70,
@@ -10831,7 +10831,7 @@
             "nature": 22,
             "pid": 2968016097,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               139,
               74,
@@ -10867,7 +10867,7 @@
             "nature": 0,
             "pid": 2126682825,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               130,
               72,
@@ -10903,7 +10903,7 @@
             "nature": 0,
             "pid": 1456976600,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               128,
               83,
@@ -10939,7 +10939,7 @@
             "nature": 8,
             "pid": 1855294108,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               136,
               78,
@@ -10975,7 +10975,7 @@
             "nature": 4,
             "pid": 2705540429,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               139,
               90,
@@ -11011,7 +11011,7 @@
             "nature": 16,
             "pid": 3333104291,
             "shiny": 2,
-            "specie": 49,
+            "species": 49,
             "stats": [
               141,
               81,
@@ -11047,7 +11047,7 @@
             "nature": 0,
             "pid": 456195900,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               131,
               80,
@@ -11083,7 +11083,7 @@
             "nature": 7,
             "pid": 2896578732,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               141,
               70,
@@ -11119,7 +11119,7 @@
             "nature": 22,
             "pid": 3227329622,
             "shiny": 1,
-            "specie": 49,
+            "species": 49,
             "stats": [
               140,
               72,

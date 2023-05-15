@@ -161,7 +161,7 @@ impl<'a, 'b> WildGenerator3<'a, 'b> {
                 }
                 ((pid % 25) as u8) != nature
                     || (cute_charm && !cute_charm_check(info, pid))
-                    || (slot.specie == 201 && !unown_check(pid, slot.get_form()))
+                    || (slot.species == 201 && !unown_check(pid, slot.get_form()))
             } {}
 
             if self.base.base.method == Method::Method2 {
@@ -192,7 +192,7 @@ impl<'a, 'b> WildGenerator3<'a, 'b> {
                 get_shiny(pid, self.base.base.tsv),
                 encounter_slot,
                 0,
-                slot.get_specie(),
+                slot.get_species(),
                 slot.get_form(),
                 info,
             );

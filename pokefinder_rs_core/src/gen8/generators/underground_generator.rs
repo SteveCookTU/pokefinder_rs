@@ -9,15 +9,15 @@ use crate::rng::{RNGList, Xorshift};
 #[derive(Copy, Clone)]
 struct EggMoveList {
     moves: [u16; 16],
-    specie: u16,
+    species: u16,
     count: u8,
 }
 
 impl EggMoveList {
-    pub const fn new(count: u8, specie: u16, moves: [u16; 16]) -> Self {
+    pub const fn new(count: u8, species: u16, moves: [u16; 16]) -> Self {
         Self {
             moves,
-            specie,
+            species,
             count,
         }
     }
@@ -1005,7 +1005,7 @@ impl<'a, 'b, 'c> UndergroundGenerator<'a, 'b, 'c> {
         let pid_rolls = if self.diglett { 2 } else { 1 };
 
         let create_pokemon =
-            |rng_list: &mut RNGList<u32, Xorshift, 256>, advances: u32, specie: u16| {
+            |rng_list: &mut RNGList<u32, Xorshift, 256>, advances: u32, species: u16| {
                 let level = if self.base.lead == Lead::PRESSURE {
                     level_info.max
                 } else {
@@ -1053,7 +1053,7 @@ impl<'a, 'b, 'c> UndergroundGenerator<'a, 'b, 'c> {
 
                 let ability = (rng_list.next_alt(rand) % 2) as u8;
 
-                let info = &base[specie as usize];
+                let info = &base[species as usize];
 
                 let gender = match info.get_gender() {
                     255 => 2,
@@ -1088,9 +1088,9 @@ impl<'a, 'b, 'c> UndergroundGenerator<'a, 'b, 'c> {
                 let mut egg_move = 0;
                 if let Some(egg_moves) = EGG_MOVE_LIST
                     .iter()
-                    .find(|eml| eml.specie >= info.get_hatch_specie())
+                    .find(|eml| eml.species >= info.get_hatch_species())
                 {
-                    if egg_moves.specie == info.get_hatch_specie() {
+                    if egg_moves.species == info.get_hatch_species() {
                         egg_move =
                             egg_moves.moves[(rng_list.next() % (egg_moves.count as u32)) as usize];
                     }
@@ -1108,7 +1108,7 @@ impl<'a, 'b, 'c> UndergroundGenerator<'a, 'b, 'c> {
                     shiny as u8,
                     egg_move,
                     item,
-                    specie,
+                    species,
                     info,
                 )
             };

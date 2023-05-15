@@ -2,19 +2,19 @@ use crate::enums::{Game, Shiny};
 use crate::gen8::{Den, Raid};
 use crate::parents::StaticTemplate;
 
-pub static STARTERS: [StaticTemplate; 3] = [
+pub(crate) static STARTERS: [StaticTemplate; 3] = [
     StaticTemplate::new(Game::BDSP, 387, 0, Shiny::Random, 255, 255, 0, 5),
     StaticTemplate::new(Game::BDSP, 390, 0, Shiny::Random, 255, 255, 0, 5),
     StaticTemplate::new(Game::BDSP, 393, 0, Shiny::Random, 255, 255, 0, 5),
 ];
 
-pub static GIFTS: [StaticTemplate; 3] = [
+pub(crate) static GIFTS: [StaticTemplate; 3] = [
     StaticTemplate::new(Game::BDSP, 133, 0, Shiny::Random, 255, 255, 0, 5),
     StaticTemplate::new(Game::BDSP, 440, 0, Shiny::Random, 255, 255, 0, 1),
     StaticTemplate::new(Game::BDSP, 447, 0, Shiny::Random, 255, 255, 0, 1),
 ];
 
-pub static FOSSILS: [StaticTemplate; 7] = [
+pub(crate) static FOSSILS: [StaticTemplate; 7] = [
     StaticTemplate::new(Game::BDSP, 138, 0, Shiny::Random, 255, 255, 3, 1),
     StaticTemplate::new(Game::BDSP, 140, 0, Shiny::Random, 255, 255, 3, 1),
     StaticTemplate::new(Game::BDSP, 142, 0, Shiny::Random, 255, 255, 3, 1),
@@ -24,18 +24,18 @@ pub static FOSSILS: [StaticTemplate; 7] = [
     StaticTemplate::new(Game::BDSP, 410, 0, Shiny::Random, 255, 255, 3, 1),
 ];
 
-pub static STATIONARY: [StaticTemplate; 3] = [
+pub(crate) static STATIONARY: [StaticTemplate; 3] = [
     StaticTemplate::new(Game::BDSP, 425, 0, Shiny::Random, 255, 255, 0, 22),
     StaticTemplate::new(Game::BDSP, 442, 0, Shiny::Random, 255, 255, 0, 25),
     StaticTemplate::new(Game::BDSP, 479, 0, Shiny::Random, 255, 255, 0, 15),
 ];
 
-pub static ROAMERS: [StaticTemplate; 2] = [
+pub(crate) static ROAMERS: [StaticTemplate; 2] = [
     StaticTemplate::new(Game::BDSP, 481, 0, Shiny::Random, 255, 255, 3, 50),
     StaticTemplate::new(Game::BDSP, 488, 0, Shiny::Random, 255, 255, 3, 50),
 ];
 
-pub static LEGENDS: [StaticTemplate; 7] = [
+pub(crate) static LEGENDS: [StaticTemplate; 7] = [
     StaticTemplate::new(Game::BDSP, 480, 0, Shiny::Random, 255, 255, 3, 50),
     StaticTemplate::new(Game::BDSP, 482, 0, Shiny::Random, 255, 255, 3, 50),
     StaticTemplate::new(Game::BD, 483, 0, Shiny::Random, 255, 255, 3, 47),
@@ -45,7 +45,7 @@ pub static LEGENDS: [StaticTemplate; 7] = [
     StaticTemplate::new(Game::BDSP, 487, 0, Shiny::Random, 255, 255, 3, 70),
 ];
 
-pub static RAMANASPARKPURESPACE: [StaticTemplate; 11] = [
+pub(crate) static RAMANASPARKPURESPACE: [StaticTemplate; 11] = [
     StaticTemplate::new(Game::SP, 144, 0, Shiny::Random, 2, 255, 3, 70),
     StaticTemplate::new(Game::SP, 145, 0, Shiny::Random, 2, 255, 3, 70),
     StaticTemplate::new(Game::SP, 146, 0, Shiny::Random, 2, 255, 3, 70),
@@ -59,7 +59,7 @@ pub static RAMANASPARKPURESPACE: [StaticTemplate; 11] = [
     StaticTemplate::new(Game::BDSP, 381, 0, Shiny::Random, 255, 255, 3, 70),
 ];
 
-pub static RAMANASPARKSTRANGESPACE: [StaticTemplate; 6] = [
+pub(crate) static RAMANASPARKSTRANGESPACE: [StaticTemplate; 6] = [
     StaticTemplate::new(Game::BDSP, 150, 0, Shiny::Random, 2, 255, 3, 70),
     StaticTemplate::new(Game::SP, 249, 0, Shiny::Random, 2, 255, 3, 70),
     StaticTemplate::new(Game::BD, 250, 0, Shiny::Random, 2, 255, 3, 70),
@@ -68,7 +68,7 @@ pub static RAMANASPARKSTRANGESPACE: [StaticTemplate; 6] = [
     StaticTemplate::new(Game::BDSP, 384, 0, Shiny::Random, 255, 255, 3, 70),
 ];
 
-pub static MYTHICS: [StaticTemplate; 5] = [
+pub(crate) static MYTHICS: [StaticTemplate; 5] = [
     StaticTemplate::new(Game::BDSP, 151, 0, Shiny::Never, 1, 255, 3, 1),
     StaticTemplate::new(Game::BDSP, 385, 0, Shiny::Never, 1, 255, 3, 5),
     StaticTemplate::new(Game::BDSP, 491, 0, Shiny::Random, 255, 255, 3, 50),
@@ -76,7 +76,7 @@ pub static MYTHICS: [StaticTemplate; 5] = [
     StaticTemplate::new(Game::BDSP, 493, 0, Shiny::Random, 255, 255, 3, 80),
 ];
 
-pub static NESTS: [Den; 197] = [
+pub(crate) static NESTS: [Den; 197] = [
     Den::new(
         0x314acb827c75109,
         [
@@ -48738,7 +48738,7 @@ pub static NESTS: [Den; 197] = [
     ),
 ];
 
-pub static BD: [u8; 3750] = [
+pub(crate) static BD: [u8; 3750] = [
     152, 74, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 187, 79, 102, 117, 0, 0, 190, 127, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 254, 47, 214, 221, 255, 255, 254, 125, 255, 255, 255,
     255, 255, 255, 172, 185, 125, 104, 157, 232, 141, 33, 0, 96, 16, 125, 241, 231, 189, 57, 33,
@@ -48920,7 +48920,7 @@ pub static BD: [u8; 3750] = [
     78, 20, 36, 46, 211, 217, 157, 64,
 ];
 
-pub static BD_UNDERGROUND: [u8; 1416] = [
+pub(crate) static BD_UNDERGROUND: [u8; 1416] = [
     90, 36, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 4, 228, 174, 219, 0, 10, 64, 255, 255, 255,
     255, 253, 239, 123, 125, 249, 127, 95, 254, 255, 212, 222, 247, 213, 88, 77, 32, 237, 73, 189,
     216, 188, 13, 187, 92, 170, 157, 98, 197, 165, 132, 224, 6, 95, 0, 0, 0, 0, 0, 0, 16, 105, 145,
@@ -48990,7 +48990,7 @@ pub static BD_UNDERGROUND: [u8; 1416] = [
     128, 55, 213, 35, 255, 197, 220, 145, 78, 20, 36, 1, 57, 43, 182, 192,
 ];
 
-pub static SP: [u8; 3729] = [
+pub(crate) static SP: [u8; 3729] = [
     152, 74, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 253, 153, 177, 67, 0, 0, 190, 127, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 254, 175, 214, 221, 255, 255, 254, 253, 255, 255, 255,
     255, 255, 255, 172, 184, 125, 104, 157, 234, 157, 32, 0, 96, 16, 125, 95, 117, 5, 33, 218, 69,
@@ -49171,7 +49171,7 @@ pub static SP: [u8; 3729] = [
     33, 9, 70, 66, 102, 68, 145, 144, 25, 63, 248, 187, 146, 41, 194, 132, 135, 236, 205, 138, 24,
 ];
 
-pub static SP_UNDERGROUND: [u8; 1363] = [
+pub(crate) static SP_UNDERGROUND: [u8; 1363] = [
     194, 36, 66, 90, 104, 57, 49, 65, 89, 38, 83, 89, 238, 40, 105, 110, 0, 10, 110, 127, 255, 255,
     255, 255, 239, 126, 125, 121, 127, 223, 126, 239, 212, 222, 255, 221, 80, 205, 32, 237, 73,
     189, 216, 236, 13, 186, 92, 42, 221, 98, 133, 100, 20, 224, 6, 94, 3, 224, 160, 17, 0, 168,

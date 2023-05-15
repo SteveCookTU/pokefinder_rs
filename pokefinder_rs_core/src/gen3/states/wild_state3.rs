@@ -18,7 +18,7 @@ impl WildSearcherState3 {
         nature: u8,
         shiny: u8,
         encounter_slot: u8,
-        specie: u16,
+        species: u16,
         form: u8,
         info: &PersonalInfo,
     ) -> Self {
@@ -34,7 +34,7 @@ impl WildSearcherState3 {
                 shiny,
                 encounter_slot,
                 0,
-                specie,
+                species,
                 form,
                 info,
             ),

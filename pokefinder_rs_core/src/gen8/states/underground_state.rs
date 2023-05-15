@@ -6,7 +6,7 @@ pub struct UndergroundState {
     pub base: GeneratorState,
     pub egg_move: u16,
     pub item: u16,
-    pub specie: u16,
+    pub species: u16,
 }
 
 impl UndergroundState {
@@ -23,7 +23,7 @@ impl UndergroundState {
         shiny: u8,
         egg_move: u16,
         item: u16,
-        specie: u16,
+        species: u16,
         info: &PersonalInfo,
     ) -> Self {
         Self {
@@ -32,7 +32,7 @@ impl UndergroundState {
             ),
             egg_move,
             item,
-            specie,
+            species,
         }
     }
 }

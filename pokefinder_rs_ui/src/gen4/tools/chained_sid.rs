@@ -62,7 +62,7 @@ impl ChainedSID {
                         .selected_text(if self.pokemon == 0 {
                             ""
                         } else {
-                            translator::get_specie(self.pokemon)
+                            translator::get_species(self.pokemon)
                         })
                         .show_ui(ui, |ui| {
                             ui.style_mut().wrap = Some(false);
@@ -70,7 +70,7 @@ impl ChainedSID {
                                 ui.selectable_value(
                                     &mut self.pokemon,
                                     i,
-                                    translator::get_specie(i),
+                                    translator::get_species(i),
                                 );
                             }
                         });

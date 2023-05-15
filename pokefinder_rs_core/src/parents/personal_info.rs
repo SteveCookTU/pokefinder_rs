@@ -1,4 +1,4 @@
-pub const PERSONAL_RSEFRLG: [PersonalInfo; 390] = [
+pub(crate) const PERSONAL_RSEFRLG: [PersonalInfo; 390] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -4291,7 +4291,7 @@ pub const PERSONAL_RSEFRLG: [PersonalInfo; 390] = [
     ),
 ];
 
-pub const PERSONAL_D: [PersonalInfo; 501] = [
+pub(crate) const PERSONAL_D: [PersonalInfo; 501] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -9805,7 +9805,7 @@ pub const PERSONAL_D: [PersonalInfo; 501] = [
     ),
 ];
 
-pub const PERSONAL_HGSS: [PersonalInfo; 508] = [
+pub(crate) const PERSONAL_HGSS: [PersonalInfo; 508] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -15396,7 +15396,7 @@ pub const PERSONAL_HGSS: [PersonalInfo; 508] = [
     ),
 ];
 
-pub const PERSONAL_P: [PersonalInfo; 501] = [
+pub(crate) const PERSONAL_P: [PersonalInfo; 501] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -20910,7 +20910,7 @@ pub const PERSONAL_P: [PersonalInfo; 501] = [
     ),
 ];
 
-pub const PERSONAL_PT: [PersonalInfo; 508] = [
+pub(crate) const PERSONAL_PT: [PersonalInfo; 508] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -26501,7 +26501,7 @@ pub const PERSONAL_PT: [PersonalInfo; 508] = [
     ),
 ];
 
-pub const PERSONAL_B2W2: [PersonalInfo; 709] = [
+pub(crate) const PERSONAL_B2W2: [PersonalInfo; 709] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -34303,7 +34303,7 @@ pub const PERSONAL_B2W2: [PersonalInfo; 709] = [
     ),
 ];
 
-pub const PERSONAL_BW: [PersonalInfo; 668] = [
+pub(crate) const PERSONAL_BW: [PersonalInfo; 668] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -41654,7 +41654,7 @@ pub const PERSONAL_BW: [PersonalInfo; 668] = [
     ),
 ];
 
-pub const PERSONAL_BDSP: [PersonalInfo; 560] = [
+pub(crate) const PERSONAL_BDSP: [PersonalInfo; 560] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -47817,7 +47817,7 @@ pub const PERSONAL_BDSP: [PersonalInfo; 560] = [
     ),
 ];
 
-pub const PERSONAL_SWSH: [PersonalInfo; 1192] = [
+pub(crate) const PERSONAL_SWSH: [PersonalInfo; 1192] = [
     PersonalInfo::new(
         [0, 0, 0, 0, 0, 0],
         [0, 0],
@@ -60932,13 +60932,14 @@ pub const PERSONAL_SWSH: [PersonalInfo; 1192] = [
     ),
 ];
 
+/// Contains species information such as base stats, gender, abilities, forms, etc.
 #[derive(Copy, Clone)]
 pub struct PersonalInfo {
     ability: [u16; 3],
     item: [u16; 3],
     form_count: u8,
     form_stat_index: u16,
-    hatch_specie: u16,
+    hatch_species: u16,
     stats: [u8; 6],
     present: bool,
     gender: u8,
@@ -60946,6 +60947,7 @@ pub struct PersonalInfo {
 }
 
 impl PersonalInfo {
+    /// Construct a new [`PersonalInfo`] struct
     #[allow(clippy::too_many_arguments)]
     const fn new(
         stats: [u8; 6],
@@ -60955,7 +60957,7 @@ impl PersonalInfo {
         abilities: [u16; 3],
         form_count: u8,
         form_stat_index: u16,
-        hatch_specie: u16,
+        hatch_species: u16,
         present: u8,
     ) -> Self {
         Self {
@@ -60963,7 +60965,7 @@ impl PersonalInfo {
             item: items,
             form_count,
             form_stat_index,
-            hatch_specie,
+            hatch_species,
             stats,
             present: present == 1,
             gender,
@@ -60971,42 +60973,60 @@ impl PersonalInfo {
         }
     }
 
+    /// Returns the index specified by the `index`
     pub const fn get_ability(&self, index: usize) -> u16 {
         self.ability[index]
     }
 
+    /// Returns the item specified by the `index`
     pub const fn get_item(&self, index: usize) -> u16 {
         self.item[index]
     }
 
+    /// Returns the number of alternative forms the pokemon has
     pub const fn get_form_count(&self) -> u8 {
         self.form_count
     }
 
+    /// Returns the base index for the alternative form
     pub const fn get_form_stats_index(&self) -> u16 {
         self.form_stat_index
     }
 
+    /// Gender ratio of the pokemon
+    ///
+    /// - 0: Male only
+    /// - 31: 12.5% female
+    /// - 63: 25% female
+    /// - 127: 50% female
+    /// - 191: 75% female
+    /// - 254: Female only
+    /// - 255: Genderless
     pub const fn get_gender(&self) -> u8 {
         self.gender
     }
 
-    pub const fn get_hatch_specie(&self) -> u16 {
-        self.hatch_specie
+    /// Returns the base hatch species of the pokemon
+    pub const fn get_hatch_species(&self) -> u16 {
+        self.hatch_species
     }
 
+    /// Determines whether the pokemon is obtainable or not
     pub const fn get_present(&self) -> bool {
         self.present
     }
 
+    /// Returns the base stats of the pokemon
     pub const fn get_stats(&self) -> [u8; 6] {
         self.stats
     }
 
+    /// Returns the base state of the pokemon specified by the `index`
     pub const fn get_stat(&self, index: usize) -> u8 {
         self.stats[index]
     }
 
+    /// Returns the type of the pokemon specified by the `index`
     pub const fn get_type(&self, index: usize) -> u8 {
         self.types[index]
     }

@@ -384,16 +384,16 @@ fn modify_radio(
     info: &'static [PersonalInfo],
     radio: usize,
 ) {
-    let (specie1, specie2) = match radio {
+    let (species1, species2) = match radio {
         1 => (entry.hoenn_sound[0], entry.hoenn_sound[1]),
         2 => (entry.sinnoh_sound[0], entry.sinnoh_sound[1]),
         _ => return,
     };
 
-    pokemon[2].set_specie(specie1, &info[specie1 as usize]);
-    pokemon[3].set_specie(specie1, &info[specie1 as usize]);
-    pokemon[4].set_specie(specie2, &info[specie2 as usize]);
-    pokemon[5].set_specie(specie2, &info[specie2 as usize]);
+    pokemon[2].set_species(species1, &info[species1 as usize]);
+    pokemon[3].set_species(species1, &info[species1 as usize]);
+    pokemon[4].set_species(species2, &info[species2 as usize]);
+    pokemon[5].set_species(species2, &info[species2 as usize]);
 }
 
 fn modify_swarm_hgss(
@@ -404,31 +404,31 @@ fn modify_swarm_hgss(
     swarm: bool,
 ) {
     if swarm {
-        let specie;
+        let species;
         match encounter {
             Encounter::Grass => {
-                specie = entry.swarm[0];
-                pokemon[0].set_specie(specie, &info[specie as usize]);
-                pokemon[1].set_specie(specie, &info[specie as usize]);
+                species = entry.swarm[0];
+                pokemon[0].set_species(species, &info[species as usize]);
+                pokemon[1].set_species(species, &info[species as usize]);
             }
             Encounter::Surfing => {
-                specie = entry.swarm[1];
-                pokemon[0].set_specie(specie, &info[specie as usize]);
+                species = entry.swarm[1];
+                pokemon[0].set_species(species, &info[species as usize]);
             }
             Encounter::OldRod => {
-                specie = entry.swarm[3];
-                pokemon[2].set_specie(specie, &info[specie as usize]);
+                species = entry.swarm[3];
+                pokemon[2].set_species(species, &info[species as usize]);
             }
             Encounter::GoodRod => {
-                specie = entry.swarm[3];
+                species = entry.swarm[3];
                 for i in [0, 2, 3] {
-                    pokemon[i].set_specie(specie, &info[specie as usize]);
+                    pokemon[i].set_species(species, &info[species as usize]);
                 }
             }
             Encounter::SuperRod => {
-                specie = entry.swarm[3];
+                species = entry.swarm[3];
                 pokemon.iter_mut().take(5).for_each(|p| {
-                    p.set_specie(specie, &info[specie as usize]);
+                    p.set_species(species, &info[species as usize]);
                 })
             }
             _ => {}
@@ -448,10 +448,10 @@ fn modify_time_hgss(
     }
     match encounter {
         Encounter::GoodRod => {
-            pokemon[3].set_specie(entry.swarm[2], &info[entry.swarm[2] as usize]);
+            pokemon[3].set_species(entry.swarm[2], &info[entry.swarm[2] as usize]);
         }
         Encounter::SuperRod => {
-            pokemon[1].set_specie(entry.swarm[2], &info[entry.swarm[2] as usize]);
+            pokemon[1].set_species(entry.swarm[2], &info[entry.swarm[2] as usize]);
         }
         _ => {}
     }
@@ -479,21 +479,21 @@ pub fn get_hgss_safari(
                     safari_slots = &entry.grass.normal[(10 * time)..];
                     safari_block_slots = &entry.grass.block[(10 * time)..];
 
-                    let mut specie = safari_slots[i].specie;
+                    let mut species = safari_slots[i].species;
                     let mut level = safari_slots[i].level;
                     while block < 10 {
                         if blocks[entry.grass.ty1[block] as usize] >= entry.grass.quantity1[block]
                             && blocks[entry.grass.ty2[block] as usize]
                                 >= entry.grass.quantity2[block]
                         {
-                            specie = safari_block_slots[block].specie;
+                            species = safari_block_slots[block].species;
                             level = safari_block_slots[block].level;
                             block += 1;
                             break;
                         }
                         block += 1;
                     }
-                    slots.push(Slot::new(specie, level, level, &info[specie as usize]));
+                    slots.push(Slot::new(species, level, level, &info[species as usize]));
                 }
                 encounters.push(EncounterArea4::new(entry.location, 0, encounter, slots));
             }
@@ -503,21 +503,21 @@ pub fn get_hgss_safari(
                     safari_block_slots = &entry.surf.block[(3 * time)..];
 
                     for safari_slot in safari_slots.iter().take(10) {
-                        let mut specie = safari_slot.specie;
+                        let mut species = safari_slot.species;
                         let mut level = safari_slot.level;
                         while block < 3 {
                             if blocks[entry.surf.ty1[block] as usize] >= entry.surf.quantity1[block]
                                 && blocks[entry.surf.ty2[block] as usize]
                                     >= entry.surf.quantity2[block]
                             {
-                                specie = safari_block_slots[block].specie;
+                                species = safari_block_slots[block].species;
                                 level = safari_block_slots[block].level;
                                 block += 1;
                                 break;
                             }
                             block += 1;
                         }
-                        slots.push(Slot::new(specie, level, level, &info[specie as usize]));
+                        slots.push(Slot::new(species, level, level, &info[species as usize]));
                     }
                     encounters.push(EncounterArea4::new(entry.location, 0, encounter, slots));
                 }
@@ -528,7 +528,7 @@ pub fn get_hgss_safari(
                     safari_block_slots = &entry.old_rod.block[(2 * time)..];
 
                     for safari_slot in safari_slots.iter().take(10) {
-                        let mut specie = safari_slot.specie;
+                        let mut species = safari_slot.species;
                         let mut level = safari_slot.level;
                         while block < 2 {
                             if blocks[entry.old_rod.ty1[block] as usize]
@@ -536,14 +536,14 @@ pub fn get_hgss_safari(
                                 && blocks[entry.old_rod.ty2[block] as usize]
                                     >= entry.old_rod.quantity2[block]
                             {
-                                specie = safari_block_slots[block].specie;
+                                species = safari_block_slots[block].species;
                                 level = safari_block_slots[block].level;
                                 block += 1;
                                 break;
                             }
                             block += 1;
                         }
-                        slots.push(Slot::new(specie, level, level, &info[specie as usize]));
+                        slots.push(Slot::new(species, level, level, &info[species as usize]));
                     }
                     encounters.push(EncounterArea4::new(entry.location, 25, encounter, slots));
                 }
@@ -554,7 +554,7 @@ pub fn get_hgss_safari(
                     safari_block_slots = &entry.good_rod.block[(2 * time)..];
 
                     for safari_slot in safari_slots.iter().take(10) {
-                        let mut specie = safari_slot.specie;
+                        let mut species = safari_slot.species;
                         let mut level = safari_slot.level;
                         while block < 2 {
                             if blocks[entry.good_rod.ty1[block] as usize]
@@ -562,14 +562,14 @@ pub fn get_hgss_safari(
                                 && blocks[entry.good_rod.ty2[block] as usize]
                                     >= entry.good_rod.quantity2[block]
                             {
-                                specie = safari_block_slots[block].specie;
+                                species = safari_block_slots[block].species;
                                 level = safari_block_slots[block].level;
                                 block += 1;
                                 break;
                             }
                             block += 1;
                         }
-                        slots.push(Slot::new(specie, level, level, &info[specie as usize]));
+                        slots.push(Slot::new(species, level, level, &info[species as usize]));
                     }
                     encounters.push(EncounterArea4::new(entry.location, 50, encounter, slots));
                 }
@@ -580,7 +580,7 @@ pub fn get_hgss_safari(
                     safari_block_slots = &entry.super_rod.block[(2 * time)..];
 
                     for safari_slot in safari_slots.iter().take(10) {
-                        let mut specie = safari_slot.specie;
+                        let mut species = safari_slot.species;
                         let mut level = safari_slot.level;
                         while block < 2 {
                             if blocks[entry.super_rod.ty1[block] as usize]
@@ -588,14 +588,14 @@ pub fn get_hgss_safari(
                                 && blocks[entry.super_rod.ty2[block] as usize]
                                     >= entry.super_rod.quantity2[block]
                             {
-                                specie = safari_block_slots[block].specie;
+                                species = safari_block_slots[block].species;
                                 level = safari_block_slots[block].level;
                                 block += 1;
                                 break;
                             }
                             block += 1;
                         }
-                        slots.push(Slot::new(specie, level, level, &info[specie as usize]));
+                        slots.push(Slot::new(species, level, level, &info[species as usize]));
                     }
                     encounters.push(EncounterArea4::new(entry.location, 75, encounter, slots));
                 }
@@ -637,10 +637,10 @@ fn get_hgss(
             let mut slots = Vec::with_capacity(10);
             for slot in &entry.bug {
                 slots.push(Slot::new(
-                    slot.specie,
+                    slot.species,
                     slot.min_level,
                     slot.max_level,
-                    &info[slot.specie as usize],
+                    &info[slot.species as usize],
                 ));
             }
 
@@ -672,10 +672,10 @@ fn get_hgss(
                 let tree_slot = &entry.slots[(6 * tree)..];
                 for slot in tree_slot.iter().take(6) {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea4::new(entry.location, 0, encounter, slots));
@@ -698,12 +698,12 @@ fn get_hgss(
                     let mut slots = Vec::with_capacity(12);
 
                     let species = &entry.grass.slots[(time * 12)..];
-                    for (i, &specie) in species.iter().take(12).enumerate() {
+                    for (i, &species) in species.iter().take(12).enumerate() {
                         slots.push(Slot::new(
-                            specie,
+                            species,
                             entry.grass.level[i],
                             entry.grass.level[i],
-                            &info[specie as usize],
+                            &info[species as usize],
                         ));
                     }
                     modify_radio(&mut slots, &entry, info, radio);
@@ -720,10 +720,10 @@ fn get_hgss(
 
                     for slot in &entry.surf {
                         slots.push(Slot::new(
-                            slot.specie,
+                            slot.species,
                             slot.min_level,
                             slot.max_level,
-                            &info[slot.specie as usize],
+                            &info[slot.species as usize],
                         ));
                     }
 
@@ -740,10 +740,10 @@ fn get_hgss(
 
                     for slot in &entry.rock {
                         slots.push(Slot::new(
-                            slot.specie,
+                            slot.species,
                             slot.min_level,
                             slot.max_level,
-                            &info[slot.specie as usize],
+                            &info[slot.species as usize],
                         ));
                     }
 
@@ -759,10 +759,10 @@ fn get_hgss(
 
                     for slot in &entry.old_rod {
                         slots.push(Slot::new(
-                            slot.specie,
+                            slot.species,
                             slot.min_level,
                             slot.max_level,
-                            &info[slot.specie as usize],
+                            &info[slot.species as usize],
                         ));
                     }
 
@@ -779,10 +779,10 @@ fn get_hgss(
 
                     for slot in &entry.good_rod {
                         slots.push(Slot::new(
-                            slot.specie,
+                            slot.species,
                             slot.min_level,
                             slot.max_level,
-                            &info[slot.specie as usize],
+                            &info[slot.species as usize],
                         ));
                     }
                     modify_time_hgss(&mut slots, &entry, info, encounter, time);
@@ -799,10 +799,10 @@ fn get_hgss(
 
                     for slot in &entry.super_rod {
                         slots.push(Slot::new(
-                            slot.specie,
+                            slot.species,
                             slot.min_level,
                             slot.max_level,
-                            &info[slot.specie as usize],
+                            &info[slot.species as usize],
                         ));
                     }
                     modify_time_hgss(&mut slots, &entry, info, encounter, time);
@@ -844,8 +844,8 @@ fn modify_dual(
         return;
     };
 
-    pokemon[8].set_specie(specie1, &info[specie1 as usize]);
-    pokemon[9].set_specie(specie2, &info[specie2 as usize]);
+    pokemon[8].set_species(specie1, &info[specie1 as usize]);
+    pokemon[9].set_species(specie2, &info[specie2 as usize]);
 }
 
 fn modify_great_marsh(
@@ -855,9 +855,9 @@ fn modify_great_marsh(
     location: u8,
 ) {
     if (23..=28).contains(&location) && replacement[0] != 0 {
-        let specie = replacement[0];
-        pokemon[6].set_specie(specie, &info[specie as usize]);
-        pokemon[7].set_specie(specie, &info[specie as usize]);
+        let species = replacement[0];
+        pokemon[6].set_species(species, &info[species as usize]);
+        pokemon[7].set_species(species, &info[species as usize]);
     }
 }
 
@@ -868,10 +868,10 @@ fn modify_radar(
     radar: bool,
 ) {
     if radar {
-        pokemon[4].set_specie(entry.radar[0], &info[entry.radar[0] as usize]);
-        pokemon[5].set_specie(entry.radar[1], &info[entry.radar[1] as usize]);
-        pokemon[10].set_specie(entry.radar[2], &info[entry.radar[2] as usize]);
-        pokemon[11].set_specie(entry.radar[3], &info[entry.radar[3] as usize]);
+        pokemon[4].set_species(entry.radar[0], &info[entry.radar[0] as usize]);
+        pokemon[5].set_species(entry.radar[1], &info[entry.radar[1] as usize]);
+        pokemon[10].set_species(entry.radar[2], &info[entry.radar[2] as usize]);
+        pokemon[11].set_species(entry.radar[3], &info[entry.radar[3] as usize]);
     }
 }
 
@@ -882,8 +882,8 @@ fn modify_swarm_dppt(
     swarm: bool,
 ) {
     if swarm {
-        pokemon[4].set_specie(entry.radar[0], &info[entry.swarm[0] as usize]);
-        pokemon[5].set_specie(entry.radar[1], &info[entry.swarm[1] as usize]);
+        pokemon[4].set_species(entry.radar[0], &info[entry.swarm[0] as usize]);
+        pokemon[5].set_species(entry.radar[1], &info[entry.swarm[1] as usize]);
     }
 }
 
@@ -901,8 +901,8 @@ fn modify_time_dppt(
         return;
     };
 
-    pokemon[2].set_specie(specie1, &info[specie1 as usize]);
-    pokemon[3].set_specie(specie2, &info[specie2 as usize]);
+    pokemon[2].set_species(specie1, &info[specie1 as usize]);
+    pokemon[3].set_species(specie2, &info[specie2 as usize]);
 }
 
 fn modify_trophy_garden(
@@ -915,8 +915,8 @@ fn modify_trophy_garden(
         let specie1 = replacement[0];
         let specie2 = replacement[1];
 
-        pokemon[6].set_specie(specie1, &info[specie1 as usize]);
-        pokemon[7].set_specie(specie2, &info[specie2 as usize]);
+        pokemon[6].set_species(specie1, &info[specie1 as usize]);
+        pokemon[7].set_species(specie2, &info[specie2 as usize]);
     }
 }
 
@@ -950,10 +950,10 @@ fn get_dppt(
                 let mut slots = Vec::with_capacity(12);
                 for slot in &entry.grass {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.level,
                         slot.level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 modify_swarm_dppt(&mut slots, &entry, info, swarm);
@@ -973,10 +973,10 @@ fn get_dppt(
                 let mut slots = Vec::with_capacity(5);
                 for slot in &entry.surf {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea4::new(
@@ -990,10 +990,10 @@ fn get_dppt(
                 let mut slots = Vec::with_capacity(5);
                 for slot in &entry.old_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea4::new(
@@ -1007,10 +1007,10 @@ fn get_dppt(
                 let mut slots = Vec::with_capacity(5);
                 for slot in &entry.good_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea4::new(
@@ -1024,10 +1024,10 @@ fn get_dppt(
                 let mut slots = Vec::with_capacity(5);
                 for slot in &entry.super_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea4::new(

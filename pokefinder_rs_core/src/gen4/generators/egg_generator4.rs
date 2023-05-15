@@ -97,8 +97,8 @@ fn set_inheritance<const DPPT: bool>(
 }
 
 #[inline]
-fn get_male(version: Game, specie: u16) -> Option<&'static PersonalInfo> {
-    match specie {
+fn get_male(version: Game, species: u16) -> Option<&'static PersonalInfo> {
+    match species {
         29 => Some(get_personal_info(version, 32, 0)),
         314 => Some(get_personal_info(version, 313, 0)),
         _ => None,
@@ -155,12 +155,12 @@ impl<'a, 'b, 'c> EggGenerator4<'a, 'b, 'c> {
     fn generate_held(&self, seed: u32) -> Vec<EggGeneratorState4> {
         let base = get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
         let male = get_male(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
         );
 
         let mut mt = MT::new_with_initial_advances(
@@ -233,12 +233,12 @@ impl<'a, 'b, 'c> EggGenerator4<'a, 'b, 'c> {
     fn generate_pickup(&self, seed: u32, held: Vec<EggGeneratorState4>) -> Vec<EggGeneratorState4> {
         let base = get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
         let male = get_male(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
         );
 
         let mut rng = PokeRNG::new_with_initial_advances(

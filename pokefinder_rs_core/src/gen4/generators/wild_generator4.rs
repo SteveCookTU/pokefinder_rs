@@ -233,7 +233,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
             let item = get_item(go.next_u16_max::<true>(100) as u8, self.base.lead, info);
 
             let mut form = 0;
-            if slot.get_specie() == 201 {
+            if slot.get_species() == 201 {
                 form = encounter_area.unown_form(go.next_u16());
             }
 
@@ -250,7 +250,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
                 get_shiny(pid, self.base.base.tsv),
                 encounter_slot,
                 item,
-                slot.get_specie(),
+                slot.get_species(),
                 form,
                 info,
             );
@@ -491,7 +491,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
                 get_shiny(pid, self.base.base.tsv),
                 encounter_slot,
                 item,
-                slot.get_specie(),
+                slot.get_species(),
                 0,
                 info,
             );
@@ -615,7 +615,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
                 get_shiny(pid, self.base.base.tsv),
                 index,
                 item,
-                slot.get_specie(),
+                slot.get_species(),
                 0,
                 info,
             );
@@ -737,7 +737,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
                 get_shiny(pid, self.base.base.tsv),
                 index,
                 item,
-                slot.get_specie(),
+                slot.get_species(),
                 0,
                 info,
             );

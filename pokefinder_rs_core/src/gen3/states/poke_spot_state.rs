@@ -4,7 +4,7 @@ use crate::parents::PersonalInfo;
 #[derive(Copy, Clone)]
 pub struct PokeSpotState {
     pub base: GeneratorState,
-    pub specie: u16,
+    pub species: u16,
     pub encounter_slot: u8,
     pub encounter_advances: u32,
 }
@@ -17,7 +17,7 @@ impl PokeSpotState {
         gender: u8,
         shiny: u8,
         encounter_slot: u8,
-        specie: u16,
+        species: u16,
         info: &PersonalInfo,
     ) -> Self {
         Self {
@@ -32,7 +32,7 @@ impl PokeSpotState {
                 shiny,
                 info,
             ),
-            specie,
+            species,
             encounter_slot,
             encounter_advances: 0,
         }
@@ -47,7 +47,7 @@ impl PokeSpotState {
     }
 
     pub fn species(&self) -> u16 {
-        self.specie
+        self.species
     }
 
     pub fn update(

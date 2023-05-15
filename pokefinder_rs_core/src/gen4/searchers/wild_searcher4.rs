@@ -268,7 +268,7 @@ impl WildSearcher4 {
 
                         let item = get_item(item_rand as u8, self.base.lead, info);
 
-                        let form = if slot.get_specie() == 201 {
+                        let form = if slot.get_species() == 201 {
                             unown_form
                         } else {
                             0
@@ -286,7 +286,7 @@ impl WildSearcher4 {
                             get_shiny(pid, self.base.base.tsv),
                             encounter_slot,
                             item,
-                            slot.get_specie(),
+                            slot.get_species(),
                             form,
                             info,
                         );
@@ -426,7 +426,7 @@ impl WildSearcher4 {
                         let info = slot.info;
                         let item = get_item(item_rand as u8, self.base.lead, info);
 
-                        let form = if slot.get_specie() == 201 {
+                        let form = if slot.get_species() == 201 {
                             unown_form
                         } else {
                             0
@@ -443,7 +443,7 @@ impl WildSearcher4 {
                             get_shiny(pid, self.base.base.tsv),
                             encounter_slot,
                             item,
-                            slot.get_specie(),
+                            slot.get_species(),
                             form,
                             info,
                         );
@@ -566,7 +566,7 @@ impl WildSearcher4 {
                             get_shiny(pid, self.base.base.tsv),
                             encounter_slot,
                             item,
-                            slot.get_specie(),
+                            slot.get_species(),
                             0,
                             info,
                         );
@@ -727,7 +727,7 @@ impl WildSearcher4 {
                             get_shiny(pid, self.base.base.tsv),
                             encounter_slot,
                             item,
-                            slot.get_specie(),
+                            slot.get_species(),
                             0,
                             info,
                         );
@@ -817,7 +817,7 @@ impl WildSearcher4 {
                         get_shiny(pid, self.base.base.tsv),
                         index,
                         item,
-                        slot.get_specie(),
+                        slot.get_species(),
                         0,
                         info,
                     );
@@ -873,7 +873,7 @@ impl WildSearcher4 {
                             get_shiny(pid, self.base.base.tsv),
                             index,
                             item,
-                            slot.specie,
+                            slot.species,
                             0,
                             info,
                         );
@@ -991,7 +991,7 @@ impl WildSearcher4 {
                             get_shiny(pid, self.base.base.tsv),
                             index,
                             item,
-                            slot.specie,
+                            slot.species,
                             0,
                             info,
                         );
@@ -1022,7 +1022,7 @@ impl WildSearcher4 {
                     get_shiny(pid, self.base.base.tsv),
                     index,
                     item,
-                    slot.specie,
+                    slot.species,
                     0,
                     info,
                 );

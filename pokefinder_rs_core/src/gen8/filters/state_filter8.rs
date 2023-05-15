@@ -234,7 +234,7 @@ impl<'a> UndergroundStateFilter<'a> {
         if (self.base.ability != 255 && self.base.ability != state.base.base.ability)
             || (self.base.gender != 255 && self.base.gender != state.base.base.gender)
             || (!self.base.natures[state.base.base.nature as usize])
-            || self.species.binary_search(&state.specie).is_err()
+            || self.species.binary_search(&state.species).is_err()
             || (self.base.shiny != 255 && (!(self.base.shiny & state.base.base.shiny)) != 0)
         {
             return false;

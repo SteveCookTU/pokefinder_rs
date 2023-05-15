@@ -50,7 +50,7 @@ struct Wild3GeneratorResult {
     nature: u8,
     pid: u32,
     shiny: u8,
-    specie: u16,
+    species: u16,
     stats: [u16; 6],
 }
 
@@ -70,7 +70,7 @@ impl From<WildGeneratorState> for Wild3GeneratorResult {
             nature: value.base.base.nature,
             pid: value.base.base.pid,
             shiny: value.base.base.shiny,
-            specie: value.base.specie,
+            species: value.base.species,
             stats: value.base.base.stats,
         }
     }

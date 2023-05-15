@@ -198,6 +198,21 @@ fn calc_method_xd_colo(
     states
 }
 
+/// Computes PIDs from the specified IVs for [`Method::Method1`], [`Method::Method2`],
+/// [`Method::Method4`], [`Method::XDColo`], and [`Method::Channel`].
+///
+/// For each method, the IVs are reversed into a list of seeds used to seed a PRNG. The PRNGs are
+/// then advanced to find potential PIDs. Passing in a valid TID provides results accurate SIDs that
+/// would have the pokemon be shiny.
+///
+/// # Example
+/// ```
+/// # use pokefinder_rs_core::util::iv_to_pid_calculator::calculate_pids;
+/// let ivs = [5, 10, 15, 20, 25, 30];
+/// let nature = 3;
+/// let tid = 48263;
+/// let pids = calculate_pids(ivs[0], ivs[1], ivs[2], ivs[3], ivs[4], ivs[5], nature, tid);
+/// ```
 #[allow(clippy::too_many_arguments)]
 pub fn calculate_pids(
     hp: u8,

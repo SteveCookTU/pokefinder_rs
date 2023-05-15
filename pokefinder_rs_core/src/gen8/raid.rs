@@ -11,7 +11,7 @@ pub struct Raid {
 impl Raid {
     #[allow(clippy::too_many_arguments)]
     pub const fn new(
-        specie: u16,
+        species: u16,
         form: u8,
         shiny: Shiny,
         ability: u8,
@@ -23,7 +23,7 @@ impl Raid {
         Self {
             base: StaticTemplate::new(
                 Game::SWSH,
-                specie,
+                species,
                 form,
                 shiny,
                 ability,

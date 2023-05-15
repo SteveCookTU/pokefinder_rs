@@ -212,7 +212,7 @@ impl<'a, 'b> PokeSpotGenerator<'a, 'b> {
                     get_gender(pid, info),
                     get_shiny(pid, self.base.tsv),
                     encounter_slot,
-                    slot.get_specie(),
+                    slot.get_species(),
                     info,
                 );
                 if self.base.filter.compare_gender(state.base.base.gender)

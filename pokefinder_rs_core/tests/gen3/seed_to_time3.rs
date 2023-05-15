@@ -44,11 +44,11 @@ struct CalculateTimesResult {
 impl From<DateTime> for CalculateTimesResult {
     fn from(value: DateTime) -> Self {
         Self {
-            day: value.date.day(),
-            hour: value.time.hour(),
-            minute: value.time.minute(),
-            month: value.date.month(),
-            year: value.date.year(),
+            day: value.date().day(),
+            hour: value.time().hour(),
+            minute: value.time().minute(),
+            month: value.date().month(),
+            year: value.date().year(),
         }
     }
 }

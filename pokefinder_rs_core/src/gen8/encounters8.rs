@@ -20,7 +20,7 @@ const TROPHY_GARDEN: [u16; 16] = [
 
 #[derive(EndianRead)]
 struct UndergroundSlot {
-    specie: u16,
+    species: u16,
     flag_rates: [u8; 6],
     flag: u8,
     rate_up: u8,
@@ -173,9 +173,9 @@ fn modify_great_marsh(
     location: u8,
 ) {
     if (23..=28).contains(&location) && replacement[0] != 0 {
-        let specie = replacement[0];
-        pokemon[6].set_specie(specie, &info[specie as usize]);
-        pokemon[7].set_specie(specie, &info[specie as usize]);
+        let species = replacement[0];
+        pokemon[6].set_species(species, &info[species as usize]);
+        pokemon[7].set_species(species, &info[species as usize]);
     }
 }
 
@@ -186,10 +186,10 @@ fn modify_radar(
     radar: bool,
 ) {
     if radar {
-        mons[4].set_specie(entry.radar[0], &info[entry.radar[0] as usize]);
-        mons[5].set_specie(entry.radar[1], &info[entry.radar[1] as usize]);
-        mons[10].set_specie(entry.radar[2], &info[entry.radar[2] as usize]);
-        mons[11].set_specie(entry.radar[3], &info[entry.radar[3] as usize]);
+        mons[4].set_species(entry.radar[0], &info[entry.radar[0] as usize]);
+        mons[5].set_species(entry.radar[1], &info[entry.radar[1] as usize]);
+        mons[10].set_species(entry.radar[2], &info[entry.radar[2] as usize]);
+        mons[11].set_species(entry.radar[3], &info[entry.radar[3] as usize]);
     }
 }
 
@@ -200,8 +200,8 @@ fn modify_swarm(
     swarm: bool,
 ) {
     if swarm {
-        mons[0].set_specie(entry.swarm[0], &info[entry.swarm[0] as usize]);
-        mons[1].set_specie(entry.swarm[1], &info[entry.swarm[1] as usize]);
+        mons[0].set_species(entry.swarm[0], &info[entry.swarm[0] as usize]);
+        mons[1].set_species(entry.swarm[1], &info[entry.swarm[1] as usize]);
     }
 }
 
@@ -212,8 +212,8 @@ fn modify_time(mons: &mut [Slot], entry: &WildEncounter8, info: &'static [Person
         _ => return,
     };
 
-    mons[2].set_specie(specie1, &info[specie1 as usize]);
-    mons[3].set_specie(specie2, &info[specie2 as usize]);
+    mons[2].set_species(specie1, &info[specie1 as usize]);
+    mons[3].set_species(specie2, &info[specie2 as usize]);
 }
 
 fn modify_trophy_garden(
@@ -225,8 +225,8 @@ fn modify_trophy_garden(
     if location == 117 && !replacement.contains(&0) {
         let specie1 = replacement[0];
         let specie2 = replacement[1];
-        mons[6].set_specie(specie1, &info[specie1 as usize]);
-        mons[7].set_specie(specie2, &info[specie2 as usize]);
+        mons[6].set_species(specie1, &info[specie1 as usize]);
+        mons[7].set_species(specie2, &info[specie2 as usize]);
     }
 }
 
@@ -254,10 +254,10 @@ fn get_bdsp(
                 let mut slots = Vec::with_capacity(12);
                 for slot in entry.grass {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.level,
                         slot.level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 modify_swarm(&mut slots, &entry, info, swarm);
@@ -276,10 +276,10 @@ fn get_bdsp(
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.surf {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea8::new(
@@ -293,10 +293,10 @@ fn get_bdsp(
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.old_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea8::new(
@@ -310,10 +310,10 @@ fn get_bdsp(
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.good_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea8::new(
@@ -327,10 +327,10 @@ fn get_bdsp(
                 let mut slots = Vec::with_capacity(5);
                 for slot in entry.super_rod {
                     slots.push(Slot::new(
-                        slot.specie,
+                        slot.species,
                         slot.min_level,
                         slot.max_level,
-                        &info[slot.specie as usize],
+                        &info[slot.species as usize],
                     ));
                 }
                 encounters.push(EncounterArea8::new(
@@ -418,8 +418,8 @@ pub fn get_underground_encounters(
         let mut types = vec![];
         for pokemon_slot in entry.pokemon_slots {
             if pokemon_slot.flag <= story_flag {
-                let specie = pokemon_slot.specie;
-                let info = &base[specie as usize];
+                let species = pokemon_slot.species;
+                let info = &base[species as usize];
 
                 let type_count = if info.get_type(0) == info.get_type(1) {
                     1
@@ -446,7 +446,7 @@ pub fn get_underground_encounters(
 
                 let mon = Pokemon {
                     rate: flag_rate,
-                    specie,
+                    species,
                     size: pokemon_slot.size,
                     ty: [info.get_type(0), info.get_type(1)],
                 };

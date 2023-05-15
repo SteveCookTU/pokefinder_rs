@@ -67,6 +67,9 @@ fn read_json<T: DeserializeOwned + Default>(key: &str) -> T {
     T::default()
 }
 
+/// Initializes the path to the directory which will hold profile data on non-wasm builds.
+///
+/// WASM targets use web-sys to save profile data to local storage of the browser
 #[cfg(not(target_arch = "wasm32"))]
 pub fn init_profile_loader(location: String) -> bool {
     *PATH.lock().unwrap() = location.clone();
@@ -80,28 +83,24 @@ pub fn init_profile_loader(location: String) -> bool {
     exists
 }
 
+/// Functions for handling Gen 3 profiles ([`Profile3`])
 pub mod profile_loader_3 {
     use crate::gen3::Profile3;
     use crate::parents::profile_loader::{read_json, write_json};
 
-    pub fn get_json(profile: &Profile3) -> String {
-        serde_json::to_string(profile).expect("Failed to serialize Profile3 to json")
-    }
-
-    pub fn get_profile(json: &str) -> Profile3 {
-        serde_json::from_str(json).expect("Failed to deserialize json to Profile3")
-    }
-
+    /// Adds a profile to the stored json
     pub fn add_profile(profile: Profile3) {
         let mut profiles = read_json::<Vec<Profile3>>("gen3.json");
         profiles.push(profile);
         write_json("gen3.json", &profiles);
     }
 
+    /// Reads profiles from the stored json
     pub fn get_profiles() -> Vec<Profile3> {
         read_json("gen3.json")
     }
 
+    /// Deletes a profile from the stored json
     pub fn remove_profile(profile: &Profile3) {
         let profiles = read_json::<Vec<Profile3>>("gen3.json")
             .into_iter()
@@ -110,6 +109,7 @@ pub mod profile_loader_3 {
         write_json("gen3.json", &profiles);
     }
 
+    /// Updates a profile from the stored json
     pub fn update_profile(update: &Profile3, original: &Profile3) {
         if update != original {
             let mut profiles = read_json::<Vec<Profile3>>("gen3.json");
@@ -121,28 +121,24 @@ pub mod profile_loader_3 {
     }
 }
 
+/// Functions for handling Gen 4 profiles ([`Profile4`])
 pub mod profile_loader_4 {
     use crate::gen4::Profile4;
     use crate::parents::profile_loader::{read_json, write_json};
 
-    pub fn get_json(profile: &Profile4) -> String {
-        serde_json::to_string(profile).expect("Failed to serialize Profile3 to json")
-    }
-
-    pub fn get_profile(json: &str) -> Profile4 {
-        serde_json::from_str(json).expect("Failed to deserialize json to Profile3")
-    }
-
+    /// Adds a profile to the stored json
     pub fn add_profile(profile: Profile4) {
         let mut profiles = read_json::<Vec<Profile4>>("gen4.json");
         profiles.push(profile);
         write_json("gen4.json", &profiles);
     }
 
+    /// Reads profiles from the stored json
     pub fn get_profiles() -> Vec<Profile4> {
         read_json("gen4.json")
     }
 
+    /// Deletes a profile from the stored json
     pub fn remove_profile(profile: &Profile4) {
         let profiles = read_json::<Vec<Profile4>>("gen4.json")
             .into_iter()
@@ -151,6 +147,7 @@ pub mod profile_loader_4 {
         write_json("gen4.json", &profiles);
     }
 
+    /// Updates a profile from the stored json
     pub fn update_profile(update: &Profile4, original: &Profile4) {
         if update != original {
             let mut profiles = read_json::<Vec<Profile4>>("gen4.json");
@@ -162,28 +159,24 @@ pub mod profile_loader_4 {
     }
 }
 
+/// Functions for handling Gen 5 profiles ([`Profile5`])
 pub mod profile_loader_5 {
     use crate::gen5::Profile5;
     use crate::parents::profile_loader::{read_json, write_json};
 
-    pub fn get_json(profile: &Profile5) -> String {
-        serde_json::to_string(profile).expect("Failed to serialize Profile3 to json")
-    }
-
-    pub fn get_profile(json: &str) -> Profile5 {
-        serde_json::from_str(json).expect("Failed to deserialize json to Profile3")
-    }
-
+    /// Adds a profile to the stored json
     pub fn add_profile(profile: Profile5) {
         let mut profiles = read_json::<Vec<Profile5>>("gen5.json");
         profiles.push(profile);
         write_json("gen5.json", &profiles);
     }
 
+    /// Reads profiles from the stored json
     pub fn get_profiles() -> Vec<Profile5> {
         read_json("gen5.json")
     }
 
+    /// Deletes a profile from the stored json
     pub fn remove_profile(profile: &Profile5) {
         let profiles = read_json::<Vec<Profile5>>("gen5.json")
             .into_iter()
@@ -192,6 +185,7 @@ pub mod profile_loader_5 {
         write_json("gen5.json", &profiles);
     }
 
+    /// Updates a profile from the stored json
     pub fn update_profile(update: &Profile5, original: &Profile5) {
         if update != original {
             let mut profiles = read_json::<Vec<Profile5>>("gen5.json");
@@ -203,28 +197,24 @@ pub mod profile_loader_5 {
     }
 }
 
+/// Functions for handling Gen 8 profiles ([`Profile8`])
 pub mod profile_loader_8 {
     use crate::gen8::Profile8;
     use crate::parents::profile_loader::{read_json, write_json};
 
-    pub fn get_json(profile: &Profile8) -> String {
-        serde_json::to_string(profile).expect("Failed to serialize Profile3 to json")
-    }
-
-    pub fn get_profile(json: &str) -> Profile8 {
-        serde_json::from_str(json).expect("Failed to deserialize json to Profile3")
-    }
-
+    /// Adds a profile to the stored json
     pub fn add_profile(profile: Profile8) {
         let mut profiles = read_json::<Vec<Profile8>>("gen8.json");
         profiles.push(profile);
         write_json("gen8.json", &profiles);
     }
 
+    /// Reads profiles from the stored json
     pub fn get_profiles() -> Vec<Profile8> {
         read_json("gen8.json")
     }
 
+    /// Deletes a profile from the stored json
     pub fn remove_profile(profile: &Profile8) {
         let profiles = read_json::<Vec<Profile8>>("gen8.json")
             .into_iter()
@@ -233,6 +223,7 @@ pub mod profile_loader_8 {
         write_json("gen8.json", &profiles);
     }
 
+    /// Updates a profile from the stored json
     pub fn update_profile(update: &Profile8, original: &Profile8) {
         if update != original {
             let mut profiles = read_json::<Vec<Profile8>>("gen8.json");

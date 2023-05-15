@@ -1,16 +1,28 @@
+/// Provides a way to determine if the given [`State`] meets the given criteria
+///
+/// [`State`]: ../states/struct.State.html
 #[derive(Copy, Clone, Default)]
 pub struct StateFilter {
+    /// Natures to filter by
     pub natures: [bool; 25],
+    /// Hidden powers to filter by
     pub powers: [bool; 16],
+    /// Maximum IV thresholds
     pub max: [u8; 6],
+    /// Minimum IV thresholds
     pub min: [u8; 6],
+    /// If filters should be skipped
     pub skip: bool,
+    /// Ability value to filter by
     pub ability: u8,
+    /// Gender value to filter by
     pub gender: u8,
+    /// Shiny value to filter by
     pub shiny: u8,
 }
 
 impl StateFilter {
+    /// Construct a new ['StateFilter'] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -35,28 +47,41 @@ impl StateFilter {
     }
 }
 
+/// Trait that contains common functions for Filter structs
 pub trait Filter {
+    /// Returns the natures to filter by
     fn get_natures(&self) -> [bool; 25];
+    /// Returns the hidden powers to filter by
     fn get_powers(&self) -> [bool; 16];
+    /// Returns the maximum IV thresholds to filter by
     fn get_max(&self) -> [u8; 6];
+    /// Returns the minimum IV thresholds to filter by
     fn get_min(&self) -> [u8; 6];
+    /// Determines if the filter should skip checks
     fn skip(&self) -> bool;
+    /// Returns the ability value to filter by
     fn get_ability(&self) -> u8;
+    /// Returns the gender value to filter by
     fn get_gender(&self) -> u8;
+    /// Returns the shiny value to filter by
     fn get_shiny(&self) -> u8;
 
+    /// Determines if the `ability` meets the filter criteria
     fn compare_ability(&self, ability: u8) -> bool {
         self.skip() || self.get_ability() == 255 || self.get_ability() == ability
     }
 
+    /// Determines if the `gender` meets the filter criteria
     fn compare_gender(&self, gender: u8) -> bool {
         self.skip() || self.get_gender() == 255 || self.get_gender() == gender
     }
 
+    /// Determines if the `hidden_power` meets the filter criteria
     fn compare_hidden_power(&self, hidden_power: u8) -> bool {
         self.skip() || self.get_powers()[hidden_power as usize]
     }
 
+    /// Determines if the `ivs` meets the filter criteria
     fn compare_iv(&self, ivs: [u8; 6]) -> bool {
         if self.skip() {
             true
@@ -72,10 +97,12 @@ pub trait Filter {
         }
     }
 
+    /// Determines if the `natures` meets the filter criteria
     fn compare_nature(&self, nature: u8) -> bool {
         self.skip() || self.get_natures()[nature as usize]
     }
 
+    /// Determines if the `shiny` value meets the filter criteria
     fn compare_shiny(&self, shiny: u8) -> bool {
         self.skip() || self.get_shiny() == 255 || (self.get_shiny() & shiny) >= 1
     }
@@ -116,13 +143,19 @@ impl Filter for StateFilter {
     }
 }
 
+/// Provides a way to determine if the given [`WildState`] meets the given criteria
+///
+/// [`WildState`]: ../states/struct.WildState.html
 #[derive(Copy, Clone, Default)]
 pub struct WildStateFilter {
+    /// Base filter criteria
     pub base: StateFilter,
+    /// Encounter slots to filter by
     pub encounter_slots: [bool; 12],
 }
 
 impl WildStateFilter {
+    /// Construct a new [`WildStateFilter`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -142,9 +175,12 @@ impl WildStateFilter {
     }
 }
 
+/// Trait that holds common functions for wild filters
 pub trait WildFilter: Filter {
+    /// Returns the encounter slots to filter by
     fn get_encounter_slots(&self) -> [bool; 12];
 
+    /// Determines if the `encounter_slot` meets the filter criteria
     fn compare_encounter_slot(&self, encounter_slot: u8) -> bool {
         self.skip() || self.get_encounter_slots()[encounter_slot as usize]
     }

@@ -21,7 +21,7 @@ struct GenerateData<'a> {
     sid: u16,
     ec: u32,
     pid: u32,
-    specie: u16,
+    species: u16,
     form: u8,
     gender: u8,
     egg: bool,
@@ -85,7 +85,7 @@ fn generate() {
             sid,
             ec,
             pid,
-            specie,
+            species,
             form,
             gender,
             egg,
@@ -106,7 +106,7 @@ fn generate() {
         let profile = Profile8::new("-".to_string(), Game::BD, 12345, 54321, false, false, false);
 
         let wb8 = WB8::new(
-            tid, sid, ec, pid, specie, form, gender, egg, nature, ability, shiny, iv_count, level,
+            tid, sid, ec, pid, species, form, gender, egg, nature, ability, shiny, iv_count, level,
         );
         let filter = StateFilter8::new(255, 255, 255, false, min, max, natures, powers);
         let generator = EventGenerator8::new(0, 9, 0, &wb8, &profile, &filter);

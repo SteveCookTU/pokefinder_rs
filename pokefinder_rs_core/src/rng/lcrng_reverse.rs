@@ -97,6 +97,9 @@ fn recover_poke_rng_iv_method_4(
     size
 }
 
+/// Recovers the origin seeds for six 5 bit calls for Pokemon Channel
+///
+/// A safe upper bound for the amount of found seeds is 12
 pub fn recover_channel_iv(
     hp: u8,
     atk: u8,
@@ -167,6 +170,9 @@ pub fn recover_channel_iv(
     size
 }
 
+/// Recovers the origin seeds for two 16 bit calls (15 bits known) with or without gap
+///
+/// The number of found seeds will not be greater than 6
 #[allow(clippy::too_many_arguments)]
 pub fn recover_poke_rng_iv(
     hp: u8,
@@ -185,6 +191,9 @@ pub fn recover_poke_rng_iv(
     }
 }
 
+/// Recovers the origin seeds for two 16 bit calls
+///
+/// The number of found seeds will not be greater than 3
 pub fn recover_poke_rng_pid(pid: u32, seeds: &mut [u32]) -> usize {
     const ADD: u32 = 0x6073;
     const MULT: u32 = 0x41c64e6d;
@@ -211,6 +220,9 @@ pub fn recover_poke_rng_pid(pid: u32, seeds: &mut [u32]) -> usize {
     size
 }
 
+/// Recovers the origin seeds for two 16 bit calls (15 bits known)
+///
+/// The number of found seeds will not be greater than 6
 pub fn recover_xdrng_iv(
     hp: u8,
     atk: u8,
@@ -252,6 +264,9 @@ pub fn recover_xdrng_iv(
     size
 }
 
+/// Recovers the origin seeds for two 16 bit calls
+///
+/// The number of found seeds will not be greater than 2
 pub fn recover_xdrng_pid(pid: u32, seeds: &mut [u32]) -> usize {
     let mut size = 0;
 

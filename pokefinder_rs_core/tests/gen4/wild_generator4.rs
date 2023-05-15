@@ -84,7 +84,7 @@ struct GeneratorResult {
     nature: u8,
     pid: u32,
     shiny: u8,
-    specie: u16,
+    species: u16,
     stats: [u16; 6],
 }
 
@@ -109,7 +109,7 @@ impl From<WildGeneratorState4> for GeneratorResult {
             nature: value.base.base.base.nature,
             pid: value.base.base.base.pid,
             shiny: value.base.base.base.shiny,
-            specie: value.base.base.specie,
+            species: value.base.base.species,
             stats: value.base.base.base.stats,
         }
     }

@@ -5,7 +5,7 @@ use crate::parents::Template;
 #[derive(Copy, Clone)]
 pub struct ShadowTemplate {
     version: Game,
-    specie: u16,
+    species: u16,
     shiny: Shiny,
     level: u8,
     locks: [LockInfo; 5],
@@ -16,7 +16,7 @@ pub struct ShadowTemplate {
 impl ShadowTemplate {
     pub const fn new(
         version: Game,
-        specie: u16,
+        species: u16,
         shiny: Shiny,
         level: u8,
         locks: [LockInfo; 5],
@@ -25,7 +25,7 @@ impl ShadowTemplate {
     ) -> Self {
         Self {
             version,
-            specie,
+            species,
             shiny,
             level,
             locks,
@@ -72,8 +72,8 @@ impl Template for ShadowTemplate {
         self.shiny
     }
 
-    fn get_specie(&self) -> u16 {
-        self.specie
+    fn get_species(&self) -> u16 {
+        self.species
     }
 
     fn get_version(&self) -> Game {

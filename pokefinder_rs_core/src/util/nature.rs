@@ -26,6 +26,30 @@ const MODIFIERS: [[f32; 5]; 25] = [
     [1.0, 1.0, 1.0, 1.0, 1.0], // Quirky
 ];
 
+/// Computes a modified stat based on a `nature` and stat `index`.
+///
+/// Natures do not modify the HP stat but the function expects an index with HP in mind.
+/// For example, Attack would still be an index of 1.
+///
+/// # Panics
+///
+/// This function will panic if the nature does not exist or the stat index is either 0 or above 5.
+/// ```should_panic
+/// # use pokefinder_rs_core::util::nature::compute_stat;
+/// let nature = 27; // Does not exist
+/// let index = 1; // Attack
+/// let stat = 76;
+/// compute_stat(stat, nature, index);
+/// ```
+///
+/// # Example
+/// ```
+/// # use pokefinder_rs_core::util::nature::compute_stat;
+/// let nature = 3; // Adamant
+/// let index = 1; // Attack
+/// let stat = 76;
+/// assert_eq!(compute_stat(stat, nature, index), 83);
+/// ```
 pub fn compute_stat(stat: u16, nature: u8, index: usize) -> u16 {
     ((stat as f32) * MODIFIERS[nature as usize][index - 1]) as u16
 }

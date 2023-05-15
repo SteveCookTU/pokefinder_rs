@@ -1,10 +1,14 @@
 use std::fmt::{Display, Formatter};
 use std::ops::{Add, AddAssign};
 
+/// Struct that represents a Gregorian date
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Debug)]
 pub struct DateParts {
+    /// Gregorian date year
     pub year: u16,
+    /// Gregorian date month
     pub month: u8,
+    /// Gregorian date day
     pub day: u8,
 }
 
@@ -30,9 +34,13 @@ const fn compute_numbers() -> [[char; 2]; 100] {
     strings
 }
 
+/// A date struct based on the Julian calendar
+///
+/// Bound between January 1, 2000 and Dec 31, 2099 as those are the only valid dates on the DS
+/// family of consoles.
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Debug)]
 pub struct Date {
-    pub jd: u32,
+    jd: u32,
 }
 
 impl Default for Date {
@@ -47,10 +55,12 @@ fn is_leap_year(year: u16) -> bool {
 }
 
 impl Date {
+    /// Construct a new [`Date`] based on a julian date
     pub const fn new(jd: u32) -> Self {
         Self { jd }
     }
 
+    /// Construct a new [`Date`] based on year, month and day
     pub const fn new_ymd(year: u16, month: u8, day: u8) -> Self {
         let a = if month < 3 { 1 } else { 0 };
         let y = (year as u32).wrapping_add(4800).wrapping_sub(a);
@@ -68,16 +78,19 @@ impl Date {
         }
     }
 
+    /// Calculates a new [`Date`] by adding a number of days
     pub const fn add_days(&self, days: u32) -> Self {
         Self {
             jd: self.jd.wrapping_add(days),
         }
     }
 
+    /// Converts the Julian date to the Gregorian date and returns the day
     pub const fn day(&self) -> u8 {
         self.get_parts().day
     }
 
+    /// Calculates how many days are in the month for a given year
     pub fn days_in_month(year: u16, month: u8) -> u8 {
         if month == 2 && is_leap_year(year) {
             29
@@ -86,14 +99,17 @@ impl Date {
         }
     }
 
+    /// Calculates the Gregorian dat of the week
     pub const fn day_of_week(&self) -> u8 {
         (self.jd.wrapping_add(1) % 7) as u8
     }
 
+    /// Computes the number of days between two dates
     pub const fn days_to(&self, other: &Date) -> u32 {
         other.jd - self.jd
     }
 
+    /// Converts the Julian date to a Gregorian date
     pub const fn get_parts(&self) -> DateParts {
         let a = self.jd.wrapping_add(32044);
         let b = 4u32.wrapping_mul(a).wrapping_add(3) / 146097;
@@ -116,15 +132,18 @@ impl Date {
         DateParts { year, month, day }
     }
 
+    /// Converts the Julian date to a Gregorian date and returns the month
     pub const fn month(&self) -> u8 {
         self.get_parts().month
     }
 
+    /// Converts the Julian date to a Gregorian date and returns the year
     pub const fn year(&self) -> u16 {
         self.get_parts().year
     }
 }
 
+/// Converts the date to an ISO 8601 string
 impl Display for Date {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         let parts = self.get_parts();
@@ -148,12 +167,14 @@ impl Display for Date {
     }
 }
 
+/// Increments the day by the added value.
 impl AddAssign<u32> for Date {
     fn add_assign(&mut self, rhs: u32) {
         self.jd = self.jd.wrapping_add(rhs);
     }
 }
 
+/// Increments the day by the added value.
 impl Add<u32> for Date {
     type Output = Date;
 
@@ -164,16 +185,19 @@ impl Add<u32> for Date {
     }
 }
 
+/// A time struct to track hour/minute/second
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Default, Debug)]
 pub struct Time {
-    pub md: u32,
+    md: u32,
 }
 
 impl Time {
+    /// Construct a new [`Time`] from seconds
     pub const fn new(seconds: u32) -> Self {
         Self { md: seconds }
     }
 
+    /// Construct a new [`Time`] object from hour, minute, and second
     pub const fn new_hms(hour: u8, minute: u8, second: u8) -> Self {
         Self {
             md: (hour as u32)
@@ -183,6 +207,7 @@ impl Time {
         }
     }
 
+    /// Adds a number of seconds to the [`Time`]
     pub fn add_seconds(&mut self, seconds: u32) -> u32 {
         self.md = self.md.wrapping_add(seconds);
         let mut days = 0;
@@ -193,19 +218,23 @@ impl Time {
         days
     }
 
+    /// Computes hour field
     pub const fn hour(&self) -> u8 {
         (self.md / 3600) as u8
     }
 
+    /// Computes minute field
     pub const fn minute(&self) -> u8 {
         ((self.md % 3600) / 60) as u8
     }
 
+    /// Computes second field
     pub const fn second(&self) -> u8 {
         (self.md % 60) as u8
     }
 }
 
+/// Converts the time to a string
 impl Display for Time {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(
@@ -230,13 +259,15 @@ impl Display for Time {
     }
 }
 
+/// DateTime struct based on the Julian calendar
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Default, Debug)]
 pub struct DateTime {
-    pub date: Date,
-    pub time: Time,
+    date: Date,
+    time: Time,
 }
 
 impl DateTime {
+    /// Construct a new [`DateTime`] from [`Date`] and [`Time`]
     pub const fn new_from_parts(date: &Date, time: &Time) -> Self {
         Self {
             date: *date,
@@ -244,6 +275,7 @@ impl DateTime {
         }
     }
 
+    /// Construct a new [`DateTime`] from Julian day and seconds
     pub const fn new(jd: u32, seconds: u32) -> Self {
         Self {
             date: Date::new(jd),
@@ -251,6 +283,7 @@ impl DateTime {
         }
     }
 
+    /// Construct a new [`DateTime`] from year, month, day, hour, minute, and second
     pub fn new_ymd_hms(year: u16, month: u8, day: u8, hour: u8, minute: u8, second: u8) -> Self {
         Self {
             date: Date::new_ymd(year, month, day),
@@ -258,26 +291,33 @@ impl DateTime {
         }
     }
 
+    /// Adds a number of seconds to the [`DateTime`]
+    ///
+    /// This also internally handles updating the [`Date`] if the [`Time`] goes over 86400
     pub fn add_seconds(&mut self, seconds: u32) {
         let days = self.time.add_seconds(seconds);
         self.date = self.date.add_days(days);
     }
 
+    /// Adds a number of seconds to the [`DateTime`]
     pub fn add_secs(&self, seconds: u32) -> Self {
         let mut dt = *self;
         dt.add_seconds(seconds);
         dt
     }
 
+    /// Returns the [`Date`] component
     pub const fn date(&self) -> Date {
         self.date
     }
 
+    /// Returns the [`Time`] component
     pub const fn time(&self) -> Time {
         self.time
     }
 }
 
+/// Converts the date/time to an ISO 8601 string
 impl Display for DateTime {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{} {}", self.date, self.time)

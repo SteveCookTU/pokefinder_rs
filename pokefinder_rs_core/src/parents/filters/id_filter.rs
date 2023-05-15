@@ -1,6 +1,7 @@
 use crate::gen8::states::IDState8;
 use crate::parents::states::IDStateT;
 
+/// Provides a way to determine if the given [`IDStateT`] meets the given criteria
 #[derive(Clone)]
 pub struct IDFilter {
     display_filter: Vec<u32>,
@@ -10,6 +11,7 @@ pub struct IDFilter {
 }
 
 impl IDFilter {
+    /// Construct a new [`IDFilter`] struct
     pub fn new(
         tid_filter: Vec<u16>,
         sid_filter: Vec<u16>,
@@ -24,6 +26,7 @@ impl IDFilter {
         }
     }
 
+    /// Determines if the `state` meets the filter criteria
     pub fn compare(&self, state: &impl IDStateT) -> bool {
         if !self.tid_filter.is_empty() && !self.tid_filter.iter().any(|&id| id == state.get_tid()) {
             return false;
@@ -37,6 +40,9 @@ impl IDFilter {
         true
     }
 
+    /// Determines if the `state` meets the filter criteria.
+    ///
+    /// This also runs a comparison for how new generation games display the TID
     pub fn compare_8(&self, state: &IDState8) -> bool {
         !(!self.compare(state)
             || (!self.display_filter.is_empty()

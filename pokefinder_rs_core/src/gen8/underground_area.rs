@@ -18,7 +18,7 @@ pub struct TypeSize {
 #[derive(Copy, Clone, Default, Debug)]
 pub struct Pokemon {
     pub rate: u16,
-    pub specie: u16,
+    pub species: u16,
     pub size: u8,
     pub ty: [u8; 2],
 }
@@ -26,7 +26,7 @@ pub struct Pokemon {
 #[derive(Copy, Clone, Default, EndianRead, Debug)]
 pub struct SpecialPokemon {
     pub rate: u16,
-    pub specie: u16,
+    pub species: u16,
 }
 
 #[derive(Clone, Default, Debug)]
@@ -120,7 +120,7 @@ impl UndergroundArea {
         let mut rate = rng_list.next_alt(rand) * sum as f32;
         for filter in filtered.iter().take(filtered_count) {
             if rate < filter.rate as f32 {
-                return filter.specie;
+                return filter.species;
             }
             rate -= filter.rate as f32;
         }
@@ -164,7 +164,7 @@ impl UndergroundArea {
             let rate = rng_list.next_alt(rand) * self.special_sum as f32;
             let it = self.special_pokemon.iter().find(|sp| rate < sp.rate as f32);
             if let Some(it) = it {
-                it.specie
+                it.species
             } else {
                 0
             }
@@ -177,14 +177,14 @@ impl UndergroundArea {
         let mut nums = self
             .pokemon
             .iter()
-            .map(|mon| mon.specie)
+            .map(|mon| mon.species)
             .collect::<Vec<_>>();
-        nums.extend(self.special_pokemon.iter().map(|mon| mon.specie));
+        nums.extend(self.special_pokemon.iter().map(|mon| mon.species));
         nums.sort();
         nums
     }
 
     pub fn get_species_names(&self) -> Vec<&'static str> {
-        translator::get_species(&self.get_species())
+        translator::get_species_list(&self.get_species())
     }
 }

@@ -11,14 +11,14 @@ impl StaticTemplate4 {
     #[allow(clippy::too_many_arguments)]
     pub const fn new(
         version: Game,
-        specie: u16,
+        species: u16,
         form: u8,
         shiny: Shiny,
         level: u8,
         method: Method,
     ) -> Self {
         Self {
-            base: StaticTemplate::new(version, specie, form, shiny, 255, 255, 0, level),
+            base: StaticTemplate::new(version, species, form, shiny, 255, 255, 0, level),
             method,
         }
     }
@@ -49,8 +49,8 @@ impl Template for StaticTemplate4 {
         self.base.shiny
     }
 
-    fn get_specie(&self) -> u16 {
-        self.base.specie
+    fn get_species(&self) -> u16 {
+        self.base.species
     }
 
     fn get_version(&self) -> Game {

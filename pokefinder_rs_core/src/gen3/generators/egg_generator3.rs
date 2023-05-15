@@ -97,8 +97,8 @@ fn set_inheritance<const EMERALD: bool>(
 }
 
 #[inline]
-fn get_male(version: Game, specie: u16) -> Option<&'static PersonalInfo> {
-    match specie {
+fn get_male(version: Game, species: u16) -> Option<&'static PersonalInfo> {
+    match species {
         29 => Some(personal_loader::get_personal_info(version, 32, 0)),
         314 => Some(personal_loader::get_personal_info(version, 313, 0)),
         _ => None,
@@ -200,12 +200,12 @@ impl<'a, 'b, 'c> EggGenerator3<'a, 'b, 'c> {
     pub fn generate_emerald_held(&self) -> Vec<EggState3> {
         let base = personal_loader::get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
         let male = get_male(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
         );
 
         let mut parent = 0;
@@ -316,12 +316,12 @@ impl<'a, 'b, 'c> EggGenerator3<'a, 'b, 'c> {
     pub fn generate_emerald_pickup(&self, held: Vec<EggState3>) -> Vec<EggState3> {
         let base = personal_loader::get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
         let male = get_male(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
         );
 
         let mut rng =
@@ -388,12 +388,12 @@ impl<'a, 'b, 'c> EggGenerator3<'a, 'b, 'c> {
     pub fn generate_rsfrlg_held(&self, seed: u32) -> Vec<EggState3> {
         let base = personal_loader::get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
         let male = get_male(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
         );
 
         let mut rng = PokeRNG::new_with_initial_advances(seed, self.base.base.initial_advances);
@@ -445,12 +445,12 @@ impl<'a, 'b, 'c> EggGenerator3<'a, 'b, 'c> {
     pub fn generate_rsfrlg_pickup(&self, seed: u32, held: Vec<EggState3>) -> Vec<EggState3> {
         let base = personal_loader::get_personal_info(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
             0,
         );
         let male = get_male(
             self.base.base.profile.get_version(),
-            self.base.daycare.get_egg_specie(),
+            self.base.daycare.get_egg_species(),
         );
 
         let mut rng = PokeRNG::new_with_initial_advances(

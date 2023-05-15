@@ -336,9 +336,9 @@ impl<'a, 'b> GameCubeGenerator<'a, 'b> {
 
         let mut actual_tsv = self.base.tsv;
 
-        if static_template.specie == 25 || static_template.specie == 251 {
+        if static_template.species == 25 || static_template.species == 251 {
             actual_tsv = 31121;
-        } else if static_template.specie == 250 {
+        } else if static_template.species == 250 {
             actual_tsv = 10048;
         }
 
@@ -354,15 +354,15 @@ impl<'a, 'b> GameCubeGenerator<'a, 'b> {
             let mut high = 0;
             let mut low = 0;
 
-            if static_template.specie == 133 {
+            if static_template.species == 133 {
                 actual_tsv = go.next_u16() ^ go.next_u16();
                 go.advance(2);
             }
 
-            if static_template.specie == 196 || static_template.specie == 197 {
+            if static_template.species == 196 || static_template.species == 197 {
                 actual_tsv = go.next_u16() ^ go.next_u16();
 
-                let rounds = if static_template.specie == 196 { 2 } else { 1 };
+                let rounds = if static_template.species == 196 { 2 } else { 1 };
                 for _ in 0..rounds {
                     go.advance(2);
                     iv1 = go.next_u16();

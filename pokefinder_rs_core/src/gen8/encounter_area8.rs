@@ -49,7 +49,7 @@ impl EncounterArea8 {
             let mut level = slot.get_max_level();
             if force && (rng_list.next() % 2) != 0 {
                 for s in &self.base.pokemon {
-                    if s.specie == slot.specie {
+                    if s.species == slot.species {
                         level = level.max(s.get_max_level());
                     }
                 }

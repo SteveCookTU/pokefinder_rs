@@ -4,24 +4,39 @@ use crate::util;
 const ORDER: [usize; 6] = [0, 1, 2, 5, 3, 4];
 const CHAR_ORDER: [usize; 11] = [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4];
 
+/// Contains all the common information for a Pokemon across each game
 #[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Default, Debug)]
 pub struct State {
+    /// Pokemon encryption constant
     pub ec: u32,
+    /// Pokemon PID
     pub pid: u32,
+    /// Pokemon stats
     pub stats: [u16; 6],
+    /// Pokemon ability index
     pub ability_index: u16,
+    /// Pokemon IVs
     pub ivs: [u8; 6],
+    /// Pokemon ability
     pub ability: u8,
+    /// Pokemon characteristic
     pub characteristic: u8,
+    /// Pokemon gender
     pub gender: u8,
+    /// Pokemon hidden power
     pub hidden_power: u8,
+    /// Pokemon hidden power strength
     pub hidden_power_strength: u8,
+    /// Pokemon level
     pub level: u8,
+    /// Pokemon nature
     pub nature: u8,
+    /// Pokemon shininess
     pub shiny: u8,
 }
 
 impl State {
+    /// Construct a new [`State`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         pid: u32,
@@ -49,6 +64,7 @@ impl State {
         new
     }
 
+    /// Construct a new [`State`] struct with an EC different than the PID
     #[allow(clippy::too_many_arguments)]
     pub fn new_with_ec(
         ec: u32,
@@ -112,17 +128,24 @@ impl StateT for State {
     }
 }
 
+/// Trait contains common functions for State structs
 pub trait StateT {
+    /// Updates extra information such as stats, hidden power, hidden power strength,
+    /// and characteristic based on provided pokemon information
     fn update_stats(&mut self, info: &PersonalInfo);
 }
 
+/// Struct that provides additional information from a generator
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct GeneratorState {
+    /// Base generator pokemon information
     pub base: State,
+    /// Advances of the state
     pub advances: u32,
 }
 
 impl GeneratorState {
+    /// Construct a new [`GeneratorState`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         advances: u32,
@@ -141,6 +164,7 @@ impl GeneratorState {
         }
     }
 
+    /// Construct a new [`GeneratorState`] struct with an EC different than the PID
     #[allow(clippy::too_many_arguments)]
     pub fn new_with_ec(
         advances: u32,
@@ -167,13 +191,17 @@ impl StateT for GeneratorState {
     }
 }
 
+/// Struct that provides additional information from a searcher
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct SearcherState {
+    /// Base searcher pokemon information
     pub base: State,
+    /// Seed of the state
     pub seed: u32,
 }
 
 impl SearcherState {
+    /// Construct a new [`SearcherState`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         seed: u32,

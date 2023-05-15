@@ -28,12 +28,14 @@ const JUMP_TABLE: [[u64; 2]; 25] = [
     [0x8cedf8dfe2d6e821, 0xb4fd2c6573bf7047],
 ];
 
+/// Provides random numbers via the Xorshift algorithm
 #[derive(Copy, Clone)]
 pub struct Xorshift {
     state: [u32; 4],
 }
 
 impl Xorshift {
+    /// Construct a new [`Xorshift`] struct
     pub fn new(seed0: u64, seed1: u64) -> Self {
         let mut state = [0; 4];
 
@@ -48,12 +50,16 @@ impl Xorshift {
         Self { state }
     }
 
+    /// Construct a new [`Xorshift`] struct and advance an initial amount
+    ///
+    /// The ['Xorshift::jump()'] function is used for the initial advances.
     pub fn new_with_initial_advances(seed0: u64, seed1: u64, advances: u32) -> Self {
         let mut new = Xorshift::new(seed0, seed1);
         new.jump(advances);
         new
     }
 
+    /// Gets the next 32bit PRNG state bounded by the `min` and `max` values
     pub fn next_range(&mut self, min: u32, max: u32) -> u32 {
         let diff = max.wrapping_sub(min);
         (self.next() % diff).wrapping_add(min)
@@ -63,6 +69,7 @@ impl Xorshift {
 impl Rng for Xorshift {
     type Output = u32;
 
+    /// Gets the next 32bit PRNG state
     fn next(&mut self) -> Self::Output {
         let ptr = &mut self.state;
         let mut t = ptr[0];
@@ -86,6 +93,9 @@ impl Rng for Xorshift {
         }
     }
 
+    /// Jumps the RNG by `advances` amount
+    ///
+    /// Uses a precomputed jump table to complete in O(4096)
     fn jump(&mut self, mut advances: u32) {
         self.advance(advances & 0x7F);
         advances >>= 7;

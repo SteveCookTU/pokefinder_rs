@@ -4,6 +4,7 @@ use crate::parents::{
     PERSONAL_PT, PERSONAL_RSEFRLG, PERSONAL_SWSH,
 };
 
+/// Gets the [`PersonalInfo`] slice for the specified `version`
 pub const fn get_personal_table(version: Game) -> &'static [PersonalInfo] {
     if (version.bits() & Game::GEN3.bits()) != Game::NONE.bits() {
         &PERSONAL_RSEFRLG
@@ -26,9 +27,10 @@ pub const fn get_personal_table(version: Game) -> &'static [PersonalInfo] {
     }
 }
 
-pub const fn get_personal_info(version: Game, specie: u16, form: u8) -> &'static PersonalInfo {
+/// Gets the [`PersonalInfo`] for the specified `species` and `form` based on the `version`
+pub const fn get_personal_info(version: Game, species: u16, form: u8) -> &'static PersonalInfo {
     let info = get_personal_table(version);
-    let base = &info[specie as usize];
+    let base = &info[species as usize];
     let form_index = base.get_form_stats_index();
     if form == 0 || form_index == 0 {
         base

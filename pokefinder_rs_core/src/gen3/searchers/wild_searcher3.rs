@@ -305,7 +305,7 @@ impl WildSearcher3 {
                         .get_specific_pokemon(encounter_slot as usize);
                     let info = slot.get_info();
                     if (!cute_charm_flag || cute_charm_gender(info, pid, self.base.lead))
-                        && (slot.specie != 201 || unown_check(pid, slot.form))
+                        && (slot.species != 201 || unown_check(pid, slot.form))
                     {
                         let state = WildSearcherState3::new(
                             test.next(),
@@ -317,7 +317,7 @@ impl WildSearcher3 {
                             nature,
                             get_shiny(pid, self.base.base.tsv),
                             encounter_slot,
-                            slot.specie,
+                            slot.species,
                             slot.form,
                             info,
                         );

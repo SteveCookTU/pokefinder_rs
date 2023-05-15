@@ -172,7 +172,7 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
         seed1: u64,
         static_template: &StaticTemplate,
     ) -> Vec<GeneratorState> {
-        let gender = if static_template.get_specie() == 488 {
+        let gender = if static_template.get_species() == 488 {
             1
         } else {
             2

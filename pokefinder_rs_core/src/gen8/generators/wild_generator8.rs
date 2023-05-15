@@ -99,7 +99,7 @@ impl<'a, 'b> WildGenerator8<'a, 'b> {
             }
 
             let slot = encounter_area.get_specific_pokemon(encounter_slot as usize);
-            let form = if slot.get_specie() == 201 {
+            let form = if slot.get_species() == 201 {
                 encounter_area.unown_form(rng_list.next())
             } else {
                 0
@@ -201,7 +201,7 @@ impl<'a, 'b> WildGenerator8<'a, 'b> {
                 shiny,
                 encounter_slot,
                 item,
-                slot.get_specie(),
+                slot.get_species(),
                 form,
                 info,
             );
