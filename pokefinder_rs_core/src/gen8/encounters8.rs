@@ -239,11 +239,7 @@ fn get_bdsp(
     replacement: [u16; 2],
     info: &'static [PersonalInfo],
 ) -> Vec<EncounterArea8> {
-    let compressed_data = if version == Game::BD {
-        BD
-    } else {
-        SP
-    };
+    let compressed_data = if version == Game::BD { BD } else { SP };
 
     let data = util::decompress(compressed_data);
     let mut reader = StreamContainer::new(data);
