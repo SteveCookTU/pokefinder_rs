@@ -1,9 +1,12 @@
 pub mod emerald;
+mod encounters3;
 pub mod frlg;
 mod pack;
 pub mod rs;
 mod text;
 pub mod xd;
+
+pub use encounters3::*;
 
 use serde::Deserialize;
 

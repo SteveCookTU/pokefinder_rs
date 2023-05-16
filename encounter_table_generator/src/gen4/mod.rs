@@ -7,6 +7,9 @@ mod narc;
 mod pack;
 pub mod pt;
 mod text;
+mod encounters4;
+
+pub use encounters4::*;
 
 #[derive(Deserialize)]
 struct LocationModifiers<'a> {
