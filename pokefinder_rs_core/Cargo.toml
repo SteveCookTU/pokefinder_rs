@@ -16,3 +16,6 @@ no_std_io = {git = "https://github.com/zaksabeast/no_std_io.git", rev = "67edbb4
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 web-sys = {version = "0.3.61", features = ['Storage', 'Window'] }
+
+[build-dependencies]
+encounter_table_generator = {path = "../encounter_table_generator"}

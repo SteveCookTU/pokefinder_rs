@@ -2,3 +2,4 @@
 *.lock
 .idea
 **/dist
+pokefinder_rs_core/src/resources/*.bin

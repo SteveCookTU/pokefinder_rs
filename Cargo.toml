@@ -2,7 +2,8 @@
 resolver = "2"
 members = [
     'pokefinder_rs_core',
-    'pokefinder_rs_ui'
+    'pokefinder_rs_ui',
+    'encounter_table_generator'
 ]
 
 [profile.release]

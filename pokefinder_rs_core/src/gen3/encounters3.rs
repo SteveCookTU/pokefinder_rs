@@ -106,15 +106,15 @@ impl EndianRead for WildEncounterPokeSpot {
 
 pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3> {
     let compressed_data = if version == Game::EMERALD {
-        &EMERALD[2..]
+        EMERALD
     } else if version == Game::FIRE_RED {
-        &FIRERED[2..]
+        FIRERED
     } else if version == Game::LEAF_GREEN {
-        &LEAFGREEN[2..]
+        LEAFGREEN
     } else if version == Game::RUBY {
-        &RUBY[2..]
+        RUBY
     } else {
-        &SAPPHIRE[2..]
+        SAPPHIRE
     };
 
     let data = util::decompress(compressed_data);
@@ -238,7 +238,7 @@ pub fn get_encounters(encounter: Encounter, version: Game) -> Vec<EncounterArea3
 }
 
 pub fn get_poke_spot_encounters() -> Vec<EncounterArea> {
-    let data = util::decompress(&XD[2..]);
+    let data = util::decompress(XD);
     let info = get_personal_table(Game::GEN3);
 
     let mut reader = StreamContainer::new(data);

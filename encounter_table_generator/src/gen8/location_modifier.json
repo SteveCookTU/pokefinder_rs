@@ -1,0 +1,117 @@
+{
+    "bdsp": {
+        "Great Marsh": {
+            "23": "Great Marsh Area 1",
+            "24": "Great Marsh Area 2",
+            "25": "Great Marsh Area 3",
+            "26": "Great Marsh Area 4",
+            "27": "Great Marsh Area 5",
+            "28": "Great Marsh Area 6"
+        },
+        "Iron Island": {
+            "118": "Iron Island",
+            "119": "Iron Island 1F",
+            "120": "Iron Island B1F 1",
+            "121": "Iron Island B1F 2",
+            "122": "Iron Island B2F 1",
+            "123": "Iron Island B2F 2",
+            "124": "Iron Island B3F 1"
+        },
+        "Lake Verity": {
+            "134": "Lake Verity (Pre Team Galatic Event)",
+            "135": "Lake Verity (Post Team Galatic Event)"
+        },
+        "Mount Coronet": {
+            "10": "Mt. Coronet 1F 1",
+            "11": "Mt. Coronet 2F",
+            "12": "Mt. Coronet 3F",
+            "13": "Mt. Coronet Summit",
+            "15": "Mt. Coronet 4F 1-2",
+            "16": "Mt. Coronet 4F 3",
+            "17": "Mt. Coronet 5F",
+            "18": "Mt. Coronet 6F",
+            "19": "Mt. Coronet 1F 2",
+            "20": "Mt. Coronet Upper 1F 2",
+            "21": "Mt. Coronet Upper 1F 1",
+            "22": "Mt. Coronet Upper B1F"
+        },
+        "Oreburgh Gate": {
+            "54": "Oreburgh Gate 1F",
+            "55": "Oreburgh Gate B1F"
+        },
+        "Oreburgh Mine": {
+            "5": "Oreburgh Mine B1F",
+            "6": "Oreburgh Mine B2F"
+        },
+        "Route 204": {
+            "143": "Route 204 (South)",
+            "144": "Route 204 (North)"
+        },
+        "Route 205": {
+            "145": "Route 205 (South)",
+            "146": "Route 205 (North)"
+        },
+        "Route 209": {
+            "150": "Route 209",
+            "151": "Lost Tower 1F",
+            "152": "Lost Tower 2F",
+            "153": "Lost Tower 3F",
+            "154": "Lost Tower 4F",
+            "155": "Lost Tower 5F"
+        },
+        "Route 210": {
+            "156": "Route 210 (South)",
+            "157": "Route 210 (North)"
+        },
+        "Route 211": {
+            "158": "Route 211 (West)",
+            "159": "Route 211 (East)"
+        },
+        "Route 212": {
+            "160": "Route 212 (North)",
+            "161": "Route 212 (South)"
+        },
+        "Ruin Maniac Cave": {
+            "114": "Ruin Maniac Cave (< 10 Unown)",
+            "115": "Ruin Maniac Cave (> 10 Unown)"
+        },
+        "Snowpoint Temple": {
+            "106": "Snowpoint Temple 1F",
+            "107": "Snowpoint Temple B1F",
+            "108": "Snowpoint Temple B2F",
+            "109": "Snowpoint Temple B3F",
+            "110": "Snowpoint Temple B4F",
+            "111": "Snowpoint Temple B5F"
+        },
+        "Stark Mountain": {
+            "57": "Stark Mountain Interior 1",
+            "58": "Stark Mountain Interior 2"
+        },
+        "Solaceon Ruins": {
+            "29": "Solaceon Ruins 2F",
+            "32": "Solaceon Ruins B1F (4 Stairs)",
+            "34": "Solaceon Ruins B2F (4 Stairs)",
+            "40": "Solaceon Ruins B3F (3 Stairs)",
+            "41": "Solaceon Ruins B3F (4 Stairs)",
+            "42": "Solaceon Ruins B4F (4 Stairs)",
+            "43": "Solaceon Ruins B4F (Chamber)"
+        },
+        "Turnback Cave": {
+            "63": "Turnback Cave Entrance",
+            "69": "Turnback 1st Pillar",
+            "75": "Turnback 2nd Pillar"
+        },
+        "Victory Road": {
+            "47": "Victory Road 1F",
+            "48": "Victory Road 2F",
+            "49": "Victory Road B1F",
+            "50": "Victory Road 1F Back 2",
+            "51": "Victory Road 1F Back 1",
+            "52": "Victory Road 1F Back 3"
+        },
+        "Wayward Cave": {
+            "112": "Wayward Cave 1F",
+            "113": "Wayward Cave B1F"
+        }
+    }
+}

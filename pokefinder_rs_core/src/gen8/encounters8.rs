@@ -240,9 +240,9 @@ fn get_bdsp(
     info: &'static [PersonalInfo],
 ) -> Vec<EncounterArea8> {
     let compressed_data = if version == Game::BD {
-        &BD[2..]
+        BD
     } else {
-        &SP[2..]
+        SP
     };
 
     let data = util::decompress(compressed_data);
@@ -404,9 +404,9 @@ pub fn get_underground_encounters(
 ) -> Vec<UndergroundArea> {
     let version = profile.get_version();
     let compressed_data = if version == Game::BD {
-        &BD_UNDERGROUND[2..]
+        BD_UNDERGROUND
     } else {
-        &SP_UNDERGROUND[2..]
+        SP_UNDERGROUND
     };
 
     let data = util::decompress(compressed_data);

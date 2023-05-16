@@ -463,7 +463,7 @@ pub fn get_hgss_safari(
     blocks: [u8; 5],
     info: &'static [PersonalInfo],
 ) -> Vec<EncounterArea4> {
-    let data = util::decompress(&HGSS_SAFARI[2..]);
+    let data = util::decompress(HGSS_SAFARI);
 
     let mut encounters = vec![];
 
@@ -625,7 +625,7 @@ fn get_hgss(
     let mut reader;
 
     if encounter == Encounter::BugCatchingContest {
-        data = util::decompress(&HGSS_BUG[2..]);
+        data = util::decompress(HGSS_BUG);
         reader = StreamContainer::new(data);
 
         if dex {
@@ -655,11 +655,9 @@ fn get_hgss(
         Encounter::Headbutt | Encounter::HeadbuttAlt | Encounter::HeadbuttSpecial
     ) {
         compressed_data = if version == Game::HEART_GOLD {
-            &HG_HEADBUTT[2..]
-        } else if version == Game::SOUL_SILVER {
-            &SS_HEADBUTT[2..]
+            HG_HEADBUTT
         } else {
-            &[]
+            SS_HEADBUTT
         };
         let data = util::decompress(compressed_data);
         reader = StreamContainer::new(data);
@@ -683,11 +681,9 @@ fn get_hgss(
         }
     } else {
         compressed_data = if version == Game::HEART_GOLD {
-            &HEART_GOLD[2..]
-        } else if version == Game::SOUL_SILVER {
-            &SOUL_SILVER[2..]
+            HEART_GOLD
         } else {
-            &[]
+            SOUL_SILVER
         };
 
         data = util::decompress(compressed_data);
@@ -932,11 +928,11 @@ fn get_dppt(
     info: &'static [PersonalInfo],
 ) -> Vec<EncounterArea4> {
     let compressed_data = if version == Game::DIAMOND {
-        &DIAMOND[2..]
+        DIAMOND
     } else if version == Game::PEARL {
-        &PEARL[2..]
+        PEARL
     } else {
-        &PLATINUM[2..]
+        PLATINUM
     };
 
     let data = util::decompress(compressed_data);
