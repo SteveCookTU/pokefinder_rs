@@ -1,13 +1,17 @@
 use crate::enums::{Game, Method, Shiny};
 use crate::parents::{StaticTemplate, Template};
 
+/// Contains additional information for Gen4 static encounters
 #[derive(Copy, Clone)]
 pub struct StaticTemplate4 {
+    /// Base static template data
     pub base: StaticTemplate,
+    /// Template generation method
     pub method: Method,
 }
 
 impl StaticTemplate4 {
+    /// Construct a new [`StaticTemplate4`] struct
     #[allow(clippy::too_many_arguments)]
     pub const fn new(
         version: Game,

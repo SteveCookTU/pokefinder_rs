@@ -3,12 +3,15 @@ use crate::gen4::states::{
 };
 use crate::parents::filters::{Filter, StateFilter, WildFilter, WildStateFilter};
 
+/// Checks if encounters match the filter criteria
 #[derive(Copy, Clone, Default)]
 pub struct StateFilter4 {
+    /// Base state filter data
     pub base: StateFilter,
 }
 
 impl StateFilter4 {
+    /// Construct a new [`StateFilter4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -25,6 +28,7 @@ impl StateFilter4 {
         }
     }
 
+    /// Determines if the egg `state` meets the filter criteria
     pub fn compare_egg_state(&self, state: &EggGeneratorState4) -> bool {
         if self.base.skip {
             return true;
@@ -43,6 +47,7 @@ impl StateFilter4 {
         true
     }
 
+    /// Determines if the generator `state` meets the filter criteria
     pub fn compare_generator_state(&self, state: &GeneratorState4) -> bool {
         if self.base.skip {
             return true;
@@ -66,6 +71,7 @@ impl StateFilter4 {
         true
     }
 
+    /// Determines if the searcher `state` meets the filter criteria
     pub fn compare_searcher_state(&self, state: &SearcherState4) -> bool {
         !((self.base.ability != 255 && self.base.ability != state.base.base.ability)
             || (self.base.gender != 255 && self.base.gender != state.base.base.gender)
@@ -108,12 +114,15 @@ impl Filter for StateFilter4 {
     }
 }
 
+/// Checks if wild encounters match the filter criteria
 #[derive(Copy, Clone, Default)]
 pub struct WildStateFilter4 {
+    /// Base wild state filter data
     pub base: WildStateFilter,
 }
 
 impl WildStateFilter4 {
+    /// Construct a new [`WildStateFilter4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -141,6 +150,7 @@ impl WildStateFilter4 {
         }
     }
 
+    /// Determines if the wild generator `state` meets the filter criteria
     pub fn compare_generator_state(&self, state: &WildGeneratorState4) -> bool {
         if self.base.base.skip {
             return true;
@@ -165,6 +175,7 @@ impl WildStateFilter4 {
         true
     }
 
+    /// Determines if the wild searcher `state` meets the filter criteria
     pub fn compare_searcher_state(&self, state: &WildSearcherState4) -> bool {
         !((self.base.base.ability != 255 && self.base.base.ability != state.base.base.base.ability)
             || (self.base.base.gender != 255

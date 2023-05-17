@@ -1,14 +1,19 @@
 use crate::parents::states::{GeneratorState, SearcherState, StateT};
 use crate::parents::PersonalInfo;
 
+/// Generator Struct for Gen4 static encounters
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct GeneratorState4 {
+    /// Base generator state data
     pub base: GeneratorState,
+    /// Elm/Irwin call value
     pub call: u8,
+    /// Chatot pitch value
     pub chatot: u8,
 }
 
 impl GeneratorState4 {
+    /// Construct a new [`GeneratorState4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         prng: u16,
@@ -38,13 +43,17 @@ impl StateT for GeneratorState4 {
     }
 }
 
+/// Searcher struct for Gen4 static encounters
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct SearcherState4 {
+    /// Base searcher state data
     pub base: SearcherState,
+    /// Advances of the state
     pub advances: u32,
 }
 
 impl SearcherState4 {
+    /// Construct a new [`SearcherState4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         seed: u32,

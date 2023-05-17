@@ -343,6 +343,7 @@ fn get_bdsp(
     encounters
 }
 
+/// Gets wild encounters for the `encounter` and `profile`
 pub fn get_encounters(
     encounter: Encounter,
     time: u8,
@@ -363,6 +364,7 @@ pub fn get_encounters(
     )
 }
 
+/// Returns the changing pokemon of the Great Marsh
 pub fn get_great_marsh_pokemon(profile: &Profile8) -> &[u16] {
     if profile.get_national_dex() {
         &GREAT_MARSH_DEX
@@ -371,6 +373,7 @@ pub fn get_great_marsh_pokemon(profile: &Profile8) -> &[u16] {
     }
 }
 
+/// Gets static encounters from the `ty`
 pub fn get_static_encounters(index: usize) -> &'static [StaticTemplate] {
     match index {
         0 => STARTERS.as_slice(),
@@ -385,14 +388,17 @@ pub fn get_static_encounters(index: usize) -> &'static [StaticTemplate] {
     }
 }
 
+/// Gets a specific static encounter from the `ty` and `index`
 pub fn get_static_encounter(ty: usize, index: usize) -> &'static StaticTemplate {
     &get_static_encounters(ty)[index]
 }
 
+/// Returns the changing pokemon of the Trophy Garden
 pub fn get_trophy_garden_pokemon() -> [u16; 16] {
     TROPHY_GARDEN
 }
 
+/// Gets underground encounters filtered by the `storyFlag` and `profile`
 pub fn get_underground_encounters(
     story_flag: u8,
     diglett: bool,

@@ -44,23 +44,25 @@ fn get_shiny(pid: u32, tsv: u16) -> u8 {
     }
 }
 
+/// Wild encounter searcher for Gen4
 #[derive(Clone)]
 pub struct WildSearcher4 {
-    pub base: WildSearcher<EncounterArea4, Profile4, WildStateFilter4>,
-    pub modified_slots: Arc<Vec<u8>>,
-    pub results: Arc<Mutex<Vec<WildSearcherState4>>>,
-    pub progress: Arc<AtomicU32>,
-    pub max_advance: u32,
-    pub min_advance: u32,
-    pub max_delay: u32,
-    pub min_delay: u32,
-    pub thresh: u16,
-    pub safari: bool,
-    pub searching: Arc<AtomicBool>,
-    pub shiny: bool,
+    base: WildSearcher<EncounterArea4, Profile4, WildStateFilter4>,
+    modified_slots: Arc<Vec<u8>>,
+    results: Arc<Mutex<Vec<WildSearcherState4>>>,
+    progress: Arc<AtomicU32>,
+    max_advance: u32,
+    min_advance: u32,
+    max_delay: u32,
+    min_delay: u32,
+    thresh: u16,
+    safari: bool,
+    searching: Arc<AtomicBool>,
+    shiny: bool,
 }
 
 impl WildSearcher4 {
+    /// Construct a new [`WildSearcher4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         min_advance: u32,
@@ -103,18 +105,22 @@ impl WildSearcher4 {
         new
     }
 
+    /// Cancels the running search
     pub fn cancel_search(&self) {
         self.searching.store(false, Ordering::SeqCst);
     }
 
+    /// Returns the progress of the running search
     pub fn get_progress(&self) -> u32 {
         self.progress.load(Ordering::SeqCst)
     }
 
+    /// Returns the states of the running search
     pub fn get_results(&self) -> Vec<WildSearcherState4> {
         std::mem::take(self.results.lock().unwrap().as_mut())
     }
 
+    /// Starts the search
     pub fn start_search(&self, min: [u8; 6], max: [u8; 6], index: u8) {
         self.searching.store(true, Ordering::SeqCst);
 

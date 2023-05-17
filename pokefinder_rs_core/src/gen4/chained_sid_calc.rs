@@ -3,18 +3,23 @@ use crate::parents::PersonalInfo;
 use crate::rng::{lcrng_reverse, PokeRNGR};
 use std::collections::HashSet;
 
+/// Computes SID from several rounds of a chained shiny Pokemon
 #[derive(Default, Clone)]
 pub struct ChainedSIDCalc {
+    /// Computed SIDs
     pub sids: Vec<u16>,
+    /// Trainer ID
     pub tid: u16,
 }
 
 impl ChainedSIDCalc {
+    /// Constructs a new [`ChainedSIDCalc`] struct
     pub fn new(tid: u16) -> Self {
         let sids = (0..=0xFFFF).step_by(8).collect::<Vec<u16>>();
         Self { sids, tid }
     }
 
+    /// Filters down potential SIDs from another chained shiny encounter of the same Pokemon
     #[allow(clippy::too_many_arguments)]
     pub fn add_entry(
         &mut self,

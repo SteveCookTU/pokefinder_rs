@@ -1,15 +1,21 @@
 use crate::parents::states::{GeneratorState, StateT};
 use crate::parents::PersonalInfo;
 
+/// Generator state for Gen8 underground encounters
 #[derive(Copy, Clone)]
 pub struct UndergroundState {
+    /// Base generator state data
     pub base: GeneratorState,
+    /// Pokemon egg move
     pub egg_move: u16,
+    /// Pokemon item
     pub item: u16,
+    /// Pokemon species
     pub species: u16,
 }
 
 impl UndergroundState {
+    /// Construct a new [`UndergroundState`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         advances: u32,

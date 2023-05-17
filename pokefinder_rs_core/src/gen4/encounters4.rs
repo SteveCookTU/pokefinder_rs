@@ -457,7 +457,7 @@ fn modify_time_hgss(
     }
 }
 
-pub fn get_hgss_safari(
+fn get_hgss_safari(
     encounter: Encounter,
     time: usize,
     blocks: [u8; 5],
@@ -1040,6 +1040,7 @@ fn get_dppt(
     encounters
 }
 
+/// Gets wild encounters for the `encounter` and `profile`
 #[allow(clippy::too_many_arguments)]
 pub fn get_encounters(
     encounter: Encounter,
@@ -1079,6 +1080,7 @@ pub fn get_encounters(
     }
 }
 
+/// Returns the changing pokemon of the Great Marsh
 pub fn get_great_marsh_pokemon(profile: &Profile4) -> &'static [u16] {
     if (profile.get_version() & Game::DP) != Game::NONE {
         if profile.get_national_dex() {
@@ -1093,6 +1095,7 @@ pub fn get_great_marsh_pokemon(profile: &Profile4) -> &'static [u16] {
     }
 }
 
+/// Gets static encounters from the `ty`
 pub fn get_static_encounters(ty: usize) -> &'static [StaticTemplate4] {
     match ty {
         0 => STARTERS.as_slice(),
@@ -1106,10 +1109,12 @@ pub fn get_static_encounters(ty: usize) -> &'static [StaticTemplate4] {
     }
 }
 
+/// Gets a static encounter from the `ty` and `index`
 pub fn get_static_encounter(ty: usize, index: usize) -> &'static StaticTemplate4 {
     &get_static_encounters(ty)[index]
 }
 
+/// Returns the changing pokemon of the Trophy Garden
 pub fn get_trophy_garden_pokemon(profile: &'static Profile4) -> &'static [u16] {
     if (profile.get_version() & Game::DP) != Game::NONE {
         TROPHY_GARDEN_DP.as_slice()

@@ -2,6 +2,8 @@ use crate::enums::Method;
 use crate::gen3::states::PIDToIVState;
 use crate::rng::{lcrng_reverse, PokeRNG, PokeRNGR, XDRNG, XDRNGR};
 
+/// Computes IVs from the `pid` for [`Method::Method1`], [`Method::Method2`], [`Method::Method4`],
+/// [`Method::XDColo`], and [`Method::Channel`]
 pub fn calculate_ivs(pid: u32) -> Vec<PIDToIVState> {
     let mut states = vec![];
 

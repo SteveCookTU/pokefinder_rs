@@ -1,3 +1,5 @@
+#![warn(missing_docs)]
+
 //! This crate is a Rust port of the PokeFinder core library written in C++.
 //! This crate attempts to follow the original libraries usage along with being
 //! maintained side by side.

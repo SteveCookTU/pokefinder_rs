@@ -10,12 +10,15 @@ use crate::rng::Xoroshiro;
 const TOXTRICITY_AMPED_NATURES: [u8; 13] = [3, 4, 2, 8, 9, 19, 22, 11, 13, 14, 0, 6, 24];
 const TOXTRICITY_LOWKEY_NATURES: [u8; 12] = [1, 5, 7, 10, 12, 15, 16, 17, 18, 20, 21, 23];
 
+/// Raid encounter generator for Gen8
 #[derive(Clone)]
 pub struct RaidGenerator<'a, 'b> {
+    /// Base generator data
     pub base: Generator<'a, 'b, Profile8, StateFilter8>,
 }
 
 impl<'a, 'b> RaidGenerator<'a, 'b> {
+    /// Construct a new [`RaidGenerator`] struct
     pub fn new(
         initial_advances: u32,
         max_advances: u32,
@@ -35,6 +38,7 @@ impl<'a, 'b> RaidGenerator<'a, 'b> {
         }
     }
 
+    /// Generates states for the `raid`
     pub fn generate(&self, mut seed: u64, level: u8, raid: &Raid) -> Vec<GeneratorState> {
         let info = raid.base.get_info();
         seed = seed.wrapping_add(

@@ -3,17 +3,21 @@ use crate::parents::filters::IDFilter;
 use crate::parents::generators::IDGenerator;
 use crate::rng::Xorshift;
 
+/// TID/SID generator for Gen8
 pub struct IDGenerator8<'a> {
+    /// Base ID generator data
     pub base: IDGenerator<'a>,
 }
 
 impl<'a> IDGenerator8<'a> {
+    /// Construct a new [`IDGenerator8`] struct
     pub fn new(initial_advances: u32, max_advances: u32, filter: &'a IDFilter) -> Self {
         Self {
             base: IDGenerator::new(initial_advances, max_advances, filter),
         }
     }
 
+    /// Generates [`IDState8`] states
     pub fn generate(&self, seed0: u64, seed1: u64) -> Vec<IDState8> {
         let mut rng = Xorshift::new_with_initial_advances(seed0, seed1, self.base.initial_advances);
 

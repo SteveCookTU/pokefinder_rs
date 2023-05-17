@@ -8,6 +8,7 @@ pub mod searchers;
 pub mod shadow_lock;
 mod shadow_template;
 pub mod states;
+/// Contains tools for Gen3 games
 pub mod tools;
 
 pub use encounter_area3::*;

@@ -10,13 +10,17 @@ fn gen(rng: &mut Xorshift) -> u32 {
     rng.next_range(0x80000000, 0x7fffffff)
 }
 
+/// Event generator for Gen8
 #[derive(Clone)]
 pub struct EventGenerator8<'a, 'b, 'c> {
+    /// Base generator data
     pub base: Generator<'a, 'b, Profile8, StateFilter8>,
+    /// Wondercard Pokemon Template
     pub wb8: &'c WB8,
 }
 
 impl<'a, 'b, 'c> EventGenerator8<'a, 'b, 'c> {
+    /// Construct a new [`EventGenerator8`] struct
     pub fn new(
         initial_advances: u32,
         max_advances: u32,
@@ -44,6 +48,7 @@ impl<'a, 'b, 'c> EventGenerator8<'a, 'b, 'c> {
         new
     }
 
+    /// Generates [`GeneratorState`] states for events
     pub fn generate(&self, seed0: u64, seed1: u64) -> Vec<GeneratorState> {
         let info = self.wb8.get_info(self.base.profile.get_version());
         let rng = Xorshift::new_with_initial_advances(

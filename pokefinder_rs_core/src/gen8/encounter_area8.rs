@@ -1,4 +1,4 @@
-use crate::enums::{Encounter, Game};
+use crate::enums::{Encounter, Game, Lead};
 use crate::parents::{EncounterArea, EncounterAreaT, Slot};
 use crate::rng::{RNGList, Xorshift};
 
@@ -13,18 +13,30 @@ const UNOWN5: [u8; 1] = [4];
 const UNOWN6: [u8; 1] = [3];
 const UNOWN7: [u8; 2] = [26, 27];
 
+/// Contains information about the encounters for an area in Gen8
+///
+/// This includes location, rate, and the slot
 #[derive(Clone)]
 pub struct EncounterArea8 {
+    /// Base encounter area data
     pub base: EncounterArea,
 }
 
 impl EncounterArea8 {
+    /// Contruct a new [`EncounterArea8`] struct
     pub fn new(location: u8, rate: u8, ty: Encounter, pokemon: Vec<Slot>) -> Self {
         Self {
             base: EncounterArea::new(location, rate, ty, pokemon),
         }
     }
 
+    /// Calculates the level of a pokemon
+    ///
+    /// Takes into account any modifications from [`Lead::PRESSURE`]
+    ///
+    /// `DIFF` indicates whether min and max levels are different
+    ///
+    /// [`Lead::PRESSURE`]: ../enums/struct.Lead.html
     pub fn calculate_level_with_list<const DIFF: bool>(
         &self,
         encounter_slot: u8,
@@ -58,6 +70,7 @@ impl EncounterArea8 {
         }
     }
 
+    /// Checks if the location is in the Great Marsh
     pub fn great_marsh(&self, version: Game) -> bool {
         if (version & Game::BDSP) != Game::NONE {
             matches!(self.base.location, 23 | 24 | 25 | 26 | 27 | 28)
@@ -66,6 +79,7 @@ impl EncounterArea8 {
         }
     }
 
+    /// Checks if the location is in the Trophy Garden
     pub fn trophy_garden(&self, version: Game) -> bool {
         if (version & Game::BDSP) != Game::NONE {
             self.base.location == 117
@@ -74,6 +88,7 @@ impl EncounterArea8 {
         }
     }
 
+    /// Returns the Unown form to use for Solaceon Ruins
     pub fn unown_form(&self, prng: u32) -> u8 {
         match self.base.location {
             29 => UNOWN7[(prng as usize) % UNOWN7.len()],

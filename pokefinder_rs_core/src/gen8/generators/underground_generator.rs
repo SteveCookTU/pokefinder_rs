@@ -949,14 +949,19 @@ fn get_item(rand: u8, lead: Lead, info: &PersonalInfo) -> u16 {
     }
 }
 
+/// Underground encounter generator for Gen8
 #[derive(Clone)]
 pub struct UndergroundGenerator<'a, 'b, 'c> {
+    /// Base static generator data
     pub base: StaticGenerator<'a, 'b, Profile8, UndergroundStateFilter<'c>>,
+    /// Whether diglett bonus is activated
     pub diglett: bool,
+    /// Determines which level range to pull from
     pub level_flag: u8,
 }
 
 impl<'a, 'b, 'c> UndergroundGenerator<'a, 'b, 'c> {
+    /// Construct a new [`UndergroundGenerator`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         initial_advances: u32,
@@ -985,6 +990,7 @@ impl<'a, 'b, 'c> UndergroundGenerator<'a, 'b, 'c> {
         new
     }
 
+    /// Generates states for the `encounter_area`
     pub fn generate(
         &self,
         seed0: u64,

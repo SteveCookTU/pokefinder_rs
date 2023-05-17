@@ -1,23 +1,44 @@
 use crate::enums::Game;
 use crate::parents::{personal_loader, PersonalInfo};
 
+/// Represents BDSP Wondercard data
 #[derive(Clone)]
 pub struct WB8 {
+    /// Template EC
     pub ec: u32,
+    /// Template PID
     pub pid: u32,
+    /// Template SID
     pub sid: u16,
+    /// Template species
     pub species: u16,
+    /// Template TID
     pub tid: u16,
+    /// Template is egg
     pub egg: bool,
+    /// Template ability
+    ///
+    /// 0: 0, 1: 1, 2: H, 3: 1/3, 4: 1/2/H
     pub ability: u8,
+    /// Template form
     pub form: u8,
+    /// Template gender
     pub gender: u8,
+    /// Template flawless IV count
     pub iv_count: u8,
+    /// Template level
     pub level: u8,
+    /// Template nature
+    ///
+    /// 0xFF => unset
     pub nature: u8,
+    /// Template shininess
+    ///
+    /// 0: never, 1: random, 2: star, 3: square, 4: static
     pub shiny: u8,
 }
 
+/// Converts a u8 slice into a [`WB8`]
 impl From<&[u8]> for WB8 {
     fn from(value: &[u8]) -> Self {
         Self {
@@ -43,6 +64,7 @@ impl From<&[u8]> for WB8 {
 }
 
 impl WB8 {
+    /// Construct a new [`WB8`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         tid: u16,
@@ -76,6 +98,7 @@ impl WB8 {
         }
     }
 
+    /// Returns the pokemon information
     pub fn get_info(&self, version: Game) -> &'static PersonalInfo {
         personal_loader::get_personal_info(version, self.species, self.form)
     }

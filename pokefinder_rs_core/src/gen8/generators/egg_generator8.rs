@@ -6,9 +6,12 @@ use crate::parents::states::EggGeneratorState;
 use crate::parents::{personal_loader, Daycare, Profile};
 use crate::rng::{RNGList, XoroshiroBDSP, Xorshift};
 
+/// Egg generator for Gen8
 #[derive(Clone)]
 pub struct EggGenerator8<'a, 'b, 'c> {
+    /// Base egg generator data
     pub base: EggGenerator<'a, 'b, 'c, Profile8, StateFilter8>,
+    /// If the profile has the shiny charm unlocked
     pub shiny_charm: bool,
 }
 
@@ -17,6 +20,7 @@ fn gen(rng: &mut Xorshift) -> u32 {
 }
 
 impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
+    /// Construct a new [`EggGenerator8`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         initial_advances: u32,
@@ -44,6 +48,7 @@ impl<'a, 'b, 'c> EggGenerator8<'a, 'b, 'c> {
         new
     }
 
+    /// Generate [`EggGeneratorState`] states
     pub fn generate(&self, seed0: u64, seed1: u64) -> Vec<EggGeneratorState> {
         let base = personal_loader::get_personal_info(
             self.base.base.profile.get_version(),

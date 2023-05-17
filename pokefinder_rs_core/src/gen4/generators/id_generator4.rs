@@ -3,19 +3,29 @@ use crate::parents::filters::IDFilter;
 use crate::parents::generators::IDGenerator;
 use crate::rng::MTFast;
 
+/// TID/SID generator for Gen4
 #[derive(Clone)]
 pub struct IDGenerator4<'a> {
+    /// Base ID generator data
     pub base: IDGenerator<'a>,
+    /// Maximum delay
     pub max_delay: u32,
+    /// Minimum delay
     pub min_delay: u32,
+    /// Search year
     pub year: u16,
+    /// Search day
     pub day: u8,
+    /// Search hour
     pub hour: u8,
+    /// Search minute
     pub minute: u8,
+    /// Search month
     pub month: u8,
 }
 
 impl<'a> IDGenerator4<'a> {
+    /// Construct a new [`IDGenerator4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         min_delay: u32,
@@ -39,6 +49,7 @@ impl<'a> IDGenerator4<'a> {
         }
     }
 
+    /// Generates [`IDState4`] states
     pub fn generate(&self) -> Vec<IDState4> {
         let mut states = vec![];
 

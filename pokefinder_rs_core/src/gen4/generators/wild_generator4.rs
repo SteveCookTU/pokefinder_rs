@@ -42,13 +42,17 @@ fn get_shiny(pid: u32, tsv: u16) -> u8 {
     }
 }
 
+/// Wild encounter generator for Gen4
 #[derive(Clone)]
 pub struct WildGenerator4<'a, 'b> {
+    /// Base wild generator data
     pub base: WildGenerator<'a, 'b, Profile4, WildStateFilter4>,
+    /// Whether Poke Radar is forced shiny
     pub shiny: bool,
 }
 
 impl<'a, 'b> WildGenerator4<'a, 'b> {
+    /// Construct a new [`WildGenerator4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         initial_advances: u32,
@@ -76,6 +80,7 @@ impl<'a, 'b> WildGenerator4<'a, 'b> {
         }
     }
 
+    /// Generates states for the `encounter_area`
     pub fn generate(
         &self,
         seed: u32,

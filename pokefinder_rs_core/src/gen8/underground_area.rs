@@ -2,43 +2,74 @@ use crate::rng::{RNGList, Xorshift};
 use crate::util::translator;
 use no_std_io::EndianRead;
 
+/// Type and Rate data structure used by BDSP underground
 #[derive(Copy, Clone, Debug)]
 pub struct TypeRate {
+    /// Slot rate
     pub rate: u16,
+    /// Slot type
     pub ty: u8,
 }
 
+/// Type and Size data structure used by BDSP underground
+///
+/// `value` is calculated 10^(`size`) + `ty`
 #[derive(Copy, Clone, Default, Debug)]
 pub struct TypeSize {
+    /// Slot value
     pub value: u16,
+    /// Slot size
     pub size: u8,
+    /// Slot type
     pub ty: u8,
 }
 
+/// Pokemon data structured used by BDSP underground
 #[derive(Copy, Clone, Default, Debug)]
 pub struct Pokemon {
+    /// Pokemon rate
     pub rate: u16,
+    /// Pokemon species
     pub species: u16,
+    /// Pokemon size
     pub size: u8,
+    /// Pokemon types
     pub ty: [u8; 2],
 }
 
+/// Special pokemon structure used by BDSP underground
 #[derive(Copy, Clone, Default, EndianRead, Debug)]
 pub struct SpecialPokemon {
+    /// Special pokemon rate
     pub rate: u16,
+    /// Special pokemon species
     pub species: u16,
 }
 
+/// Contains information about the encounters for an underground area.
+///
+/// Underground area does not work on the model of set encounter slot numbers like most other games.
+/// This struct also provides the functionality to dynamically determine the encountered pokemon
+/// based on the rates of types and pokemon.
 #[derive(Clone, Default, Debug)]
 pub struct UndergroundArea {
+    /// Area pokemon
     pub pokemon: Vec<Pokemon>,
+    /// Area special pokemon
     pub special_pokemon: Vec<SpecialPokemon>,
+    /// Area [`TypeRate`]s
     pub type_rates: Vec<TypeRate>,
+    /// Area [`TypeSize`]s
     pub type_sizes: Vec<TypeSize>,
+    /// Area sum of special pokemon rates
     pub special_sum: u16,
+    /// Area sum of pokemon type rates
     pub type_sum: u16,
+    /// Area location
     pub location: u8,
+    /// Maximum number of pokemon spawned
     pub max: u8,
+    /// Minimum number of pokemon spawned
     pub min: u8,
 }
 
@@ -48,6 +79,7 @@ fn rand(prng: u32) -> f32 {
 }
 
 impl UndergroundArea {
+    /// Contruct a new [`UndergroundArea`] struct
     pub fn new(
         location: u8,
         min: u8,
@@ -91,6 +123,10 @@ impl UndergroundArea {
         new
     }
 
+    /// Returns the pokemon to create based on the `ty`
+    ///
+    /// Filters from the available pokemon that match the necessary type and size. This filtered list
+    /// is then randomly selected from based up the pokemon encounter rates.
     pub fn get_pokemon(&self, rng_list: &mut RNGList<u32, Xorshift, 256>, ty: TypeSize) -> u16 {
         let mut temp_count = 0;
         let mut temp = [TypeSize::default(); 23];
@@ -127,6 +163,10 @@ impl UndergroundArea {
         0
     }
 
+    /// Returns the list of types and associated sizes to help determine which pokemon to create
+    ///
+    /// A type is randomly selected from the available pokemon. A size is then randomly selected
+    /// and paired with the type.
     pub fn get_slots(
         &self,
         rng_list: &mut RNGList<u32, Xorshift, 256>,
@@ -159,6 +199,7 @@ impl UndergroundArea {
         slots
     }
 
+    /// Returns the rare pokemon to create
     pub fn get_special_pokemon(&self, rng_list: &mut RNGList<u32, Xorshift, 256>) -> u16 {
         if (rng_list.next() % 100) < 50 {
             let rate = rng_list.next_alt(rand) * self.special_sum as f32;
@@ -173,6 +214,7 @@ impl UndergroundArea {
         }
     }
 
+    /// Returns the species numbers of the area
     pub fn get_species(&self) -> Vec<u16> {
         let mut nums = self
             .pokemon
@@ -184,6 +226,7 @@ impl UndergroundArea {
         nums
     }
 
+    /// Returns the species names of the area
     pub fn get_species_names(&self) -> Vec<&'static str> {
         translator::get_species_list(&self.get_species())
     }

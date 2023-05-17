@@ -1,10 +1,15 @@
 use crate::rng::PokeRNG;
 
+/// Generates routes HGSS roamers will appear on
 #[derive(Copy, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
 pub struct HGSSRoamer {
+    /// Entei route
     pub entei_route: u8,
+    /// Latias/Latios route
     pub lati_route: u8,
+    /// Raikou route
     pub raikou_route: u8,
+    /// Number of PRNG calls used to determine roamer locations
     pub skips: u8,
 }
 
@@ -27,6 +32,7 @@ fn get_route_k(prng: u16) -> u8 {
 }
 
 impl HGSSRoamer {
+    /// Construct a new [`HGSSRoamer`] struct
     pub fn new(seed: u32, roamers: [bool; 3], routes: [u8; 3]) -> Self {
         let mut new = Self {
             entei_route: 0,
@@ -64,6 +70,7 @@ impl HGSSRoamer {
         new
     }
 
+    /// Returns string of roamer locations
     pub fn get_route_string(&self) -> String {
         let mut route = String::new();
         if self.raikou_route != 0 {

@@ -105,15 +105,21 @@ fn get_male(version: Game, species: u16) -> Option<&'static PersonalInfo> {
     }
 }
 
+/// Egg encounter generator for Gen4
 #[derive(Clone)]
 pub struct EggGenerator4<'a, 'b, 'c> {
+    /// Base egg generator data
     pub base: EggGenerator<'a, 'b, 'c, Profile4, StateFilter4>,
+    /// Number of pickup advances to offset
     pub delay_pickup: u32,
+    /// Initial number of pickup advances
     pub initial_advances_pickup: u32,
+    /// Maximum number of pickup advances
     pub max_advances_pickup: u32,
 }
 
 impl<'a, 'b, 'c> EggGenerator4<'a, 'b, 'c> {
+    /// Construct a new [`EggGenerator4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         initial_advances: u32,
@@ -143,6 +149,7 @@ impl<'a, 'b, 'c> EggGenerator4<'a, 'b, 'c> {
         }
     }
 
+    /// Generates [`EggGeneratorState4`] states
     pub fn generate(&self, seed_held: u32, seed_pickup: u32) -> Vec<EggGeneratorState4> {
         let held = self.generate_held(seed_held);
         if !held.is_empty() {

@@ -4,15 +4,17 @@ use crate::rng::MTFast;
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 use std::sync::{Arc, Mutex};
 
+/// TID/SID searcher for Gen4
 #[derive(Clone)]
 pub struct IDSearcher4 {
-    pub filter: Arc<IDFilter>,
-    pub results: Arc<Mutex<Vec<IDState4>>>,
-    pub progress: Arc<AtomicU32>,
-    pub searching: Arc<AtomicBool>,
+    filter: Arc<IDFilter>,
+    results: Arc<Mutex<Vec<IDState4>>>,
+    progress: Arc<AtomicU32>,
+    searching: Arc<AtomicBool>,
 }
 
 impl IDSearcher4 {
+    /// Constructs a new [`IDSearcher4`] struct
     pub fn new(filter: &IDFilter) -> Self {
         Self {
             filter: Arc::new(filter.clone()),
@@ -22,18 +24,22 @@ impl IDSearcher4 {
         }
     }
 
+    /// Cancels the running search
     pub fn cancel_search(&self) {
         self.searching.store(false, Ordering::SeqCst);
     }
 
+    /// Returns the progress of the running search
     pub fn get_progress(&self) -> u32 {
         self.progress.load(Ordering::SeqCst)
     }
 
+    /// Returns the states of the running search
     pub fn get_results(&self) -> Vec<IDState4> {
         std::mem::take(self.results.lock().unwrap().as_mut())
     }
 
+    /// Starts the search
     pub fn start_search(&self, infinite: bool, year: u16, min_delay: u32, mut max_delay: u32) {
         self.searching.store(true, Ordering::SeqCst);
         max_delay = if infinite { 0xe8ffff } else { max_delay };

@@ -356,6 +356,9 @@ impl From<EventTableEntry> for Raid {
     }
 }
 
+/// Initialize the DenLoader with what `path` to use for events.
+///
+/// This must be called before using [`get_event()`]
 pub fn init(mut path: PathBuf) {
     path.push("nests_event.json");
     let read = OpenOptions::new().read(true).open(path);
@@ -396,19 +399,23 @@ pub fn init(mut path: PathBuf) {
     }
 }
 
+/// Returns the den for the `index` and `rarity`
 pub fn get_den(index: usize, rarity: usize) -> &'static Den {
     let table_hash = DEN_INFO[index].hash[rarity];
     NESTS.iter().find(|d| d.hash >= table_hash).unwrap()
 }
 
+/// Returns the den event initialized by [`init()`]
 pub fn get_event() -> &'static Mutex<DenEvent> {
     &EVENT
 }
 
+/// Returns the location of the den
 pub fn get_location(index: usize) -> u8 {
     DEN_INFO[index].location
 }
 
+/// Returns the coordinates of the den
 pub fn get_coordinate(index: usize) -> [u16; 2] {
     DEN_INFO[index].coordinate
 }

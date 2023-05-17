@@ -1,6 +1,7 @@
 use crate::rng::PokeRNGR;
 use crate::util::{Date, DateTime, Time};
 
+/// Calculates the closest 16-bit seed from the given `seed`
 pub fn calculate_origin_seed(seed: u32, advances: &mut u32) -> u16 {
     let mut rng = PokeRNGR::new(seed);
     while rng.seed > 0xFFFF {
@@ -11,6 +12,7 @@ pub fn calculate_origin_seed(seed: u32, advances: &mut u32) -> u16 {
     rng.seed as u16
 }
 
+/// Calculates date/times that give the `seed` in the given `year`
 pub fn calculate_times(seed: u32, year: u16) -> Vec<DateTime> {
     let mut states = vec![];
 

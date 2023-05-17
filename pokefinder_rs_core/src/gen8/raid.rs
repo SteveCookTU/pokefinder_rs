@@ -1,14 +1,19 @@
 use crate::enums::{Game, Shiny};
 use crate::parents::StaticTemplate;
 
+/// Contains information about how to generate a Raid pokemon
 #[derive(Copy, Clone)]
 pub struct Raid {
+    /// Base static template data
     pub base: StaticTemplate,
+    /// If pokemon is gigantamax
     pub gigantamax: bool,
+    /// Template available stars
     pub star: [bool; 5],
 }
 
 impl Raid {
+    /// Construct a new [`Raid`] struct
     #[allow(clippy::too_many_arguments)]
     pub const fn new(
         species: u16,
@@ -36,6 +41,7 @@ impl Raid {
         }
     }
 
+    /// Returns a string display fo the available stars
     pub fn get_star_display(&self) -> String {
         let mut low = 4;
         let mut high = 0;

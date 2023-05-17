@@ -31,12 +31,15 @@ fn is_shiny(pid: u32, tsv: u16) -> bool {
     (psv ^ tsv) < 8
 }
 
+/// Static encounter generator for Gen4
 #[derive(Clone)]
 pub struct StaticGenerator4<'a, 'b> {
+    /// Base static generator data
     pub base: StaticGenerator<'a, 'b, Profile4, StateFilter4>,
 }
 
 impl<'a, 'b> StaticGenerator4<'a, 'b> {
+    /// Construct a new [`StaticGenerator4`] struct
     pub fn new(
         initial_advances: u32,
         max_advances: u32,
@@ -59,6 +62,7 @@ impl<'a, 'b> StaticGenerator4<'a, 'b> {
         }
     }
 
+    /// Generates states for the `static_template`
     pub fn generate(&self, seed: u32, static_template: &StaticTemplate4) -> Vec<GeneratorState4> {
         match self.base.base.method {
             Method::Method1 => self.generate_method_1(seed, static_template),

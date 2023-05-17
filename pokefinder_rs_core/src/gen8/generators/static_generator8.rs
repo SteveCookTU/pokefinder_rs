@@ -10,12 +10,15 @@ fn gen(rng: &mut Xorshift) -> u32 {
     rng.next_range(0x80000000, 0x7fffffff)
 }
 
+/// Static encounter generator for Gen8
 #[derive(Clone)]
 pub struct StaticGenerator8<'a, 'b> {
+    /// Base static generator data
     pub base: StaticGenerator<'a, 'b, Profile8, StateFilter8>,
 }
 
 impl<'a, 'b> StaticGenerator8<'a, 'b> {
+    /// Construct a new [`StaticGenerator8`] struct
     pub fn new(
         initial_advances: u32,
         max_advances: u32,
@@ -39,6 +42,7 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
         new
     }
 
+    /// Generates states for the `static_template`
     pub fn generate(
         &self,
         seed0: u64,
@@ -166,6 +170,7 @@ impl<'a, 'b> StaticGenerator8<'a, 'b> {
         states
     }
 
+    /// Generates states for a roamer `static_template`
     pub fn generate_roamer(
         &self,
         seed0: u64,

@@ -1,6 +1,9 @@
 use crate::gen4::{SeedTime4, SeedTimeCalibrate4};
 use crate::util::{Date, DateTime};
 
+/// Generates date/times for a seed
+///
+/// Can filter by a specific second with `force_second` and`forced_second`
 pub fn calculate_times(
     seed: u32,
     year: u16,
@@ -19,8 +22,6 @@ pub fn calculate_times(
         efgh.wrapping_add(2000u32.wrapping_sub(year as u32))
     };
 
-    println!("{ab}");
-
     let mut results = vec![];
 
     for month in 1..=12 {
@@ -28,11 +29,11 @@ pub fn calculate_times(
         for day in 1..=max_days {
             for minute in 0..60 {
                 for second in 0..60 {
-                    if ab as u16
-                        == (month as u16)
+                    if (ab as u16)
+                        == ((month as u16)
                             .wrapping_mul(day as u16)
                             .wrapping_add(minute as u16)
-                            .wrapping_add(second as u16)
+                            .wrapping_add(second as u16) & 0xFF)
                         && (!force_second || second == forced_second)
                     {
                         results.push(SeedTime4::new(
@@ -48,6 +49,8 @@ pub fn calculate_times(
     results
 }
 
+/// Generates calibration results within `minus_delay`, `plus_delay`, `minus_second`, and `plus_second`
+/// from the selected `target`
 pub fn calibrate(
     minus_delay: i32,
     plus_delay: i32,
@@ -75,6 +78,8 @@ pub fn calibrate(
     results
 }
 
+/// Generates calibration results for roamers within `minus_delay`, `plus_delay`, `minus_second`,
+/// and `plus_second` from the selected `target`
 pub fn calibrate_roamers(
     minus_delay: i32,
     plus_delay: i32,

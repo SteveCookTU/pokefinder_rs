@@ -1,9 +1,13 @@
-use crate::enums::{Encounter, Game};
+use crate::enums::{Encounter, Game, Lead};
 use crate::parents::{EncounterArea, EncounterAreaT, Slot};
 use crate::rng::PokeRNG;
 
+/// Contains information about the encounters for an area in Gen4
+///
+/// This includes location, rate, and the slot
 #[derive(Clone)]
 pub struct EncounterArea4 {
+    /// Base encounter area data
     pub base: EncounterArea,
 }
 
@@ -19,12 +23,14 @@ const UNOWN6: [u8; 1] = [3];
 const UNOWN7: [u8; 2] = [26, 27];
 
 impl EncounterArea4 {
+    /// Construct a new [`EncounterArea4`] struct
     pub fn new(location: u8, rate: u8, encounter: Encounter, pokemon: Vec<Slot>) -> Self {
         Self {
             base: EncounterArea::new(location, rate, encounter, pokemon),
         }
     }
 
+    /// Checks if the location is in the Great Marsh
     pub fn great_marsh(&self, version: Game) -> bool {
         if (version & Game::DPPT) != Game::NONE {
             (23..=28).contains(&self.base.location)
@@ -33,6 +39,7 @@ impl EncounterArea4 {
         }
     }
 
+    /// Checks if the location is in the Safari Zone
     pub fn safari_zone(&self, version: Game) -> bool {
         if (version & Game::HGSS) != Game::NONE {
             (148..=160).contains(&self.base.location)
@@ -41,6 +48,7 @@ impl EncounterArea4 {
         }
     }
 
+    /// Checks if the location is in the Trophy Garden
     pub fn trophy_garden(&self, version: Game) -> bool {
         if (version & Game::DPPT) != Game::NONE {
             self.base.location == 117
@@ -49,6 +57,7 @@ impl EncounterArea4 {
         }
     }
 
+    /// Returns the Unown form to use for Solaceon Ruins
     pub fn unown_form(&self, prng: u16) -> u8 {
         match self.base.location {
             29 => UNOWN7[(prng as usize) % UNOWN7.len()],
@@ -63,6 +72,15 @@ impl EncounterArea4 {
         }
     }
 
+    /// Calculates the level of a pokemon
+    ///
+    /// Takes into account any modification from [`Lead::PRESSURE`]
+    ///
+    /// `DIFF`: Whether min and max levels are different
+    ///
+    /// `MOD`: Whether the max calculation is done without modulo
+    ///
+    /// [`Lead::PRESSURE`]: ../enums/struct.Lead.html
     pub fn calculate_level_with_rng<const DIFF: bool, const MOD: bool>(
         &self,
         encounter_slot: u8,
@@ -104,6 +122,12 @@ impl EncounterArea4 {
         }
     }
 
+    /// Calculates the level of a pokemon.
+    ///
+    /// Used by [`WildSearcher4`] and assume [`Lead::PRESSURE`] is being used.
+    ///
+    /// [`WildSearcher4`]: searchers/struct.WildSearcher4.html
+    /// [`Lead::PRESSURE`]: ../enums/struct.Lead.html
     pub fn calculate_level_with_rand<const DIFF: bool>(
         &self,
         encounter_slot: u8,

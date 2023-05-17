@@ -2,12 +2,15 @@ use crate::gen8::states::UndergroundState;
 use crate::parents::filters::{Filter, StateFilter, WildFilter, WildStateFilter};
 use crate::parents::states::{EggGeneratorState, GeneratorState, WildGeneratorState};
 
+/// Checks if static encounters match the filter criteria
 #[derive(Copy, Clone, Default)]
 pub struct StateFilter8 {
+    /// Base state filter data
     pub base: StateFilter,
 }
 
 impl StateFilter8 {
+    /// Contruct a new [`StateFilter8`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -24,6 +27,7 @@ impl StateFilter8 {
         }
     }
 
+    /// Determines if the egg `state` meets the filter criteria
     pub fn compare_egg_state(&self, state: &EggGeneratorState) -> bool {
         if self.base.skip {
             return true;
@@ -46,6 +50,7 @@ impl StateFilter8 {
         true
     }
 
+    /// Determines if the generator `state` meets the filter criteria
     pub fn compare_generator_state(&self, state: &GeneratorState) -> bool {
         if self.base.skip {
             return true;
@@ -103,12 +108,15 @@ impl Filter for StateFilter8 {
     }
 }
 
+/// Checks if the wild encounters match the filter criteria
 #[derive(Copy, Clone, Default)]
 pub struct WildStateFilter8 {
+    /// Base wild state filter data
     pub base: WildStateFilter,
 }
 
 impl WildStateFilter8 {
+    /// Construct a new [`WildStateFilter8`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -136,6 +144,7 @@ impl WildStateFilter8 {
         }
     }
 
+    /// Determines if the wild `state` meets the filter criteria
     pub fn compare_generator_state(&self, state: &WildGeneratorState) -> bool {
         if self.base.base.skip {
             return true;
@@ -201,13 +210,17 @@ impl WildFilter for WildStateFilter8 {
     }
 }
 
+/// Checks if the underground encounters match the filter criteria
 #[derive(Copy, Clone, Default)]
 pub struct UndergroundStateFilter<'a> {
+    /// Base state filter data
     pub base: StateFilter,
+    /// Pokemon species to filter by. This list **must be sorted**.
     pub species: &'a [u16],
 }
 
 impl<'a> UndergroundStateFilter<'a> {
+    /// Construct a new [`UndergroundStateFilter`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         gender: u8,
@@ -226,6 +239,7 @@ impl<'a> UndergroundStateFilter<'a> {
         }
     }
 
+    /// Determines if the underground `state` meets the filter criteria
     pub fn compare_underground_state(&self, state: &UndergroundState) -> bool {
         if self.base.skip {
             return true;

@@ -29,12 +29,15 @@ fn rand(prng: u32) -> u32 {
     (prng % 0xffffffff).wrapping_add(0x80000000)
 }
 
+/// Wild encounter generator for Gen8
 #[derive(Clone)]
 pub struct WildGenerator8<'a, 'b> {
+    /// Base wild generator data
     pub base: WildGenerator<'a, 'b, Profile8, WildStateFilter8>,
 }
 
 impl<'a, 'b> WildGenerator8<'a, 'b> {
+    /// Construct a new [`WildGenerator8`] struct
     pub fn new(
         initial_advances: u32,
         max_advances: u32,
@@ -60,6 +63,7 @@ impl<'a, 'b> WildGenerator8<'a, 'b> {
         new
     }
 
+    /// Generates states for the `encounter_area`
     pub fn generate(
         &self,
         seed0: u64,

@@ -7,17 +7,19 @@ use crate::parents::searchers::Searcher;
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 use std::sync::{Arc, Mutex};
 
+/// Egg encounter searcher for Gen4
 #[derive(Clone)]
 pub struct EggSearcher4 {
-    pub base: Searcher<Profile4, StateFilter4>,
-    pub results: Arc<Mutex<Vec<EggSearcherState4>>>,
-    pub progress: Arc<AtomicU32>,
-    pub max_delay: u32,
-    pub min_delay: u32,
-    pub searching: Arc<AtomicBool>,
+    base: Searcher<Profile4, StateFilter4>,
+    results: Arc<Mutex<Vec<EggSearcherState4>>>,
+    progress: Arc<AtomicU32>,
+    max_delay: u32,
+    min_delay: u32,
+    searching: Arc<AtomicBool>,
 }
 
 impl EggSearcher4 {
+    /// Construct a new ['EggSearcher4'] struct
     pub fn new(min_delay: u32, max_delay: u32, profile: &Profile4, filter: &StateFilter4) -> Self {
         Self {
             base: Searcher::new(Method::None, profile, filter),
@@ -29,18 +31,22 @@ impl EggSearcher4 {
         }
     }
 
+    /// Cancels the running search
     pub fn cancel_search(&self) {
         self.searching.store(false, Ordering::SeqCst);
     }
 
+    /// Returns the progress of the running search
     pub fn get_progress(&self) -> u32 {
         self.progress.load(Ordering::SeqCst)
     }
 
+    /// Returns the states of the running search
     pub fn get_results(&self) -> Vec<EggSearcherState4> {
         std::mem::take(self.results.lock().unwrap().as_mut())
     }
 
+    /// Starts the search
     pub fn start_search(&self, generator: &EggGenerator4) {
         self.searching.store(true, Ordering::SeqCst);
         let mut total = 0;

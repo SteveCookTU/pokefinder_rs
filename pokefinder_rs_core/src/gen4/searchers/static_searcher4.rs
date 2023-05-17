@@ -34,19 +34,21 @@ fn is_shiny(pid: u32, tsv: u16) -> bool {
     (psv ^ tsv) < 8
 }
 
+/// Static encounter searcher for Gen4
 #[derive(Clone)]
 pub struct StaticSearcher4 {
-    pub base: StaticSearcher<Profile4, StateFilter4>,
-    pub results: Arc<Mutex<Vec<SearcherState4>>>,
-    pub progress: Arc<AtomicU32>,
-    pub max_advance: u32,
-    pub min_advance: u32,
-    pub max_delay: u32,
-    pub min_delay: u32,
-    pub searching: Arc<AtomicBool>,
+    base: StaticSearcher<Profile4, StateFilter4>,
+    results: Arc<Mutex<Vec<SearcherState4>>>,
+    progress: Arc<AtomicU32>,
+    max_advance: u32,
+    min_advance: u32,
+    max_delay: u32,
+    min_delay: u32,
+    searching: Arc<AtomicBool>,
 }
 
 impl StaticSearcher4 {
+    /// Construct a new [`StaticSearcher4`] struct
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         min_advance: u32,
@@ -70,18 +72,22 @@ impl StaticSearcher4 {
         }
     }
 
+    /// Cancels the running search
     pub fn cancel_search(&self) {
         self.searching.store(false, Ordering::SeqCst);
     }
 
+    /// Returns the progress of the running search
     pub fn get_progress(&self) -> u32 {
         self.progress.load(Ordering::SeqCst)
     }
 
+    /// Returns the states of the running search
     pub fn get_results(&self) -> Vec<SearcherState4> {
         std::mem::take(self.results.lock().unwrap().as_mut())
     }
 
+    /// Starts the search
     pub fn start_search(
         &self,
         min: [u8; 6],
