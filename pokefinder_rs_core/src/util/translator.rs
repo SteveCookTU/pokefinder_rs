@@ -571,9 +571,9 @@ pub fn get_species_with_form(species: u16, form: u8) -> String {
 /// let species_list = get_species_list(&species);
 /// assert_eq!(&species_list, &["Ivysaur", "Venusaur", "Charmander"]);
 /// ```
-pub fn get_species_list(species: &[u16]) -> Vec<&'static str> {
+pub fn get_species_list(species: &[u16]) -> Vec<String> {
     species
         .iter()
-        .map(|&num| SPECIES[(num as usize) - 1].as_str())
+        .map(|&num| get_species_with_form(num & 0x7ff, (num >> 11) as u8))
         .collect()
 }

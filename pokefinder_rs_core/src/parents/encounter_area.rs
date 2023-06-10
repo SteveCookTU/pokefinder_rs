@@ -35,7 +35,7 @@ pub trait EncounterAreaT {
     fn get_slots_by_specie(&self, species: u16) -> Vec<bool> {
         self.get_pokemon()
             .iter()
-            .map(|mon| mon.get_species() == species)
+            .map(|mon| mon.get_species() == (species & 0x7ff) && (mon.get_form() as u16) == (species >> 11))
             .collect()
     }
     /// Returns the indexes of the slots that match the type of `lead`
@@ -60,7 +60,7 @@ pub trait EncounterAreaT {
     }
 
     /// Returns a vec of names of all the pokemon slots
-    fn get_species_names(&self) -> Vec<&'static str> {
+    fn get_species_names(&self) -> Vec<String> {
         translator::get_species_list(&self.get_unique_species())
     }
 
@@ -69,9 +69,9 @@ pub trait EncounterAreaT {
         let mut nums = Vec::new();
 
         for mon in self.get_pokemon() {
-            let species = mon.get_species();
-            if !nums.contains(&species) {
-                nums.push(species);
+            let num = ((mon.get_form() as u16) << 11) | mon.get_species();
+            if !nums.contains(&num) {
+                nums.push(num);
             }
         }
 

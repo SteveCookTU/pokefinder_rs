@@ -227,7 +227,7 @@ impl UndergroundArea {
     }
 
     /// Returns the species names of the area
-    pub fn get_species_names(&self) -> Vec<&'static str> {
+    pub fn get_species_names(&self) -> Vec<String> {
         translator::get_species_list(&self.get_species())
     }
 }
