@@ -60,16 +60,16 @@ fn set_inheritance<const DPPT: bool>(
         const AVAILABLE3: [usize; 4] = [1, 3, 4, 5];
 
         let mut stat = AVAILABLE1[inh[0] as usize];
-        ivs[stat] = daycare.get_parent_iv(par[0], ORDER[stat]);
-        inheritance[stat] = par[0] + 1;
+        ivs[ORDER[stat]] = daycare.get_parent_iv(par[0], ORDER[stat]);
+        inheritance[ORDER[stat]] = par[0] + 1;
 
         stat = AVAILABLE2[inh[1] as usize];
-        ivs[stat] = daycare.get_parent_iv(par[1], ORDER[stat]);
-        inheritance[stat] = par[1] + 1;
+        ivs[ORDER[stat]] = daycare.get_parent_iv(par[1], ORDER[stat]);
+        inheritance[ORDER[stat]] = par[1] + 1;
 
         stat = AVAILABLE3[inh[2] as usize];
-        ivs[stat] = daycare.get_parent_iv(par[2], ORDER[stat]);
-        inheritance[stat] = par[2] + 1;
+        ivs[ORDER[stat]] = daycare.get_parent_iv(par[2], ORDER[stat]);
+        inheritance[ORDER[stat]] = par[2] + 1;
     } else {
         let mut available: [usize; 6] = [0, 1, 2, 3, 4, 5];
         let avoid = |available: &mut [usize; 6], stat: usize, i: usize| {
@@ -79,20 +79,20 @@ fn set_inheritance<const DPPT: bool>(
         };
 
         let mut stat = available[inh[0] as usize];
-        ivs[stat] = daycare.get_parent_iv(par[0], ORDER[stat]);
-        inheritance[stat] = par[1] + 1;
+        ivs[ORDER[stat]] = daycare.get_parent_iv(par[0], ORDER[stat]);
+        inheritance[ORDER[stat]] = par[1] + 1;
 
         avoid(&mut available, stat, 0);
 
         stat = available[inh[1] as usize];
-        ivs[stat] = daycare.get_parent_iv(par[1], ORDER[stat]);
-        inheritance[stat] = par[1] + 1;
+        ivs[ORDER[stat]] = daycare.get_parent_iv(par[1], ORDER[stat]);
+        inheritance[ORDER[stat]] = par[1] + 1;
 
         avoid(&mut available, stat, 1);
 
         stat = available[inh[2] as usize];
-        ivs[stat] = daycare.get_parent_iv(par[2], ORDER[stat]);
-        inheritance[stat] = par[2] + 1;
+        ivs[ORDER[stat]] = daycare.get_parent_iv(par[2], ORDER[stat]);
+        inheritance[ORDER[stat]] = par[2] + 1;
     }
 }
 

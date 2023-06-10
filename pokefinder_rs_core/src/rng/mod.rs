@@ -10,6 +10,7 @@ pub mod lcrng_reverse;
 mod mt;
 mod mt_fast;
 mod rng_list;
+mod tiny_mt;
 mod xoroshiro;
 mod xorshift;
 
@@ -18,6 +19,7 @@ pub use lcrng64::*;
 pub use mt::*;
 pub use mt_fast::*;
 pub use rng_list::*;
+pub use tiny_mt::*;
 pub use xoroshiro::*;
 pub use xorshift::*;
 

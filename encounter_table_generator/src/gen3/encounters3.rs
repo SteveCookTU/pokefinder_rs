@@ -116,7 +116,11 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
     for (i, encounter) in encounters.into_iter().enumerate() {
         let version = if encounter.version.contains('|') {
             let mut split = encounter.version.split(" | ");
-            format!("Game::from_bits_retain({}.bits() | {}.bits())", split.next().unwrap(), split.next().unwrap())
+            format!(
+                "Game::from_bits_retain({}.bits() | {}.bits())",
+                split.next().unwrap(),
+                split.next().unwrap()
+            )
         } else {
             encounter.version.to_string()
         };
@@ -182,7 +186,11 @@ fn write_shadow_encounters(
 
         let version = if encounter.version.contains('|') {
             let mut split = encounter.version.split(" | ");
-            format!("Game::from_bits_retain({}.bits() | {}.bits())", split.next().unwrap(), split.next().unwrap())
+            format!(
+                "Game::from_bits_retain({}.bits() | {}.bits())",
+                split.next().unwrap(),
+                split.next().unwrap()
+            )
         } else {
             encounter.version.to_string()
         };

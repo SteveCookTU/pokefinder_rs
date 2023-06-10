@@ -33,7 +33,8 @@ pub fn calculate_times(
                         == ((month as u16)
                             .wrapping_mul(day as u16)
                             .wrapping_add(minute as u16)
-                            .wrapping_add(second as u16) & 0xFF)
+                            .wrapping_add(second as u16)
+                            & 0xFF)
                         && (!force_second || second == forced_second)
                     {
                         results.push(SeedTime4::new(

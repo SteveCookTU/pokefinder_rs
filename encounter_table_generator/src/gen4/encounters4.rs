@@ -1,7 +1,7 @@
+use serde::Deserialize;
 use std::fs::{File, OpenOptions};
 use std::io::{BufWriter, Write};
 use std::path::PathBuf;
-use serde::Deserialize;
 
 #[derive(Deserialize)]
 pub struct Encounter {
@@ -39,7 +39,11 @@ pub fn embed_encounters(mut resource_path: PathBuf) {
         .unwrap();
     let mut writer = BufWriter::new(file);
 
-    writer.write_all(b"use crate::enums::{Game, Method, Shiny};\nuse crate::gen4::StaticTemplate4;\n\n").unwrap();
+    writer
+        .write_all(
+            b"use crate::enums::{Game, Method, Shiny};\nuse crate::gen4::StaticTemplate4;\n\n",
+        )
+        .unwrap();
 
     write_encounters("STARTERS", &mut writer, data.starters);
     write_encounters("FOSSILS", &mut writer, data.fossils);
@@ -57,13 +61,17 @@ pub fn embed_encounters(mut resource_path: PathBuf) {
         .write_all(b"pub(crate) static HEART_GOLD: &[u8] = include_bytes!(\"heartgold.bin\");\n\n")
         .unwrap();
     writer
-        .write_all(b"pub(crate) static HG_HEADBUTT: &[u8] = include_bytes!(\"hg_headbutt.bin\");\n\n")
+        .write_all(
+            b"pub(crate) static HG_HEADBUTT: &[u8] = include_bytes!(\"hg_headbutt.bin\");\n\n",
+        )
         .unwrap();
     writer
         .write_all(b"pub(crate) static HGSS_BUG: &[u8] = include_bytes!(\"hgss_bug.bin\");\n\n")
         .unwrap();
     writer
-        .write_all(b"pub(crate) static HGSS_SAFARI: &[u8] = include_bytes!(\"hgss_safari.bin\");\n\n")
+        .write_all(
+            b"pub(crate) static HGSS_SAFARI: &[u8] = include_bytes!(\"hgss_safari.bin\");\n\n",
+        )
         .unwrap();
     writer
         .write_all(b"pub(crate) static PEARL: &[u8] = include_bytes!(\"pearl.bin\");\n\n")
@@ -72,10 +80,14 @@ pub fn embed_encounters(mut resource_path: PathBuf) {
         .write_all(b"pub(crate) static PLATINUM: &[u8] = include_bytes!(\"platinum.bin\");\n\n")
         .unwrap();
     writer
-        .write_all(b"pub(crate) static SOUL_SILVER: &[u8] = include_bytes!(\"soulsilver.bin\");\n\n")
+        .write_all(
+            b"pub(crate) static SOUL_SILVER: &[u8] = include_bytes!(\"soulsilver.bin\");\n\n",
+        )
         .unwrap();
     writer
-        .write_all(b"pub(crate) static SS_HEADBUTT: &[u8] = include_bytes!(\"ss_headbutt.bin\");\n\n")
+        .write_all(
+            b"pub(crate) static SS_HEADBUTT: &[u8] = include_bytes!(\"ss_headbutt.bin\");\n\n",
+        )
         .unwrap();
 
     writer.flush().unwrap();
@@ -89,7 +101,7 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
                 name,
                 encounters.len()
             )
-                .as_bytes(),
+            .as_bytes(),
         )
         .unwrap();
 
@@ -98,7 +110,11 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
     for (i, encounter) in encounters.into_iter().enumerate() {
         let version = if encounter.version.contains('|') {
             let mut split = encounter.version.split(" | ");
-            format!("Game::from_bits_retain({}.bits() | {}.bits())", split.next().unwrap(), split.next().unwrap())
+            format!(
+                "Game::from_bits_retain({}.bits() | {}.bits())",
+                split.next().unwrap(),
+                split.next().unwrap()
+            )
         } else {
             encounter.version.to_string()
         };
@@ -114,7 +130,7 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
                     encounter.level,
                     encounter.method
                 )
-                    .as_bytes(),
+                .as_bytes(),
             )
             .unwrap();
         if i != len - 1 {

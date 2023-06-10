@@ -1,8 +1,8 @@
+use crate::gen8::nests::Nests;
+use serde::Deserialize;
 use std::fs::{File, OpenOptions};
 use std::io::{BufWriter, Write};
 use std::path::PathBuf;
-use serde::Deserialize;
-use crate::gen8::nests::Nests;
 
 #[derive(Deserialize)]
 pub struct Encounter {
@@ -52,8 +52,16 @@ pub fn embed_encounters(mut resource_path: PathBuf) {
     write_encounters("STATIONARY", &mut writer, data.stationary);
     write_encounters("ROAMERS", &mut writer, data.roamers);
     write_encounters("LEGENDS", &mut writer, data.legends);
-    write_encounters("RAMANASPARKPURESPACE", &mut writer, data.ramanas_park_pure_space);
-    write_encounters("RAMANASPARKSTRANGESPACE", &mut writer, data.ramanas_park_strange_space);
+    write_encounters(
+        "RAMANASPARKPURESPACE",
+        &mut writer,
+        data.ramanas_park_pure_space,
+    );
+    write_encounters(
+        "RAMANASPARKSTRANGESPACE",
+        &mut writer,
+        data.ramanas_park_strange_space,
+    );
     write_encounters("MYTHICS", &mut writer, data.mythics);
     write_nests(&mut writer);
 
@@ -81,7 +89,7 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
                 name,
                 encounters.len()
             )
-                .as_bytes(),
+            .as_bytes(),
         )
         .unwrap();
 
@@ -101,7 +109,7 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
                     encounter.iv_count.unwrap_or_default(),
                     encounter.level
                 )
-                    .as_bytes(),
+                .as_bytes(),
             )
             .unwrap();
         if i != len - 1 {
@@ -113,19 +121,47 @@ fn write_encounters(name: &str, writer: &mut BufWriter<File>, encounters: Vec<En
 }
 
 fn write_nests(writer: &mut BufWriter<File>) {
-    let mut tables = serde_json::from_str::<Nests>(include_str!("./nests.json")).unwrap().tables;
+    let mut tables = serde_json::from_str::<Nests>(include_str!("./nests.json"))
+        .unwrap()
+        .tables;
 
     let len = tables.len();
 
-    writer.write_all(format!("pub(crate) static NESTS: [Den; {}] = [ ", tables.len()).as_bytes()).unwrap();
-    tables.sort_by(|a, b| u64::from_str_radix(&a.table_id, 16).unwrap().cmp(&u64::from_str_radix(&b.table_id, 16).unwrap()));
+    writer
+        .write_all(format!("pub(crate) static NESTS: [Den; {}] = [ ", tables.len()).as_bytes())
+        .unwrap();
+    tables.sort_by(|a, b| {
+        u64::from_str_radix(&a.table_id, 16)
+            .unwrap()
+            .cmp(&u64::from_str_radix(&b.table_id, 16).unwrap())
+    });
 
     for (i, table) in tables.into_iter().enumerate() {
-        writer.write_all(format!("Den::new(0x{}, [", table.table_id).as_bytes()).unwrap();
+        writer
+            .write_all(format!("Den::new(0x{}, [", table.table_id).as_bytes())
+            .unwrap();
         let sword = table.sword_entries;
         let mut len2 = sword.len();
         for (j, raid) in sword.into_iter().enumerate() {
-            writer.write_all(format!("Raid::new({}, {}, Shiny::Random, {}, {}, {}, {}, [{}, {}, {}, {}, {}])", raid.species, raid.alt_form, raid.ability, raid.gender, raid.flawless_ivs, raid.is_gigantamax, raid.stars[0], raid.stars[1], raid.stars[2], raid.stars[3], raid.stars[4]).as_bytes()).unwrap();
+            writer
+                .write_all(
+                    format!(
+                        "Raid::new({}, {}, Shiny::Random, {}, {}, {}, {}, [{}, {}, {}, {}, {}])",
+                        raid.species,
+                        raid.alt_form,
+                        raid.ability,
+                        raid.gender,
+                        raid.flawless_ivs,
+                        raid.is_gigantamax,
+                        raid.stars[0],
+                        raid.stars[1],
+                        raid.stars[2],
+                        raid.stars[3],
+                        raid.stars[4]
+                    )
+                    .as_bytes(),
+                )
+                .unwrap();
             if j != len2 - 1 {
                 writer.write_all(b", ").unwrap();
             }
@@ -134,7 +170,25 @@ fn write_nests(writer: &mut BufWriter<File>) {
         let shield = table.shield_entries;
         len2 = shield.len();
         for (j, raid) in shield.into_iter().enumerate() {
-            writer.write_all(format!("Raid::new({}, {}, Shiny::Random, {}, {}, {}, {}, [{}, {}, {}, {}, {}])", raid.species, raid.alt_form, raid.ability, raid.gender, raid.flawless_ivs, raid.is_gigantamax, raid.stars[0], raid.stars[1], raid.stars[2], raid.stars[3], raid.stars[4]).as_bytes()).unwrap();
+            writer
+                .write_all(
+                    format!(
+                        "Raid::new({}, {}, Shiny::Random, {}, {}, {}, {}, [{}, {}, {}, {}, {}])",
+                        raid.species,
+                        raid.alt_form,
+                        raid.ability,
+                        raid.gender,
+                        raid.flawless_ivs,
+                        raid.is_gigantamax,
+                        raid.stars[0],
+                        raid.stars[1],
+                        raid.stars[2],
+                        raid.stars[3],
+                        raid.stars[4]
+                    )
+                    .as_bytes(),
+                )
+                .unwrap();
             if j != len2 - 1 {
                 writer.write_all(b", ").unwrap();
             }

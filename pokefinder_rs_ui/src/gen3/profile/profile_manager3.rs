@@ -1,38 +1,38 @@
-use crate::gen4::profile::ProfileEditor4;
+use crate::gen3::profile::ProfileEditor3;
 use crate::ProfileEditorResult;
 use egui::Context;
 use egui_extras::Column;
-use pokefinder_rs_core::gen4::Profile4;
-use pokefinder_rs_core::parents::{profile_loader_4, Profile};
+use pokefinder_rs_core::gen3::Profile3;
+use pokefinder_rs_core::parents::{profile_loader_3, Profile};
 use pokefinder_rs_core::util::translator;
 
-pub struct ProfileManager4 {
+pub struct ProfileManager3 {
     pub show: bool,
-    pub profiles: Vec<(Profile4, bool)>,
+    pub profiles: Vec<(Profile3, bool)>,
     pub edit: usize,
-    pub editor: Option<Box<ProfileEditor4>>,
+    pub editor: Option<Box<ProfileEditor3>>,
 }
 
-static HEADERS: [&str; 5] = ["Profile Name", "Version", "TID", "SID", "National Dex"];
+static HEADERS: [&str; 5] = ["Profile Name", "Version", "TID", "SID", "Dead Battery"];
 
-impl Default for ProfileManager4 {
+impl Default for ProfileManager3 {
     fn default() -> Self {
         Self {
-            profiles: profile_loader_4::get_profiles()
+            show: false,
+            profiles: profile_loader_3::get_profiles()
                 .into_iter()
                 .map(|p| (p, false))
                 .collect(),
-            show: false,
             edit: 0,
             editor: None,
         }
     }
 }
 
-impl ProfileManager4 {
+impl ProfileManager3 {
     pub fn show(&mut self, ctx: &Context) {
         if self.show {
-            egui::Window::new("Profile Manager 4").show(ctx, |ui| {
+            egui::Window::new("Profile Manager 3").show(ctx, |ui| {
                 ui.style_mut().wrap = Some(false);
                 ui.horizontal(|ui| {
                     if ui.button("New").clicked() {
@@ -40,12 +40,12 @@ impl ProfileManager4 {
                     }
                     if ui.button("Edit").clicked() && !self.profiles.is_empty() {
                         self.editor =
-                            Some(Box::new(ProfileEditor4::edit(&self.profiles[self.edit].0)));
+                            Some(Box::new(ProfileEditor3::edit(&self.profiles[self.edit].0)));
                     }
                     if ui.button("Delete").clicked() {
                         self.profiles.retain(|(profile, delete)| {
                             if *delete {
-                                profile_loader_4::remove_profile(profile);
+                                profile_loader_3::remove_profile(profile);
                                 false
                             } else {
                                 true
@@ -89,7 +89,7 @@ impl ProfileManager4 {
                                     ui.label(profile.get_sid().to_string());
                                 });
                                 row.col(|ui| {
-                                    ui.label(if profile.get_national_dex() {
+                                    ui.label(if profile.get_dead_battery() {
                                         "Yes"
                                     } else {
                                         "No"
@@ -117,16 +117,16 @@ impl ProfileManager4 {
             match editor_result {
                 ProfileEditorResult::Pending => {}
                 ProfileEditorResult::Edit => {
-                    profile_loader_4::remove_profile(&self.profiles[self.edit].0);
+                    profile_loader_3::remove_profile(&self.profiles[self.edit].0);
                     let editor = self.editor.take();
                     let profile = editor.unwrap().profile;
-                    profile_loader_4::add_profile(profile.clone());
+                    profile_loader_3::add_profile(profile.clone());
                     self.profiles[self.edit].0 = profile;
                 }
                 ProfileEditorResult::New => {
                     let editor = self.editor.take();
                     let profile = editor.unwrap().profile;
-                    profile_loader_4::add_profile(profile.clone());
+                    profile_loader_3::add_profile(profile.clone());
                     self.profiles.push((profile, false));
                 }
                 ProfileEditorResult::Cancel => {

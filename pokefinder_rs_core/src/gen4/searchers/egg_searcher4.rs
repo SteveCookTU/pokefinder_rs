@@ -1,16 +1,11 @@
-use crate::enums::Method;
-use crate::gen4::filters::StateFilter4;
 use crate::gen4::generators::EggGenerator4;
 use crate::gen4::states::EggSearcherState4;
-use crate::gen4::Profile4;
-use crate::parents::searchers::Searcher;
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 use std::sync::{Arc, Mutex};
 
 /// Egg encounter searcher for Gen4
 #[derive(Clone)]
 pub struct EggSearcher4 {
-    base: Searcher<Profile4, StateFilter4>,
     results: Arc<Mutex<Vec<EggSearcherState4>>>,
     progress: Arc<AtomicU32>,
     max_delay: u32,
@@ -20,9 +15,8 @@ pub struct EggSearcher4 {
 
 impl EggSearcher4 {
     /// Construct a new ['EggSearcher4'] struct
-    pub fn new(min_delay: u32, max_delay: u32, profile: &Profile4, filter: &StateFilter4) -> Self {
+    pub fn new(min_delay: u32, max_delay: u32) -> Self {
         Self {
-            base: Searcher::new(Method::None, profile, filter),
             results: Arc::new(Mutex::new(vec![])),
             progress: Arc::new(AtomicU32::new(0)),
             max_delay,

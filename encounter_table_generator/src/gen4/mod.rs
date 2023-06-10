@@ -2,12 +2,12 @@ use serde::Deserialize;
 use std::collections::HashMap;
 
 pub mod dp;
+mod encounters4;
 pub mod hgss;
 mod narc;
 mod pack;
 pub mod pt;
 mod text;
-mod encounters4;
 
 pub use encounters4::*;
 
