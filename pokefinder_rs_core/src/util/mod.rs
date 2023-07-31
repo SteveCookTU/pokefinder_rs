@@ -1,6 +1,7 @@
 mod datetime;
 /// Collection of functions used for calculating encounter slots
 pub mod encounter_slot;
+pub mod iv_checker;
 /// Collection of functions used for reversing IVs to possible PIDs.
 pub mod iv_to_pid_calculator;
 /// Collection of functions used for nature calculations.

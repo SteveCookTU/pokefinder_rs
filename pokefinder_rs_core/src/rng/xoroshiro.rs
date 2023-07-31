@@ -93,7 +93,7 @@ impl Rng for Xoroshiro {
 
         s1 ^= s0;
         self.state[0] = s0.rotate_left(24) ^ s1 ^ (s1 << 16);
-        self.state[1] = s1.rotate_right(37);
+        self.state[1] = s1.rotate_left(37);
 
         result
     }
