@@ -26,6 +26,7 @@ const TROPHY_GARDEN_PT: [u16; 16] = [
     35, 39, 52, 113, 132, 133, 173, 174, 183, 298, 311, 312, 351, 438, 439, 440,
 ];
 
+#[derive(EndianRead)]
 struct WildEncounterDPPt {
     location: u8,
     grass_rate: u8,
@@ -49,126 +50,13 @@ struct WildEncounterDPPt {
     super_rod: [DynamicSlot; 5],
 }
 
-impl EndianRead for WildEncounterDPPt {
-    fn try_read_le(bytes: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        let mut reader = StreamContainer::new(bytes);
-        let location = reader.read_stream_le()?;
-        let grass_rate = reader.read_stream_le()?;
-        let surf_rate = reader.read_stream_le()?;
-        let old_rate = reader.read_stream_le()?;
-        let good_rate = reader.read_stream_le()?;
-        let super_rate = reader.read_stream_le()?;
-
-        let mut grass = [StaticSlot::default(); 12];
-        for g in grass.iter_mut() {
-            *g = reader.read_stream_le()?;
-        }
-        let mut swarm = [0; 2];
-        for s in swarm.iter_mut() {
-            *s = reader.read_stream_le::<u16>()?;
-        }
-        let mut day = [0; 2];
-        for d in day.iter_mut() {
-            *d = reader.read_stream_le::<u16>()?;
-        }
-        let mut night = [0; 2];
-        for n in night.iter_mut() {
-            *n = reader.read_stream_le::<u16>()?;
-        }
-        let mut radar = [0; 4];
-        for r in radar.iter_mut() {
-            *r = reader.read_stream_le::<u16>()?;
-        }
-        let mut ruby = [0; 2];
-        for r in ruby.iter_mut() {
-            *r = reader.read_stream_le::<u16>()?;
-        }
-        let mut sapphire = [0; 2];
-        for s in sapphire.iter_mut() {
-            *s = reader.read_stream_le::<u16>()?;
-        }
-        let mut emerald = [0; 2];
-        for e in emerald.iter_mut() {
-            *e = reader.read_stream_le::<u16>()?;
-        }
-        let mut fire_red = [0; 2];
-        for f in fire_red.iter_mut() {
-            *f = reader.read_stream_le::<u16>()?;
-        }
-        let mut leaf_green = [0; 2];
-        for l in leaf_green.iter_mut() {
-            *l = reader.read_stream_le::<u16>()?;
-        }
-        let mut surf = [DynamicSlot::default(); 5];
-        for s in surf.iter_mut() {
-            *s = reader.read_stream_le()?;
-        }
-        let mut old_rod = [DynamicSlot::default(); 5];
-        for o in old_rod.iter_mut() {
-            *o = reader.read_stream_le()?;
-        }
-        let mut good_rod = [DynamicSlot::default(); 5];
-        for g in good_rod.iter_mut() {
-            *g = reader.read_stream_le()?;
-        }
-        let mut super_rod = [DynamicSlot::default(); 5];
-        for s in super_rod.iter_mut() {
-            *s = reader.read_stream_le()?;
-        }
-        Ok(ReadOutput::new(
-            Self {
-                location,
-                grass_rate,
-                surf_rate,
-                old_rate,
-                good_rate,
-                super_rate,
-                grass,
-                swarm,
-                day,
-                night,
-                radar,
-                ruby,
-                sapphire,
-                emerald,
-                fire_red,
-                leaf_green,
-                surf,
-                old_rod,
-                good_rod,
-                super_rod,
-            },
-            reader.get_index(),
-        ))
-    }
-
-    fn try_read_be(_: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        unimplemented!()
-    }
-}
-
+#[derive(EndianRead)]
 struct HGSSEncounterGrass {
     slots: [u16; 36],
     level: [u8; 12],
 }
 
-impl EndianRead for HGSSEncounterGrass {
-    fn try_read_le(bytes: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        let mut reader = StreamContainer::new(bytes);
-        let mut slots = [0; 36];
-        for s in slots.iter_mut() {
-            *s = reader.read_stream_le::<u16>()?;
-        }
-
-        let level = reader.read_stream_le::<[u8; 12]>()?;
-        Ok(ReadOutput::new(Self { slots, level }, reader.get_index()))
-    }
-
-    fn try_read_be(_: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        unimplemented!()
-    }
-}
-
+#[derive(EndianRead)]
 struct WildEncounterHGSS {
     location: u8,
     grass_rate: u8,
@@ -177,6 +65,7 @@ struct WildEncounterHGSS {
     old_rate: u8,
     good_rate: u8,
     super_rate: u8,
+    #[no_std_io(pad_before = 1)]
     grass: HGSSEncounterGrass,
     hoenn_sound: [u16; 2],
     sinnoh_sound: [u16; 2],
@@ -188,135 +77,18 @@ struct WildEncounterHGSS {
     swarm: [u16; 4],
 }
 
-impl EndianRead for WildEncounterHGSS {
-    fn try_read_le(bytes: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        let mut reader = StreamContainer::new(bytes);
-        let location = reader.read_stream_le()?;
-        let grass_rate = reader.read_stream_le()?;
-        let surf_rate = reader.read_stream_le()?;
-        let rock_rate = reader.read_stream_le()?;
-        let old_rate = reader.read_stream_le()?;
-        let good_rate = reader.read_stream_le()?;
-        let super_rate = reader.read_stream_le()?;
-
-        let _padding = reader.read_stream_le::<u8>()?;
-
-        let grass = reader.read_stream_le::<HGSSEncounterGrass>()?;
-        let mut hoenn_sound = [0; 2];
-        for h in hoenn_sound.iter_mut() {
-            *h = reader.read_stream_le::<u16>()?;
-        }
-        let mut sinnoh_sound = [0; 2];
-        for s in sinnoh_sound.iter_mut() {
-            *s = reader.read_stream_le::<u16>()?;
-        }
-        let mut surf = [DynamicSlot::default(); 5];
-        for s in surf.iter_mut() {
-            *s = reader.read_stream_le()?;
-        }
-        let mut rock = [DynamicSlot::default(); 2];
-        for r in rock.iter_mut() {
-            *r = reader.read_stream_le()?;
-        }
-        let mut old_rod = [DynamicSlot::default(); 5];
-        for o in old_rod.iter_mut() {
-            *o = reader.read_stream_le()?;
-        }
-        let mut good_rod = [DynamicSlot::default(); 5];
-        for g in good_rod.iter_mut() {
-            *g = reader.read_stream_le()?;
-        }
-        let mut super_rod = [DynamicSlot::default(); 5];
-        for s in super_rod.iter_mut() {
-            *s = reader.read_stream_le()?;
-        }
-        let mut swarm = [0; 4];
-        for s in swarm.iter_mut() {
-            *s = reader.read_stream_le::<u16>()?;
-        }
-        Ok(ReadOutput::new(
-            Self {
-                location,
-                grass_rate,
-                surf_rate,
-                rock_rate,
-                old_rate,
-                good_rate,
-                super_rate,
-                grass,
-                hoenn_sound,
-                sinnoh_sound,
-                surf,
-                rock,
-                old_rod,
-                good_rod,
-                super_rod,
-                swarm,
-            },
-            reader.get_index(),
-        ))
-    }
-
-    fn try_read_be(_: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        unimplemented!()
-    }
-}
-
+#[derive(EndianRead)]
 struct WildEncounterHGSSBug {
     location: u8,
+    #[no_std_io(pad_before = 1)]
     bug: [DynamicSlot; 10],
 }
 
-impl EndianRead for WildEncounterHGSSBug {
-    fn try_read_le(bytes: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        let mut reader = StreamContainer::new(bytes);
-
-        let location = reader.read_stream_le()?;
-        let _padding = reader.read_stream_le::<u8>()?;
-        let mut bug = [DynamicSlot::default(); 10];
-        for b in bug.iter_mut() {
-            *b = reader.read_stream_le()?;
-        }
-
-        Ok(ReadOutput::new(Self { location, bug }, reader.get_index()))
-    }
-
-    fn try_read_be(_: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        unimplemented!()
-    }
-}
-
+#[derive(EndianRead)]
 struct WildEncounterHGSSHeadbutt {
     location: u8,
     has_special: bool,
     slots: [DynamicSlot; 18],
-}
-
-impl EndianRead for WildEncounterHGSSHeadbutt {
-    fn try_read_le(bytes: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        let mut reader = StreamContainer::new(bytes);
-
-        let location = reader.read_stream_le()?;
-        let has_special = reader.read_stream_le()?;
-
-        let mut slots = [DynamicSlot::default(); 18];
-        for s in slots.iter_mut() {
-            *s = reader.read_stream_le()?;
-        }
-
-        Ok(ReadOutput::new(
-            Self {
-                location,
-                has_special,
-                slots,
-            },
-            reader.get_index(),
-        ))
-    }
-
-    fn try_read_be(_: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        unimplemented!()
-    }
 }
 
 struct WildSubEncounterHGSSSafari<const TOTAL: usize, const INDIVIDUAL: usize> {

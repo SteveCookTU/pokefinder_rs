@@ -6,7 +6,7 @@ use crate::parents::filters::Filter;
 use crate::parents::generators::EggGenerator;
 use crate::parents::personal_loader::get_personal_info;
 use crate::parents::{Daycare, PersonalInfo, Profile};
-use crate::rng::{PokeRNG, ARNG, MT};
+use crate::rng::{PokeRNG, Rng, ARNG, MT};
 use std::cmp::Ordering;
 
 fn compare(left: &EggGeneratorState4, right: &EggGeneratorState4) -> Ordering {

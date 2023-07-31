@@ -6,3 +6,4 @@ pokefinder_rs_core/src/resources/*.bin
 pokefinder_rs_core/src/resources/encounter_data_3.rs
 pokefinder_rs_core/src/resources/encounter_data_4.rs
 pokefinder_rs_core/src/resources/encounter_data_8.rs
+pokefinder_rs_core/src/resources/encounter_data_5.rs

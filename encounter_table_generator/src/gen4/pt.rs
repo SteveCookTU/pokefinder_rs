@@ -1,5 +1,5 @@
-use crate::gen4::narc::Narc;
 use crate::gen4::pack::pack_encounter_dppt;
+use crate::narc::Narc;
 use bzip2::write::BzEncoder;
 use bzip2::Compression;
 use no_std_io::{StreamContainer, StreamReader};

@@ -18,10 +18,14 @@ fn main() {
     encounter_table_generator::gen4::hgss::safari(path.clone());
     encounter_table_generator::gen4::hgss::bug(path.clone());
     encounter_table_generator::gen4::hgss::headbutt(path.clone());
+    encounter_table_generator::gen5::bw::encounters(false, path.clone());
+    encounter_table_generator::gen5::bw2::encounters(false, path.clone());
+    encounter_table_generator::gen5::bw2::hidden_grotto(path.clone());
     encounter_table_generator::gen8::bdsp::encounters(false, path.clone());
     encounter_table_generator::gen8::bdsp::underground(path.clone());
 
     encounter_table_generator::gen3::embed_encounters(path.clone());
     encounter_table_generator::gen4::embed_encounters(path.clone());
+    encounter_table_generator::gen5::embed_encounters(path.clone());
     encounter_table_generator::gen8::embed_encounters(path);
 }

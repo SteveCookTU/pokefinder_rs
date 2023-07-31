@@ -15,7 +15,7 @@ struct StaticSlot {
     species: u32,
 }
 
-#[derive(Default, Copy, Clone)]
+#[derive(EndianRead, Default, Copy, Clone)]
 struct EncounterDPPt {
     grass_rate: u32,
     grass: [StaticSlot; 12],
@@ -40,112 +40,6 @@ struct EncounterDPPt {
     good: [DynamicSlot; 5],
     super_rate: u32,
     super_rod: [DynamicSlot; 5],
-}
-
-impl EndianRead for EncounterDPPt {
-    fn try_read_le(bytes: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        let mut reader = StreamContainer::new(bytes);
-        let grass_rate = reader.read_stream_le()?;
-        let mut grass = [StaticSlot::default(); 12];
-        for grass in grass.iter_mut() {
-            *grass = reader.read_stream_le()?;
-        }
-        let swarm = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let noon = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let night = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let radar = [
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-        ];
-        let _forms = [
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-        ];
-        let _anoon = reader.read_stream_le()?;
-        let ruby = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let sapphire = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let emerald = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let firered = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let leafgreen = [reader.read_stream_le()?, reader.read_stream_le()?];
-        let surf_rate = reader.read_stream_le()?;
-        let surf = [
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-        ];
-        let _rock_rate = reader.read_stream_le::<u32>()?;
-        let _rock = [
-            reader.read_stream_le::<DynamicSlot>()?,
-            reader.read_stream_le::<DynamicSlot>()?,
-            reader.read_stream_le::<DynamicSlot>()?,
-            reader.read_stream_le::<DynamicSlot>()?,
-            reader.read_stream_le::<DynamicSlot>()?,
-        ];
-        let old_rate = reader.read_stream_le()?;
-        let old = [
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-        ];
-        let good_rate = reader.read_stream_le()?;
-        let good = [
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-        ];
-        let super_rate = reader.read_stream_le()?;
-        let super_rod = [
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-            reader.read_stream_le()?,
-        ];
-
-        Ok(ReadOutput::new(
-            Self {
-                grass_rate,
-                grass,
-                swarm,
-                noon,
-                night,
-                radar,
-                _forms,
-                _anoon,
-                ruby,
-                sapphire,
-                emerald,
-                firered,
-                leafgreen,
-                surf_rate,
-                surf,
-                _rock_rate,
-                _rock,
-                old_rate,
-                old,
-                good_rate,
-                good,
-                super_rate,
-                super_rod,
-            },
-            reader.get_index(),
-        ))
-    }
-
-    fn try_read_be(_: &[u8]) -> Result<ReadOutput<Self>, Error> {
-        unimplemented!()
-    }
 }
 
 pub fn pack_encounter_dppt(encounter: &[u8]) -> Vec<u8> {

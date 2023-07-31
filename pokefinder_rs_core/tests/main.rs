@@ -3,6 +3,7 @@ use std::fmt::Debug;
 
 mod gen3;
 mod gen4;
+mod gen5;
 mod gen8;
 mod rng;
 mod util;

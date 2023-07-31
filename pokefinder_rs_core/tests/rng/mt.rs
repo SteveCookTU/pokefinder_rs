@@ -1,5 +1,5 @@
 use crate::get_test_data;
-use pokefinder_rs_core::rng::MT;
+use pokefinder_rs_core::rng::{Rng, MT};
 use serde::Deserialize;
 
 #[derive(Deserialize)]

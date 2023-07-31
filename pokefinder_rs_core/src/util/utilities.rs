@@ -103,7 +103,7 @@ pub mod utilities3 {
 
 /// Utility functions used by Gen 4 tools
 pub mod utilities4 {
-    use crate::rng::{PokeRNG, MT};
+    use crate::rng::{PokeRNG, Rng, MT};
     use crate::util::utilities::get_pitch;
     use crate::util::DateTime;
 

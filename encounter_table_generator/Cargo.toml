@@ -12,4 +12,4 @@ serde = {version = "1.0.160", features = ['derive'] }
 serde_json = "1.0.96"
 reqwest = { version = "0.11.17", features = ['blocking', 'json'] }
 bzip2 = "0.4.4"
-no_std_io = {git = "https://github.com/zaksabeast/no_std_io.git", rev = "67edbb4"}
+no_std_io = {git = "https://github.com/zaksabeast/no_std_io.git", rev = "02800d8"}

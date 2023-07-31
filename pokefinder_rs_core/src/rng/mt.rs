@@ -1,3 +1,5 @@
+use crate::rng::Rng;
+
 /// Provides random numbers via the Mersenne Twister algorithm
 #[derive(Clone)]
 pub struct MT {
@@ -28,35 +30,6 @@ impl MT {
         let mut new = Self::new(seed);
         new.advance(advances);
         new
-    }
-
-    /// Advances the RNG by `advances` amount
-    pub fn advance(&mut self, advances: u32) {
-        let mut advance = (advances as usize) + self.index;
-        while advance >= 624 {
-            self.shuffle();
-            advance -= 624;
-        }
-        self.index = advance;
-    }
-
-    /// Gets the next 32bit PRNG state
-    #[allow(clippy::should_implement_trait)]
-    pub fn next(&mut self) -> u32 {
-        if self.index == 624 {
-            self.shuffle();
-            self.index = 0;
-        }
-
-        let mut y = self.state[self.index];
-        self.index += 1;
-
-        y ^= y >> 11;
-        y ^= (y << 7) & 0x9d2c5680;
-        y ^= (y << 15) & 0xefc60000;
-        y ^= y >> 18;
-
-        y
     }
 
     /// Gets the next 16bit PRNG state
@@ -107,6 +80,38 @@ impl MT {
         let m2: [u32; 4] = self.state[393..397].try_into().unwrap();
         self.state[620..].copy_from_slice(&mm_recursion(m0, last, m2));
     }
+}
+
+impl Rng for MT {
+    type Output = u32;
+
+    fn next(&mut self) -> Self::Output {
+        if self.index == 624 {
+            self.shuffle();
+            self.index = 0;
+        }
+
+        let mut y = self.state[self.index];
+        self.index += 1;
+
+        y ^= y >> 11;
+        y ^= (y << 7) & 0x9d2c5680;
+        y ^= (y << 15) & 0xefc60000;
+        y ^= y >> 18;
+
+        y
+    }
+
+    fn advance(&mut self, advances: u32) {
+        let mut advance = (advances as usize) + self.index;
+        while advance >= 624 {
+            self.shuffle();
+            advance -= 624;
+        }
+        self.index = advance;
+    }
+
+    fn jump(&mut self, _: u32) {}
 }
 
 fn or(mut x: [u32; 4], y: [u32; 4]) -> [u32; 4] {

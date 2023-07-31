@@ -1,0 +1,176 @@
+{
+    "bw": {
+        "Celestial Tower": {
+            "89": "Celestial Tower 2F",
+            "90": "Celestial Tower 3F",
+            "91": "Celestial Tower 4F",
+            "92": "Celestial Tower 5F"
+        },
+        "Challenger's Cave": {
+            "96": "Challenger's Cave 1F",
+            "97": "Challenger's Cave B1F",
+            "98": "Challenger's Cave B2F"
+        },
+        "Chargestone Cave": {
+            "41": "Chargestone Cave 1F",
+            "42": "Chargestone Cave B1F",
+            "43": "Chargestone Cave B2F"
+        },
+        "Desert Resort": {
+            "7": "Desert Resort (Entrance)",
+            "8": "Desert Resort (Desert)"
+        },
+        "Dragonspiral Tower": {
+            "48": "Dragonspiral Tower (Entrance)",
+            "49": "Dragonspiral Tower (Outside)",
+            "50": "Dragonspiral Tower 1F",
+            "51": "Dragonspiral Tower 2F"
+        },
+        "Dreamyard": {
+            "3": "Dreamyard (Ruins)",
+            "4": "Dreamyard (Basement)"
+        },
+        "Giant Chasm": {
+            "68": "Giant Chasm (Entrance)",
+            "69": "Giant Chasm (Cave)",
+            "70": "Giant Chasm (Crater Forest)",
+            "71": "Giant Chasm (Cave Depths)"
+        },
+        "Mistralton Cave": {
+            "85": "Mistralton Cave 1F",
+            "86": "Mistralton Cave 2F"
+        },
+        "Pinwheel Forest": {
+            "5": "Pinwheel Forest (Exterior)",
+            "6": "Pinwheel Forest (Interior)"
+        },
+        "Relic Castle": {
+            "9": "Relic Castle 1F-B1F",
+            "11": "Relic Castle B2F-B6F",
+            "15": "Relic Castle (Lowest Floor)",
+            "30": "Relic Castle (Volcarona)"
+        },
+        "Route 10": {
+            "99": "Route 10",
+            "100": "Route 10 (Basic Badge Gate)"
+        },
+        "Twist Mountain": {
+            "44": "Twist Mountain (Upper Level)",
+            "45": "Twist Mountain (Middle Level)",
+            "46": "Twist Mountain (Lower Level)",
+            "47": "Twist Mountain (Lowest Level)"
+        },
+        "Victory Road": {
+            "52": "Victory Road",
+            "53": "Victory Road 1F (Middle)",
+            "54": "Victory Road 2F (Left)",
+            "55": "Victory Road 3F (Middle)",
+            "56": "Victory Road 4F (Middle)",
+            "57": "Victory Road 2F (Right)",
+            "58": "Victory Road 1F (Right)",
+            "59": "Victory Road 3F (Right)",
+            "60": "Victory Road 1F (Left)",
+            "61": "Victory Road 3F (Left)",
+            "62": "Victory Road 4F (Left)",
+            "63": "Victory Road 5F",
+            "64": "Victory Road 6F",
+            "65": "Victory Road 4F (Right)",
+            "66": "Victory Road 7F"
+        },
+        "Wellspring Cave": {
+            "80": "Wellspring Cave 1F",
+            "81": "Wellspring Cave B1F"
+        }
+    },
+    "bw2": {
+        "Celestial Tower": {
+            "112": "Celestial Tower 2F",
+            "113": "Celestial Tower 3F",
+            "114": "Celestial Tower 4F",
+            "115": "Celestial Tower 5F"
+        },
+        "Chargestone Cave": {
+            "20": "Chargestone Cave 1F",
+            "21": "Chargestone Cave B1F",
+            "22": "Chargestone Cave B2F"
+        },
+        "Desert Resort": {
+            "10": "Desert Resort (Entrance)",
+            "11": "Desert Resort (Desert)"
+        },
+        "Dragonspiral Tower": {
+            "27": "Dragonspiral Tower (Entrance)",
+            "28": "Dragonspiral Tower (Outside)",
+            "29": "Dragonspiral Tower 1F",
+            "30": "Dragonspiral Tower 2F"
+        },
+        "Dreamyard": {
+            "6": "Dreamyard (Ruins)",
+            "7": "Dreamyard (Basement)"
+        },
+        "Giant Chasm": {
+            "32": "Giant Chasm (Entrance)",
+            "33": "Giant Chasm (Cave)",
+            "34": "Giant Chasm (Crater Forest)",
+            "36": "Giant Chasm (Cave Depths)"
+        },
+        "Mistralton Cave": {
+            "108": "Mistralton Cave 1F",
+            "109": "Mistralton Cave 2F"
+        },
+        "Pinwheel Forest": {
+            "8": "Pinwheel Forest (Exterior)",
+            "9": "Pinwheel Forest (Interior)"
+        },
+        "Relic Castle": {
+            "12": "Relic Castle 1F",
+            "13": "Relic Castle B1F",
+            "14": "Relic Castle (Lowest Floor)",
+            "18": "Relic Castle (Volcarona)"
+        },
+        "Relic Passage": {
+            "81": "Relic Passage (Castelia City Exit)",
+            "82": "Relic Passage (Middle)",
+            "83": "Relic Passage (Driftveil City Exit)"
+        },
+        "Reversal Mountain": {
+            "48": "Reversal Mountain",
+            "49": "Reversal Mountain 1F",
+            "50": "Reversal Mountain B1F",
+            "52": "Reversal Mountain B1F (Chamber)"
+        },
+        "Seaside Cave": {
+            "93": "Seaside Cave 1F",
+            "94": "Seaside Cave B1F"
+        },
+        "Strange House": {
+            "61": "Strange House",
+            "65": "Strange House (Rooms)"
+        },
+        "Twist Mountain": {
+            "24": "Twist Mountain (Upper Level)",
+            "25": "Twist Mountain (Middle Level)",
+            "26": "Twist Mountain (Lower Level)",
+            "27": "Twist Mountain (Lowest Level)"
+        },
+        "Victory Road": {
+            "31": "Victory Road 4F",
+            "71": "Victory Road 1F",
+            "72": "Victory Road (Grove)",
+            "73": "Victory Road (Outside 1)",
+            "74": "Victory Road 2F",
+            "75": "Victory Road 2F (Back)",
+            "76": "Victory Road (Outside 2)",
+            "77": "Victory Road 3F",
+            "80": "Victory Road 3F (Back)"
+        },
+        "Virbank Complex": {
+            "46": "Virbank Complex (Entrance)",
+            "47": "Virbank Complex (Inside)"
+        },
+        "Wellspring Cave": {
+            "102": "Wellspring Cave 1F",
+            "103": "Wellspring Cave B1F"
+        }
+    }
+}

@@ -29,11 +29,6 @@ const JUMP_TABLE: [[u64; 2]; 25] = [
 ];
 
 #[inline]
-fn rotl(x: u64, k: usize) -> u64 {
-    (x << k) | (x >> (64 - k))
-}
-
-#[inline]
 fn split_mix(mut seed: u64, state: u64) -> u64 {
     seed = seed.wrapping_add(state);
     seed = 0xBF58476D1CE4E5B9u64.wrapping_mul(seed ^ (seed >> 30));
@@ -97,8 +92,8 @@ impl Rng for Xoroshiro {
         let result = s0.wrapping_add(s1);
 
         s1 ^= s0;
-        self.state[0] = rotl(s0, 24) ^ s1 ^ (s1 << 16);
-        self.state[1] = rotl(s1, 37);
+        self.state[0] = s0.rotate_left(24) ^ s1 ^ (s1 << 16);
+        self.state[1] = s1.rotate_right(37);
 
         result
     }

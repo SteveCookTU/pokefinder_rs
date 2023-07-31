@@ -61,7 +61,7 @@ impl<'a> IDGenerator4<'a> {
                     << 24)
                     | ((self.hour as u32) << 16).wrapping_add(efgh);
 
-                let mut mt = MTFast::<2, 8, false>::new(seed, 1);
+                let mut mt = MTFast::<2, 4, false>::new(seed, 1);
 
                 let sid_tid = mt.next();
                 let tid = sid_tid & 0xFFFF;

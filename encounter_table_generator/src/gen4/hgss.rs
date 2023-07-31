@@ -1,9 +1,9 @@
-use crate::gen4::narc::Narc;
 use crate::gen4::pack::{
     pack_encounter_hgss, pack_encounter_hgss_bug, pack_encounter_hgss_headbutt,
 };
 use crate::gen4::text::read_map_names;
 use crate::gen4::LocationModifiers;
+use crate::narc::Narc;
 use bzip2::write::BzEncoder;
 use bzip2::Compression;
 use no_std_io::{StreamContainer, StreamReader};
